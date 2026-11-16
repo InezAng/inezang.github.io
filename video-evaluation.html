@@ -1,0 +1,4087 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+  <meta name="description"
+    content="AI video evaluation by Inez Ang: structured feedback on storytelling, scene transitions, visual consistency, editing, pacing and audio-visual sync in AI-generated video, backed by 15+ years of video production, editing and creative direction.">
+  <title>Inez Ang — AI Video Evaluation · Storytelling, Editing and Visual Quality</title>
+  <style>
+    :root {
+      --paper: #f2eee5;
+      --paper-raised: #faf7f0;
+      --paper-deep: #e7e0d3;
+      --ink: #171714;
+      --ink-soft: #48473f;
+      --ink-faint: #605d54;
+      --rule: #cfc6b7;
+      --signal: #d45135;
+      --signal-dark: #963520;
+      --pass: #176c54;
+      --open: #a95627;
+      --blue: #2c5f91;
+      --display: "Iowan Old Style", "Baskerville", "Palatino Linotype", Georgia, serif;
+      --body: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      --mono: "SFMono-Regular", "Cascadia Mono", "Roboto Mono", monospace;
+      --page: 1180px;
+      --reading: 720px;
+      /* Small body copy — findings lists, detail paragraphs, card copy.
+         Change here to move every small-copy block on the page at once. */
+      --copy-sm: 16px;
+      --copy-sm-lh: 1.58;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, transparent 0 26px, rgba(212, 81, 53, .18) 26px 27px, transparent 27px),
+        radial-gradient(circle at 12% 2%, rgba(255, 255, 255, .72), transparent 32%),
+        var(--paper);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.58;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    a,
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--signal-dark);
+      outline-offset: 4px;
+    }
+
+    .video-cover:focus-visible,
+    .dialog-close:focus-visible {
+      outline-color: #fff;
+    }
+
+    ::selection {
+      color: var(--ink);
+      background: rgba(212, 81, 53, .22);
+    }
+
+    .page {
+      width: min(calc(100% - 64px), var(--page));
+      margin: 0 auto;
+    }
+
+    .eyebrow,
+    .label,
+    .case-no,
+    .status,
+    .chip,
+    .micro {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: .13em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid rgba(23, 23, 20, .14);
+      background: rgba(242, 238, 229, .9);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--ink);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-right: 10px;
+      display: inline-block;
+      border-radius: 50%;
+      background: var(--signal);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: var(--signal-dark);
+    }
+
+    .hero {
+      min-height: calc(100vh - 62px);
+      padding: clamp(72px, 10vw, 136px) 0 72px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: clamp(48px, 8vw, 112px);
+      align-items: end;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero .eyebrow {
+      margin: 0 0 24px;
+      color: var(--signal-dark);
+    }
+
+    .hero h1 {
+      max-width: 880px;
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(58px, 8.5vw, 124px);
+      font-weight: 600;
+      letter-spacing: -.055em;
+      line-height: .88;
+    }
+
+    .hero h1 span {
+      display: block;
+    }
+
+    .hero h1 span:nth-child(2) {
+      margin-left: clamp(0px, 7vw, 94px);
+      font-style: italic;
+      color: var(--signal-dark);
+    }
+
+    .hero-side {
+      padding-bottom: 8px;
+    }
+
+    .hero-side .lead {
+      margin: 0 0 28px;
+      font-family: var(--display);
+      font-size: clamp(21px, 2.2vw, 30px);
+      line-height: 1.28;
+    }
+
+    .hero-side .note {
+      margin: 0 0 32px;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .action {
+      min-height: 44px;
+      padding: 11px 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      background: transparent;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: color .18s ease, background .18s ease, transform .18s ease;
+    }
+
+    .action.primary,
+    .action:hover {
+      color: var(--paper-raised);
+      background: var(--ink);
+    }
+
+    .action:hover {
+      transform: translateY(-2px);
+    }
+
+    .quality-loop {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-intro {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 40px;
+      margin-bottom: 34px;
+      align-items: start;
+    }
+
+    .section-intro .label {
+      margin: 8px 0 0;
+      color: var(--signal-dark);
+    }
+
+    .section-intro h2 {
+      max-width: 820px;
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(34px, 5vw, 70px);
+      font-weight: 500;
+      letter-spacing: -.035em;
+      line-height: 1;
+    }
+
+    .loop-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .loop-step {
+      min-height: 216px;
+      padding: 24px 22px;
+      border-right: 1px solid var(--rule);
+    }
+
+    .loop-step:last-child {
+      border-right: 0;
+    }
+
+    .loop-step .micro {
+      color: var(--signal-dark);
+    }
+
+    .loop-step h3 {
+      margin: 24px 0 9px;
+      font-family: var(--display);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .loop-step p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: var(--copy-sm);
+      line-height: 1.5;
+    }
+
+    .warrant {
+      margin: 0;
+      padding: 62px 0;
+      color: var(--paper-raised);
+      background: var(--ink);
+    }
+
+    .warrant-grid {
+      display: grid;
+      grid-template-columns: 1.4fr repeat(4, .65fr);
+      gap: 28px;
+      align-items: end;
+    }
+
+    .warrant-copy .label {
+      color: #e17b63;
+    }
+
+    .warrant-copy h2 {
+      margin: 14px 0 0;
+      font-family: var(--display);
+      font-size: clamp(31px, 4vw, 52px);
+      font-weight: 500;
+      line-height: 1.05;
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 6px;
+      font-family: var(--display);
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      color: #bbb6aa;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .09em;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+
+    .work-index {
+      padding: 74px 0 20px;
+    }
+
+    .work-index .section-intro {
+      margin-bottom: 40px;
+    }
+
+    .work-intro-copy p {
+      max-width: 720px;
+      margin: 18px 0 0;
+      font-family: var(--body);
+      font-size: clamp(18px, 1.9vw, 24px);
+      font-weight: 600;
+      letter-spacing: -.02em;
+      line-height: 1.32;
+    }
+
+    .case-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .case-nav a {
+      min-height: 112px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 18px;
+      border-right: 1px solid var(--rule);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .case-nav a:last-child {
+      border-right: 0;
+    }
+
+    .case-nav a:hover {
+      background: var(--paper-raised);
+    }
+
+    .case-nav .micro {
+      color: var(--ink-faint);
+    }
+
+    .case-nav strong {
+      font-family: var(--display);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .case-study {
+      padding: 92px 0;
+    }
+
+    .case-head {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr) minmax(230px, 300px);
+      gap: 34px;
+      align-items: start;
+      margin-bottom: 42px;
+    }
+
+    .case-no {
+      color: var(--signal-dark);
+    }
+
+    .case-date {
+      display: block;
+      margin-top: 4px;
+      color: var(--ink-soft);
+      opacity: .6;
+      font-weight: 550;
+      letter-spacing: .08em;
+    }
+
+    .case-title h2 {
+      margin: -6px 0 10px;
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 92px);
+      font-weight: 550;
+      letter-spacing: -.045em;
+      line-height: .92;
+    }
+
+    .case-title p {
+      max-width: 680px;
+      margin: 0;
+      color: var(--ink-soft);
+      font-family: var(--display);
+      font-size: clamp(19px, 2vw, 25px);
+      line-height: 1.38;
+    }
+
+    .case-status {
+      padding: 16px;
+      border: 1px solid var(--rule);
+      background: rgba(250, 247, 240, .62);
+    }
+
+    .case-status .status {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--signal-dark);
+    }
+
+    .case-status p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.48;
+    }
+
+    .case-status--inline {
+      display: none;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--rule);
+      background: var(--paper-raised);
+    }
+
+    .panel-head {
+      min-height: 46px;
+      padding: 13px 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-soft);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 650;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .system-panel {
+      grid-column: span 7;
+      min-height: 404px;
+    }
+
+    .system-map {
+      min-height: 356px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 46px 1fr 46px 1fr;
+      gap: 8px;
+      align-items: center;
+      background:
+        linear-gradient(rgba(23, 23, 20, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 23, 20, .035) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    .map-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .map-node {
+      padding: 16px;
+      border: 1px solid var(--ink);
+      background: var(--paper-raised);
+      box-shadow: 5px 5px 0 var(--paper-deep);
+    }
+
+    .map-node.output {
+      color: var(--paper-raised);
+      background: var(--ink);
+      box-shadow: 7px 7px 0 rgba(212, 81, 53, .34);
+    }
+
+    .map-node .micro {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--signal-dark);
+    }
+
+    .map-node.output .micro {
+      color: #e58972;
+    }
+
+    .map-node strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 21px;
+      line-height: 1.08;
+    }
+
+    .map-node small {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink-faint);
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .map-node.output small {
+      color: #bdb8ad;
+    }
+
+    .map-arrow {
+      color: var(--signal);
+      font-family: var(--mono);
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .probe-panel {
+      grid-column: span 5;
+    }
+
+    .probe-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .probe-item {
+      padding: 17px 16px;
+      border-bottom: 1px dotted var(--rule);
+    }
+
+    .probe-item:last-child {
+      border-bottom: 0;
+    }
+
+    .probe-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .probe-item h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 18px;
+      line-height: 1.18;
+    }
+
+    .probe-item p {
+      margin: 7px 0 0;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .verdict {
+      flex: 0 0 auto;
+      padding: 4px 7px;
+      border: 1px solid currentColor;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .verdict.pass {
+      color: var(--pass);
+    }
+
+    .verdict.fail {
+      color: var(--signal-dark);
+    }
+
+    .verdict.open {
+      color: var(--open);
+    }
+
+    .method-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .method {
+      min-height: 186px;
+      padding: 22px;
+      border-right: 1px solid var(--rule);
+    }
+
+    .method:last-child {
+      border-right: 0;
+    }
+
+    .method .micro {
+      color: var(--signal-dark);
+    }
+
+    .method h3 {
+      margin: 18px 0 8px;
+      font-family: var(--display);
+      font-size: 24px;
+      line-height: 1.05;
+    }
+
+    .method p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.52;
+    }
+
+    .tool-row {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      padding: 8px 10px;
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+      background: rgba(250, 247, 240, .5);
+      font-size: 9px;
+      letter-spacing: .06em;
+    }
+
+    .case-gallery {
+      grid-column: 1 / -1;
+      position: relative;
+      margin-top: 12px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: var(--ink);
+    }
+
+    .case-gallery img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .6s ease;
+    }
+
+    .case-gallery img.is-active {
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-gallery img {
+        transition: none;
+      }
+    }
+
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      border: 1px solid rgba(250, 247, 240, .55);
+      background: rgba(23, 23, 20, .48);
+      color: var(--paper-raised);
+      font-size: 13px;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity .25s ease, background .25s ease;
+    }
+
+    .gallery-nav[data-dir="prev"] {
+      left: 10px;
+    }
+
+    .gallery-nav[data-dir="next"] {
+      right: 10px;
+    }
+
+    .case-gallery:hover .gallery-nav,
+    .case-gallery:focus-within .gallery-nav {
+      opacity: 1;
+    }
+
+    .gallery-nav:hover {
+      background: rgba(23, 23, 20, .78);
+    }
+
+    .gallery-dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+    }
+
+    .gallery-dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 1px solid rgba(250, 247, 240, .75);
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      transition: background .25s ease;
+    }
+
+    .gallery-dot[aria-current="true"] {
+      background: var(--paper-raised);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .gallery-nav,
+      .gallery-dot {
+        transition: none;
+      }
+    }
+
+    .video-panel {
+      grid-column: span 7;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+    }
+
+    .video-cover {
+      width: 100%;
+      height: 100%;
+      padding: 32px;
+      position: relative;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      overflow: hidden;
+      border: 0;
+      color: var(--paper-raised);
+      background:
+        radial-gradient(circle at 82% 18%, rgba(212, 81, 53, .88), transparent 0 16%, transparent 17%),
+        linear-gradient(135deg, rgba(255, 255, 255, .09), transparent 34%),
+        var(--ink);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .video-cover::before,
+    .video-cover::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 50%;
+    }
+
+    .video-cover::before {
+      width: 48%;
+      aspect-ratio: 1;
+      top: -18%;
+      right: -4%;
+    }
+
+    .video-cover::after {
+      width: 24%;
+      aspect-ratio: 1;
+      top: 11%;
+      right: 8%;
+    }
+
+    .video-cover-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .video-cover .micro {
+      color: #e58972;
+    }
+
+    .video-cover strong {
+      display: block;
+      max-width: 470px;
+      margin-top: 12px;
+      font-family: var(--display);
+      font-size: clamp(31px, 4vw, 54px);
+      font-weight: 500;
+      line-height: .98;
+    }
+
+    .play {
+      width: 62px;
+      height: 62px;
+      position: relative;
+      z-index: 1;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .75);
+      border-radius: 50%;
+      font-size: 18px;
+      transition: color .18s ease, background .18s ease, transform .18s ease;
+    }
+
+    .video-cover:hover .play {
+      color: var(--ink);
+      background: var(--paper-raised);
+      transform: scale(1.05);
+    }
+
+    .video-panel iframe {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      border: 0;
+    }
+
+    .case-copy-panel {
+      grid-column: span 5;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .case-copy-panel .label {
+      color: var(--signal-dark);
+    }
+
+    .case-copy-panel h3 {
+      margin: 18px 0 12px;
+      font-family: var(--display);
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1.04;
+    }
+
+    .case-copy-panel p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: var(--copy-sm);
+    }
+
+    .case-copy-panel .decision {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .comparison-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 2px;
+    }
+
+    .comparison {
+      padding: 20px;
+      border: 1px solid var(--rule);
+      background: rgba(250, 247, 240, .68);
+    }
+
+    .comparison .probe-line {
+      align-items: center;
+    }
+
+    .comparison h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 22px;
+    }
+
+    .comparison p {
+      margin: 10px 0 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .standards {
+      padding: 80px 0;
+      color: var(--paper-raised);
+      background: var(--signal-dark);
+    }
+
+    .standards .section-intro {
+      margin-bottom: 42px;
+    }
+
+    .standards .section-intro .label {
+      color: #ffd3c8;
+    }
+
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .standard {
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, .4);
+    }
+
+    .standard h3 {
+      margin: 0 0 8px;
+      font-family: var(--display);
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .standard p {
+      margin: 0;
+      color: #f2d6cf;
+      font-size: 13px;
+    }
+
+    .standards-close {
+      margin: 38px 0 0;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, .45);
+      font-family: var(--display);
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 800;
+      letter-spacing: -.025em;
+      line-height: 1.08;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .practice {
+      padding: 96px 0 70px;
+    }
+
+    .practice .section-intro {
+      margin-bottom: 48px;
+    }
+
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px 20px;
+    }
+
+    .practice-card {
+      padding: 0;
+      border: 0;
+      color: inherit;
+      background: transparent;
+      text-align: left;
+      cursor: default;
+    }
+
+    .practice-card .thumb {
+      aspect-ratio: 16 / 10;
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: var(--ink);
+    }
+
+    .practice-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: saturate(.84) contrast(1.02);
+      transition: filter .25s ease, transform .35s ease;
+    }
+
+    .practice-card .practice-card-image:hover img {
+      filter: saturate(1) contrast(1.04);
+      transform: scale(1.025);
+    }
+
+    .practice-card .micro {
+      margin-top: 14px;
+      display: block;
+      color: var(--signal-dark);
+      font-size: 9px;
+    }
+
+    .practice-card h3 {
+      margin: 6px 0 6px;
+      font-family: var(--display);
+      font-size: 23px;
+      line-height: 1.05;
+    }
+
+    .practice-card p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .broadcast-note {
+      margin-top: 82px;
+      padding: 44px 0;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 44px;
+      border-top: 3px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .broadcast-note h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 500;
+      letter-spacing: -.04em;
+      line-height: .92;
+    }
+
+    .broadcast-note p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-family: var(--display);
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.48;
+    }
+
+    .broadcast-note small {
+      display: block;
+      margin-top: 16px;
+      color: var(--ink-faint);
+      font-family: var(--body);
+      font-size: 12px;
+    }
+
+    .broadcast-grid {
+      margin-top: 36px;
+    }
+
+    .broadcast-grid .broadcast-card {
+      cursor: default;
+    }
+
+    .practice-card-image {
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .broadcast-grid .practice-card-image:not([data-lightbox-src]) {
+      cursor: pointer;
+    }
+
+    .contact {
+      padding: 88px 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 60px;
+      align-items: end;
+    }
+
+    .contact h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(52px, 8vw, 104px);
+      font-weight: 550;
+      letter-spacing: -.05em;
+      line-height: .88;
+    }
+
+    .contact-copy p {
+      margin: 0 0 24px;
+      color: var(--ink-soft);
+      font-family: var(--display);
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .footer-line {
+      padding: 20px 0 48px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid var(--rule);
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    dialog {
+      width: min(92vw, 1100px);
+      max-width: none;
+      max-height: 88vh;
+      padding: 0;
+      overflow: visible;
+      border: 0;
+      background: transparent;
+    }
+
+    dialog::backdrop {
+      background: rgba(17, 17, 14, .92);
+      backdrop-filter: blur(3px);
+    }
+
+    dialog img {
+      width: 100%;
+      max-height: 82vh;
+      display: block;
+      object-fit: contain;
+    }
+
+    .dialog-close {
+      width: 44px;
+      height: 44px;
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .5);
+      border-radius: 50%;
+      color: white;
+      background: var(--ink);
+      font-size: 23px;
+      cursor: pointer;
+    }
+
+    .dialog-caption {
+      margin: 10px 0 0;
+      color: #d5d0c6;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /* Visual direction 01: Swiss signal system */
+    :root {
+      --paper: #f4f6f8;
+      --paper-raised: #ffffff;
+      --paper-deep: #dfe3e9;
+      --ink: #080a0d;
+      --ink-soft: #3f454f;
+      --ink-faint: #68707c;
+      --rule: #aeb5c0;
+      --signal: #0d3adafa;
+      --signal-dark: #0b32c7;
+      --pass: #007a55;
+      --open: #9a5700;
+      --blue: #1647ff;
+      --display: "Avenir Next Condensed", "Helvetica Neue Condensed", "Nimbus Sans Narrow", sans-serif;
+      --body: "Avenir Next", "Helvetica Neue", "Nimbus Sans", sans-serif;
+      --mono: "SFMono-Regular", "Cascadia Mono", "IBM Plex Mono", monospace;
+      --page: 1240px;
+      --reading: 720px;
+    }
+
+    body {
+      color: var(--ink);
+      background: var(--paper);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    ::selection {
+      color: #fff;
+      background: var(--signal);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline-color: var(--signal);
+    }
+
+    .page {
+      width: min(calc(100% - 48px), var(--page));
+    }
+
+    .eyebrow,
+    .label,
+    .case-no,
+    .status,
+    .chip,
+    .micro {
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: .14em;
+    }
+
+    .site-nav {
+      border-bottom: 2px solid var(--ink);
+      background: #fff;
+      backdrop-filter: none;
+    }
+
+    .nav-inner {
+      min-height: 68px;
+    }
+
+    .brand {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .brand::before {
+      width: 11px;
+      height: 11px;
+      margin-right: 12px;
+      border-radius: 0;
+      background: var(--signal);
+    }
+
+    .nav-links {
+      gap: 0;
+      border-left: 1px solid var(--ink);
+    }
+
+    .nav-links a {
+      padding: 25px 16px 23px;
+      border-right: 1px solid var(--ink);
+      color: var(--ink);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      transition: color .16s ease, background .16s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      background: var(--signal);
+    }
+
+    .hero {
+      min-height: calc(100vh - 68px);
+      padding: clamp(56px, 6vw, 88px) 0 70px;
+      position: relative;
+      grid-template-columns: minmax(0, 1.65fr) minmax(270px, .55fr);
+      gap: clamp(34px, 5vw, 72px);
+      border-bottom: 8px solid var(--ink);
+    }
+
+    .hero .eyebrow {
+      margin-bottom: 30px;
+      padding: 5px 0 5px 14px;
+      border-left: 24px solid var(--signal);
+      color: var(--ink);
+    }
+
+    .hero h1 {
+      max-width: 960px;
+      font-size: clamp(62px, 8.5vw, 126px);
+      font-weight: 850;
+      letter-spacing: -.072em;
+      line-height: .79;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span:nth-child(2) {
+      margin-left: 0;
+      color: var(--signal);
+      font-style: normal;
+    }
+
+    .hero h1 span:nth-child(3) {
+      padding-top: .08em;
+    }
+
+    .hero-side {
+      padding: 18px 0 0;
+      border-top: 2px solid var(--ink);
+    }
+
+    .hero-side .lead {
+      margin-bottom: 24px;
+      font-family: var(--body);
+      font-size: clamp(18px, 1.7vw, 23px);
+      font-weight: 650;
+      letter-spacing: -.02em;
+      line-height: 1.3;
+    }
+
+    .hero-side .note {
+      margin-bottom: 26px;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .action {
+      min-height: 46px;
+      padding: 12px 15px;
+      border: 2px solid var(--ink);
+      font-size: 9px;
+      letter-spacing: .12em;
+    }
+
+    .action.primary {
+      border-color: var(--signal);
+      background: var(--signal);
+    }
+
+    .action:hover {
+      border-color: var(--signal);
+      background: var(--signal);
+      transform: none;
+    }
+
+    .quality-loop,
+    .case-study,
+    .practice,
+    .contact {
+      padding-top: 82px;
+      padding-bottom: 82px;
+    }
+
+    .section-intro {
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 30px;
+      margin-bottom: 42px;
+    }
+
+    .section-intro .label,
+    .case-copy-panel .label,
+    .practice-card .micro,
+    .case-no,
+    .loop-step .micro,
+    .method .micro {
+      color: var(--signal);
+    }
+
+    .section-intro h2 {
+      max-width: 940px;
+      font-size: clamp(38px, 5vw, 70px);
+      font-weight: 800;
+      letter-spacing: -.045em;
+      line-height: .92;
+    }
+
+    .loop-grid,
+    .case-nav,
+    .method-grid {
+      border: 2px solid var(--ink);
+    }
+
+    .loop-step {
+      min-height: 230px;
+      padding: 24px 20px;
+      border-right-color: var(--ink);
+      background: var(--paper-raised);
+      transition: color .16s ease, background .16s ease;
+    }
+
+    .loop-step:hover {
+      color: #fff;
+      background: var(--signal);
+    }
+
+    .loop-step:hover .micro,
+    .loop-step:hover p {
+      color: #fff;
+    }
+
+    .loop-step h3 {
+      margin-top: 60px;
+      font-size: 34px;
+      font-weight: 850;
+      letter-spacing: -.035em;
+      text-transform: uppercase;
+    }
+
+    .warrant {
+      padding: 56px 0;
+      color: #fff;
+      background: var(--signal);
+    }
+
+    .warrant-grid {
+      grid-template-columns: 1.25fr repeat(4, .65fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .warrant-copy .label,
+    .standards .section-intro .label {
+      color: #fff;
+    }
+
+    .warrant-copy h2 {
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      text-transform: uppercase;
+    }
+
+    .metric {
+      padding-top: 12px;
+      border-top: 2px solid #fff;
+    }
+
+    .metric strong {
+      font-size: clamp(38px, 4.5vw, 60px);
+      font-weight: 850;
+      letter-spacing: -.05em;
+    }
+
+    .metric span {
+      color: #fff;
+    }
+
+    .work-index {
+      padding-top: 84px;
+    }
+
+    .case-nav a {
+      min-height: 112px;
+      padding: 18px;
+      border-right-color: var(--ink);
+      background: var(--paper-raised);
+      transition: color .16s ease, background .16s ease;
+    }
+
+    .case-nav a:hover {
+      color: #fff;
+      background: var(--signal);
+    }
+
+    .case-nav a:hover .micro {
+      color: #fff;
+    }
+
+    .case-nav strong {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -.035em;
+      text-transform: uppercase;
+    }
+
+    .case-head {
+      grid-template-columns: 190px minmax(0, 1fr) minmax(230px, 300px);
+      gap: 34px;
+      margin-bottom: 40px;
+      padding-top: 40px;
+      border-top: 8px solid var(--ink);
+    }
+
+    .case-title h2 {
+      font-size: clamp(52px, 7.5vw, 98px);
+      font-weight: 850;
+      letter-spacing: -.065em;
+      line-height: .82;
+      text-transform: uppercase;
+    }
+
+    .case-title p {
+      max-width: 720px;
+      font-family: var(--body);
+      font-size: clamp(18px, 1.9vw, 24px);
+      font-weight: 600;
+      letter-spacing: -.02em;
+      line-height: 1.32;
+    }
+
+    .case-status {
+      padding: 15px;
+      border: 2px solid var(--ink);
+      background: var(--paper-raised);
+    }
+
+    .case-status .status {
+      color: var(--signal);
+    }
+
+    .evidence-grid {
+      gap: 14px;
+    }
+
+    .panel {
+      border-color: var(--ink);
+      background: var(--paper-raised);
+    }
+
+    .panel-head {
+      min-height: 48px;
+      border-bottom-color: var(--ink);
+      color: #fff;
+      background: var(--ink);
+      font-size: 9px;
+    }
+
+    .system-map {
+      background:
+        linear-gradient(rgba(22, 71, 255, .12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 71, 255, .12) 1px, transparent 1px),
+        #fff;
+      background-size: 24px 24px;
+    }
+
+    .map-node {
+      border: 2px solid var(--ink);
+      background: #fff;
+      box-shadow: none;
+    }
+
+    .map-node.output {
+      color: #fff;
+      border-color: var(--signal);
+      background: var(--signal);
+      box-shadow: none;
+    }
+
+    .map-node .micro,
+    .map-arrow {
+      color: var(--signal);
+    }
+
+    .map-node strong,
+    .probe-item h3,
+    .method h3,
+    .case-copy-panel h3,
+    .comparison h3 {
+      font-weight: 800;
+      letter-spacing: -.025em;
+    }
+
+    .probe-item {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .verdict {
+      padding: 5px 8px;
+      border-width: 0 0 2px;
+    }
+
+    .method-grid {
+      border-left: 0;
+      border-right: 0;
+    }
+
+    .method {
+      border-right-color: var(--ink);
+      background: var(--paper-raised);
+    }
+
+    .method h3,
+    .case-copy-panel h3,
+    .comparison h3,
+    .practice-card h3,
+    .standard h3 {
+      text-transform: uppercase;
+    }
+
+    .chip {
+      padding: 8px 10px;
+      border-color: var(--signal);
+      color: var(--signal-dark);
+      background: transparent;
+    }
+
+    .video-cover {
+      background: var(--signal);
+    }
+
+    .video-cover::before {
+      width: 44%;
+      height: 100%;
+      aspect-ratio: auto;
+      top: 0;
+      right: 0;
+      border: 0;
+      border-radius: 0;
+      background: var(--ink);
+      clip-path: polygon(45% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .video-cover::after {
+      content: "\2197";
+      width: auto;
+      aspect-ratio: auto;
+      top: 24px;
+      right: 28px;
+      border: 0;
+      border-radius: 0;
+      color: #fff;
+      font-family: var(--display);
+      font-size: clamp(54px, 7vw, 96px);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .video-cover .micro,
+    .map-node.output .micro {
+      color: #fff;
+    }
+
+    .video-cover strong {
+      font-size: clamp(34px, 4vw, 58px);
+      font-weight: 850;
+      letter-spacing: -.045em;
+      text-transform: uppercase;
+    }
+
+    .play {
+      width: 60px;
+      height: 60px;
+      border: 2px solid #fff;
+      border-radius: 0;
+    }
+
+    .case-copy-panel {
+      padding: 26px;
+    }
+
+    .case-copy-panel .decision {
+      border-top: 2px solid var(--ink);
+      font-family: var(--body);
+      font-weight: 700;
+    }
+
+    .comparison-grid {
+      gap: 0;
+      border: 2px solid var(--ink);
+    }
+
+    .comparison {
+      border: 0;
+      border-right: 1px solid var(--ink);
+      background: var(--paper-raised);
+    }
+
+    .comparison:last-child {
+      border-right: 0;
+    }
+
+    .programme-finding {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 24px;
+      margin-top: 18px;
+      padding: 20px;
+      border: 2px solid var(--ink);
+      background: var(--signal);
+      color: #fff;
+    }
+
+    .programme-finding .micro {
+      color: #fff;
+    }
+
+    .programme-finding p {
+      max-width: 720px;
+      margin: 0;
+      color: #fff;
+      font-family: var(--body);
+      font-size: clamp(18px, 1.9vw, 24px);
+      font-weight: 600;
+      letter-spacing: -.02em;
+      line-height: 1.32;
+    }
+
+    .programme-finding-copy p+p {
+      margin-top: .4em;
+    }
+
+    .concept-brief {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(280px, .9fr) minmax(0, 1.6fr);
+      border: 2px solid var(--ink);
+      background: var(--paper-raised);
+    }
+
+    .concept-copy {
+      padding: 26px;
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .concept-copy .micro {
+      color: var(--signal-soft);
+    }
+
+    .concept-copy h3 {
+      margin: 18px 0 14px;
+      font-family: var(--display);
+      font-size: clamp(30px, 3.6vw, 48px);
+      font-weight: 850;
+      letter-spacing: -.045em;
+      line-height: .96;
+      text-transform: uppercase;
+    }
+
+    .concept-copy p {
+      margin: 0;
+      color: #cbd0d8;
+      font-size: var(--copy-sm);
+      line-height: 1.55;
+    }
+
+    .concept-flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .concept-step {
+      min-height: 210px;
+      padding: 18px;
+      border-left: 1px solid var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .concept-step strong {
+      font-family: var(--display);
+      font-size: 20px;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .concept-step small {
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .sprint-two {
+      grid-column: 1 / -1;
+      margin-top: 20px;
+      padding-top: 30px;
+      border-top: 8px solid var(--signal);
+    }
+
+    .sprint-two-head {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .sprint-two-head h3 {
+      max-width: 820px;
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(30px, 4vw, 54px);
+      font-weight: 850;
+      letter-spacing: -.045em;
+      line-height: .96;
+      text-transform: uppercase;
+    }
+
+    /* Every case study uses the same editorial header rhythm. */
+    .case-title .tool-row {
+      margin-top: 18px;
+    }
+
+    .youniverse-story {
+      grid-column: 1 / -1;
+      background: var(--paper);
+    }
+
+    .story-section {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 34px;
+      padding: 38px 0;
+      border-top: 1px solid var(--ink);
+    }
+
+    .story-section>.micro {
+      margin: 0;
+      padding-top: 5px;
+      color: var(--signal);
+    }
+
+    .story-copy {
+      max-width: 880px;
+    }
+
+    /* Headline that opens a two-column story block. The UA h3 top margin drops
+       it below the left-column .micro label; zero it so both columns start on
+       the same line. --lede-offset matches the sibling .micro padding-top,
+       keeping the cap heights aligned; contexts whose label uses a different
+       offset override the variable rather than this rule.
+
+       Sole owner of this heading's type — the old .story-next h3 rule was
+       removed so nothing later in the sheet can override it. Drop the class
+       on any story heading and it takes. */
+    h3.story-lede {
+      margin-top: 0;
+      margin-bottom: .6em;
+      padding-top: var(--lede-offset, 5px);
+      max-width: 820px;
+      font-family: var(--body);
+      font-size: 1.17em;
+      font-weight: 700;
+      letter-spacing: normal;
+      line-height: 1.3;
+    }
+
+    .story-copy>p {
+      max-width: 780px;
+      margin: 0;
+      color: var(--ink-soft);
+      font-family: var(--display);
+      font-size: clamp(20px, 2.2vw, 28px);
+      line-height: 1.43;
+    }
+
+    .case-title-detail {
+      margin-top: 16px;
+      color: var(--ink-soft);
+      font-family: var(--body);
+      font-size: var(--copy-sm);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.55;
+    }
+
+    .story-detail {
+      max-width: 760px;
+      margin: 16px 0 0;
+      color: var(--ink-soft);
+      font-size: var(--copy-sm);
+      line-height: var(--copy-sm-lh);
+    }
+
+    .story-detail-stack .story-detail+.story-detail {
+      margin-top: 14px;
+    }
+
+    .finding-list {
+      max-width: 780px;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .finding-list li {
+      padding-left: 5px;
+      color: var(--ink-soft);
+      font-size: var(--copy-sm);
+      line-height: var(--copy-sm-lh);
+    }
+
+    .finding-list li+li {
+      margin-top: 12px;
+    }
+
+    /* Intro paragraphs above the findings list — match the list/body type. */
+    .finding-intro {
+      margin: 0 0 12px;
+      color: var(--ink-soft);
+      font-family: var(--body);
+      font-size: var(--copy-sm);
+      line-height: var(--copy-sm-lh);
+    }
+
+    /* Where a story stack ends on body copy, the 82px bottom padding stacks with
+       the next case study's 82px top padding, leaving a ~173px void before the
+       next rule. Split 76px (2x the 38px .story-section top padding) across the
+       junction so the gap reads in proportion to the copy above it. */
+    .case-study.tight-end {
+      padding-bottom: 38px;
+    }
+
+    /* The final .story-section already contributes its own 38px bottom padding,
+       so drop it and let the case-study padding own the junction. The trailing
+       paragraph's 12px margin would otherwise add on top of it. */
+    .case-study.tight-end .story-section:last-child {
+      padding-bottom: 0;
+    }
+
+    .case-study.tight-end .story-section:last-child .story-copy>p:last-child {
+      margin-bottom: 0;
+    }
+
+    .case-study.tight-end+.case-study {
+      padding-top: 38px;
+    }
+
+    /* Case-study showreel embed — sits under the case-title copy. */
+    .case-video {
+      width: 100%;
+      max-width: 720px;
+      /* zero the UA figure margin, which is not covered by the reset */
+      margin: 22px 0 0;
+    }
+
+    .case-video .video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border: 2px solid var(--ink);
+      background: var(--ink);
+    }
+
+    .case-video .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .case-video figcaption {
+      margin-top: 10px;
+      color: var(--ink-soft);
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .story-flow {
+      margin: 30px 0 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      list-style: none;
+      counter-reset: youniverse-flow;
+    }
+
+    .story-step {
+      min-height: 190px;
+      position: relative;
+      padding: 52px 24px 20px 0;
+      border-top: 2px solid var(--ink);
+      counter-increment: youniverse-flow;
+    }
+
+    .story-step::before {
+      content: counter(youniverse-flow, decimal-leading-zero);
+      width: 34px;
+      height: 34px;
+      position: absolute;
+      top: -18px;
+      left: 0;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--signal);
+      border-radius: 50%;
+      color: var(--signal-dark);
+      background: var(--paper);
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .story-step::after {
+      content: "\2192";
+      position: absolute;
+      top: 18px;
+      right: 9px;
+      color: var(--signal);
+      font-family: var(--mono);
+      font-size: 18px;
+    }
+
+    .story-step:last-child::after {
+      content: none;
+    }
+
+    .story-step strong,
+    .story-step small {
+      display: block;
+    }
+
+    .story-step strong {
+      margin-bottom: 10px;
+      font-family: var(--body);
+      font-size: 1.17em;
+      font-weight: 700;
+      letter-spacing: normal;
+      line-height: 1.3;
+    }
+
+    .story-step small {
+      max-width: 150px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .story-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      background: var(--paper-raised);
+    }
+
+    .story-summary article {
+      min-height: 250px;
+      padding: 24px;
+      border-right: 1px solid var(--ink);
+    }
+
+    .story-summary article:last-child {
+      border-right: 0;
+    }
+
+    .story-summary .micro {
+      color: var(--signal);
+    }
+
+    .story-summary h3 {
+      margin: 44px 0 12px;
+      font-family: var(--display);
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 800;
+      letter-spacing: -.035em;
+      line-height: .98;
+    }
+
+    .story-summary p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .test-flow {
+      margin: 30px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: youniverse-tests;
+    }
+
+    .test-flow>li {
+      position: relative;
+      padding: 0 0 36px 58px;
+      counter-increment: youniverse-tests;
+    }
+
+    .test-flow>li::before {
+      content: counter(youniverse-tests, decimal-leading-zero);
+      width: 34px;
+      height: 34px;
+      position: absolute;
+      top: 1px;
+      left: 0;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--signal);
+      border-radius: 50%;
+      color: var(--signal-dark);
+      background: var(--paper);
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .test-flow>li::after {
+      content: "";
+      width: 1px;
+      position: absolute;
+      top: 36px;
+      bottom: 0;
+      left: 17px;
+      background: var(--rule);
+    }
+
+    .test-flow>li:last-child {
+      padding-bottom: 0;
+    }
+
+    .test-flow>li:last-child::after {
+      content: none;
+    }
+
+    .test-flow h4 {
+      margin: 0 0 9px;
+      font-family: var(--display);
+      font-size: clamp(22px, 2.4vw, 30px);
+      font-weight: 800;
+      letter-spacing: -.025em;
+      line-height: 1.1;
+    }
+
+    .test-flow p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: var(--copy-sm);
+      line-height: var(--copy-sm-lh);
+    }
+
+    .test-flow .test-title {
+      font-size: 1.2em;
+    }
+
+    .test-finding {
+      max-width: 760px !important;
+      margin-top: 13px !important;
+      padding-left: 16px;
+      border-left: 3px solid var(--signal);
+      color: var(--ink-soft) !important;
+      font-family: var(--body) !important;
+      font-size: var(--copy-sm) !important;
+      line-height: var(--copy-sm-lh) !important;
+    }
+
+    .world-compare {
+      max-width: 760px;
+      margin: 16px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--rule);
+      background: var(--paper-raised);
+    }
+
+    .world-compare div {
+      padding: 14px 16px;
+    }
+
+    .world-compare div+div {
+      border-left: 1px solid var(--rule);
+    }
+
+    .world-compare .micro {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--signal-dark);
+    }
+
+    .world-compare span:last-child {
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .story-next {
+      margin-top: 42px;
+      padding-top: 34px;
+      border-top: 1px solid var(--ink);
+    }
+
+    .story-next-head {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 34px;
+      /* This column's .micro sits 7px down, not the default 5px. */
+      --lede-offset: 7px;
+    }
+
+    .story-next-head>.micro {
+      padding-top: 7px;
+      color: var(--signal);
+    }
+
+    .story-next p {
+      max-width: 820px;
+      margin: 0;
+      color: var(--ink-soft);
+      font-family: var(--display);
+      font-size: 19px;
+      line-height: 1.52;
+    }
+
+    .story-next p+p {
+      margin-top: 14px;
+    }
+
+    .story-next .story-next-detail {
+      max-width: 760px;
+      font-family: var(--body);
+      font-size: var(--copy-sm);
+      line-height: var(--copy-sm-lh);
+    }
+
+    .research-question {
+      margin: 30px 0 0 224px;
+      padding: 24px 26px;
+      border: 1px solid rgba(23, 108, 84, .38);
+      background: rgba(23, 108, 84, .055);
+    }
+
+    .research-question .micro {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--pass);
+    }
+
+    .research-question p {
+      color: var(--ink);
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.42;
+    }
+
+    .standards {
+      padding: 82px 0;
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .standards-grid {
+      gap: 0;
+      border-top: 2px solid #fff;
+      border-left: 1px solid rgba(255, 255, 255, .45);
+    }
+
+    .standard {
+      min-height: 205px;
+      padding: 20px;
+      border-top: 0;
+      border-right: 1px solid rgba(255, 255, 255, .45);
+    }
+
+    .standard h3 {
+      font-weight: 800;
+      letter-spacing: -.025em;
+    }
+
+    .standard p {
+      color: #cbd0d8;
+    }
+
+    .practice-grid {
+      gap: 38px 18px;
+    }
+
+    .swipe-cue {
+      display: none;
+    }
+
+    .practice-card .thumb {
+      border: 2px solid var(--ink);
+      background: var(--signal);
+    }
+
+    .practice-card img {
+      filter: grayscale(1) contrast(1.12);
+      transition: filter .24s ease, transform .24s ease;
+    }
+
+    .practice-card .practice-card-image:hover img {
+      filter: grayscale(0) contrast(1.04);
+      transform: scale(1.02);
+    }
+
+    .practice-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -.025em;
+    }
+
+    .broadcast-note {
+      margin-top: 88px;
+      padding-top: 32px;
+      border-top: 10px solid var(--signal);
+      border-bottom-color: var(--ink);
+    }
+
+    /* The Recognition block sits directly above the awards grid, which draws its
+       own 2px frame. Drop the note's bottom rule so the two don't stack. */
+    #recognition.broadcast-note {
+      border-bottom: 0;
+    }
+
+    /* The Broadcast note runs straight into its own project grid, so the bottom
+       rule reads as a stray line rather than a divider. On mobile it also fell
+       through the swipe cue, which sits under the note on a negative margin. */
+    #broadcast.broadcast-note {
+      border-bottom: 0;
+    }
+
+    .broadcast-note h2,
+    .contact h2 {
+      font-weight: 850;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+    }
+
+    .broadcast-note p,
+    .contact-copy p {
+      font-family: var(--body);
+      font-weight: 600;
+      letter-spacing: -.015em;
+    }
+
+    .contact {
+      border-top: 10px solid var(--signal);
+    }
+
+    .footer-line {
+      padding-top: 18px;
+      border-top: 2px solid var(--ink);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    dialog::backdrop {
+      background: rgba(8, 10, 13, .94);
+    }
+
+    .dialog-close {
+      border-radius: 0;
+      background: var(--signal);
+    }
+
+    .case-summary {
+      margin: 24px 0 0;
+      border-top: 2px solid var(--ink);
+    }
+
+    .case-summary>div {
+      display: grid;
+      grid-template-columns: minmax(130px, .34fr) minmax(0, 1fr);
+      gap: 18px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .case-summary dt {
+      color: var(--signal);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .case-summary dd {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .case-evidence {
+      margin-top: 30px;
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .case-evidence[open] {
+      border-bottom-color: transparent;
+    }
+
+    .case-evidence>summary {
+      min-height: 62px;
+      padding: 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      list-style: none;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .case-evidence>summary::after {
+      margin-left: auto;
+    }
+
+    .case-evidence>summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .case-evidence>summary::after {
+      content: "+";
+      color: var(--signal);
+      font-family: var(--mono);
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .case-evidence[open]>summary::after {
+      content: "−";
+    }
+
+    .case-evidence>summary:focus-visible {
+      outline: 3px solid var(--signal);
+      outline-offset: 4px;
+    }
+
+    .case-evidence>.evidence-grid {
+      padding-top: 20px;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        align-content: center;
+      }
+
+      .hero h1 span:nth-child(2) {
+        margin-left: 0;
+      }
+
+      .hero-side {
+        max-width: 680px;
+      }
+
+      .warrant-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .warrant-copy {
+        grid-column: 1 / -1;
+        margin-bottom: 12px;
+      }
+
+      .case-head {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .case-status {
+        grid-column: auto;
+      }
+
+      .case-status--head {
+        display: none;
+      }
+
+      .evidence-grid>.case-status--inline {
+        display: block;
+        grid-column: 1 / -1;
+        margin-bottom: 4px;
+      }
+
+      .story-section,
+      .story-next-head {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .research-question {
+        margin-left: 0;
+      }
+
+      .system-panel,
+      .probe-panel,
+      .video-panel,
+      .case-copy-panel {
+        grid-column: 1 / -1;
+      }
+
+      .system-panel {
+        min-height: 0;
+      }
+
+      .method-grid,
+      .comparison-grid,
+      .standards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .standards-grid .standard:last-child {
+        grid-column: 1 / -1;
+        border-top: 1px solid rgba(255, 255, 255, .45);
+      }
+
+      .method:nth-child(2) {
+        border-right: 0;
+      }
+
+      .method:last-child {
+        grid-column: 1 / -1;
+        border-top: 1px solid var(--rule);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .swipe-cue {
+        margin: -8px 0 12px;
+        display: block;
+        color: var(--signal);
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 750;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+    }
+
+    @media (max-width: 720px) {
+      body {
+        background: var(--paper);
+      }
+
+      .page {
+        width: min(calc(100% - 36px), var(--page));
+      }
+
+      .nav-inner {
+        min-height: 56px;
+      }
+
+      .nav-links a:not(.mobile-primary) {
+        display: none;
+      }
+
+      .nav-links a {
+        padding: 20px 10px 18px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 64px 0 48px;
+        gap: 32px;
+      }
+
+      .hero h1 {
+        font-size: clamp(46px, 14vw, 66px);
+      }
+
+      .quality-loop,
+      .case-study,
+      .practice,
+      .contact {
+        padding: 62px 0;
+      }
+
+      .case-study.tight-end {
+        padding-bottom: 38px;
+      }
+
+      .case-study.tight-end+.case-study {
+        padding-top: 38px;
+      }
+
+      .section-intro {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .loop-grid,
+      .case-nav,
+      .warrant-grid,
+      .method-grid,
+      .comparison-grid,
+      .standards-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .loop-step {
+        min-height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .loop-step:last-child {
+        border-bottom: 0;
+      }
+
+      .loop-step h3 {
+        margin-top: 32px;
+      }
+
+      .metric {
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, .16);
+      }
+
+      .case-nav a {
+        min-height: 88px;
+        gap: 10px;
+        border-right: 0;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .case-nav a:last-child {
+        border-bottom: 0;
+      }
+
+      .programme-finding,
+      .concept-brief,
+      .sprint-two-head,
+      .story-section,
+      .story-next-head {
+        grid-template-columns: 1fr;
+      }
+
+      .story-section,
+      .story-next-head {
+        gap: 12px;
+      }
+
+      .story-flow,
+      .story-summary,
+      .world-compare {
+        grid-template-columns: 1fr;
+      }
+
+      .story-flow {
+        margin-left: 18px;
+      }
+
+      .story-step {
+        min-height: 0;
+        padding: 18px 0 30px 52px;
+        border-top: 0;
+        border-left: 2px solid var(--ink);
+      }
+
+      .story-step::before {
+        top: 0;
+        left: -18px;
+      }
+
+      .story-step::after {
+        content: "\2193";
+        top: auto;
+        right: auto;
+        bottom: 5px;
+        left: 12px;
+      }
+
+      .story-step:last-child {
+        border-left-color: transparent;
+      }
+
+      .story-step small {
+        max-width: 360px;
+      }
+
+      .story-summary article {
+        min-height: 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .story-summary article:last-child {
+        border-bottom: 0;
+      }
+
+      .story-summary h3 {
+        margin-top: 28px;
+      }
+
+      .world-compare div+div {
+        border-top: 1px solid var(--rule);
+        border-left: 0;
+      }
+
+      .research-question {
+        margin-left: 0;
+      }
+
+      .concept-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .concept-step {
+        min-height: 128px;
+        border-left: 0;
+        border-top: 1px solid var(--ink);
+      }
+
+      .case-head {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .case-status {
+        grid-column: auto;
+      }
+
+      .system-map {
+        min-height: 0;
+        padding: 20px;
+        grid-template-columns: 1fr;
+      }
+
+      .map-arrow {
+        transform: rotate(90deg);
+      }
+
+      .method,
+      .method:nth-child(2),
+      .method:last-child {
+        min-height: 0;
+        grid-column: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .method:last-child {
+        border-bottom: 0;
+      }
+
+      .comparison {
+        border-right: 0;
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .comparison:last-child {
+        border-bottom: 0;
+      }
+
+      .standards-grid {
+        border-left: 0;
+      }
+
+      .standard {
+        min-height: 0;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .45);
+      }
+
+      .standards-grid .standard:last-child {
+        grid-column: auto;
+        border-top: 0;
+        border-bottom: 0;
+      }
+
+      .video-panel {
+        aspect-ratio: 4 / 3;
+      }
+
+      .video-cover {
+        padding: 22px;
+      }
+
+      .play {
+        width: 50px;
+        height: 50px;
+      }
+
+      .practice-grid {
+        margin-right: calc((100vw - 100%) / -2);
+        padding-right: 18px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(260px, 78vw);
+        grid-template-columns: none;
+        gap: 18px;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: inline mandatory;
+        scrollbar-width: thin;
+      }
+
+      .practice-card {
+        scroll-snap-align: start;
+      }
+
+      .broadcast-note {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-copy {
+        margin-top: 12px;
+      }
+
+      .footer-line {
+        flex-direction: column;
+      }
+
+      .dialog-close {
+        top: 8px;
+        right: 8px;
+      }
+
+      .case-summary>div {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .case-evidence>summary {
+        align-items: flex-start;
+      }
+
+      .case-evidence>summary .micro {
+        display: none;
+      }
+
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  
+    /* Evaluation tables (rubric, scores, taxonomy) — the only additions for the Meta re-cut. */
+    .eval-table-wrap {
+      max-width: 860px;
+      margin: 20px 0 18px;
+      overflow-x: auto;
+      border: 1px solid var(--ink);
+      background: var(--paper-raised);
+    }
+
+    .eval-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .eval-table caption {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--ink);
+      color: var(--signal-dark);
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .eval-table th,
+    .eval-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-soft);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .eval-table thead th {
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .eval-table tbody th {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .eval-table tr:last-child th,
+    .eval-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .eval-table .num {
+      font-family: var(--mono);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .eval-table tfoot th,
+    .eval-table tfoot td {
+      border-top: 2px solid var(--ink);
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .case-nav--six {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .case-nav--six a:nth-child(3n) {
+      border-right: 0;
+    }
+
+    .case-nav--six a:nth-child(-n+3) {
+      border-bottom: 1px solid var(--ink);
+    }
+
+    @media (max-width: 820px) {
+      .case-nav--six {
+        grid-template-columns: 1fr;
+      }
+
+      .case-nav--six a {
+        border-right: 0;
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .case-nav--six a:last-child {
+        border-bottom: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="page nav-inner">
+      <a class="brand" href="#top">Inez Ang</a>
+      <div class="nav-links">
+        <a href="#quality-loop">Method</a>
+        <a class="mobile-primary" href="#selected-work">Evaluation studies</a>
+        <a href="#broadcast">Production craft</a>
+        <a class="mobile-primary" href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="page hero">
+      <div>
+        <p class="eyebrow">AI Video Evaluation · Storytelling, Editing and Visual Quality</p>
+        <h1 aria-label="Watch the clip. Name the failure. Write it down.">
+          <span>Watch the clip.</span>
+          <span>Name the failure.</span>
+          <span>Write it down.</span>
+        </h1>
+      </div>
+      <div class="hero-side">
+        <p class="lead">I review AI-generated video with 15+ years of editing, directing and showrunning behind the
+          judgement, and write up what fails&mdash;storytelling, transitions, visual consistency, pacing,
+          audio-visual sync&mdash;as structured feedback.</p>
+        <p class="note">Selected evaluation work · Singapore · 2024&ndash;2026</p>
+        <div class="actions">
+          <a class="action primary" href="#selected-work">View the evaluations</a>
+          <a class="action" href="resume-video-evaluation.html">Résumé</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="page quality-loop" id="quality-loop">
+      <div class="section-intro">
+        <p class="label">The evaluation loop</p>
+        <h2>A quality standard is useful only when another rater&mdash;or a machine&mdash;can apply it.</h2>
+      </div>
+      <div class="loop-grid">
+        <article class="loop-step">
+          <span class="micro">01 / Rubric</span>
+          <h3>Define</h3>
+          <p>Write each dimension as a question a rater can answer by pointing at the output. Set the rating scale and
+            the rules for what counts.</p>
+        </article>
+        <article class="loop-step">
+          <span class="micro">02 / Eval round</span>
+          <h3>Run</h3>
+          <p>Score side by side or absolutely, on controlled prompts and first-generation outputs. Check prompt
+            adherence separately from quality.</p>
+        </article>
+        <article class="loop-step">
+          <span class="micro">03 / Signal</span>
+          <h3>Report</h3>
+          <p>Name the failure mode, say whether the prompt or the model caused it, and state the limits of the test.
+          </p>
+        </article>
+        <article class="loop-step">
+          <span class="micro">04 / Ground truth</span>
+          <h3>Calibrate</h3>
+          <p>Keep a golden set. Compare automated judges with human ratings before trusting either at volume.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="warrant" id="production-warrant">
+      <div class="page warrant-grid">
+        <div class="warrant-copy">
+          <span class="label">Production warrant</span>
+          <h2>The judgement predates the tools.</h2>
+        </div>
+        <div class="metric"><strong>15+</strong><span>years across edit, direction, producing and showrunning</span>
+        </div>
+        <div class="metric"><strong>100+</strong><span>hours of television edited and finished</span></div>
+        <div class="metric"><strong>824</strong><span>generation records audited for failure modes</span></div>
+        <div class="metric"><strong>163</strong><span>items in a candidate golden set, built November 2026</span></div>
+      </div>
+    </section>
+
+    <section class="page work-index" id="selected-work">
+      <div class="section-intro">
+        <p class="label">Selected evaluation work</p>
+        <div class="work-intro-copy">
+          <h2>Six evaluation studies of generative video and image output.</h2>
+          <p>Each one states a question, a method, a finding and its limits. Two are evaluation design: a rubric
+            applied across three text-to-video models, and a failure taxonomy with a golden set. Four are
+            evaluations run on my own generative video projects.</p>
+          <p>The judgement underneath is a rater's, applied clip by clip: storytelling, scene transitions, visual
+            consistency, editing, pacing and audio-visual sync, written up as structured feedback.</p>
+          <p>I set the standard, designed each evaluation and made every judgement. I was the only rater throughout,
+            and I say where AI tools did the analysis.</p>
+        </div>
+      </div>
+      <nav class="case-nav case-nav--six" aria-label="Evaluation studies">
+        <a href="#t2v-rubric"><span class="micro">01 / Rubric study</span><strong>Text-to-video rubric</strong></a>
+        <a href="#jj-eval"><span class="micro">02 / Eval design · in progress</span><strong>Failure taxonomy &amp;
+            golden set</strong></a>
+        <a href="#youniverse"><span class="micro">03 / Continuity evaluation</span><strong>Youniverse</strong></a>
+        <a href="#deadtell"><span class="micro">04 / Performance evaluation</span><strong>DeadTell TV</strong></a>
+        <a href="#jj"><span class="micro">05 / Character-consistency evaluation</span><strong>JJ
+            Befuddlez</strong></a>
+        <a href="#terra"><span class="micro">06 / Authenticity evaluation</span><strong>Terra Atavica</strong></a>
+      </nav>
+    </section>
+
+    <section class="page case-study tight-end" id="t2v-rubric">
+      <header class="case-head">
+        <span class="case-no">01 / Rubric study<span class="case-date">2024&ndash;2025</span></span>
+        <div class="case-title">
+          <h2>Text-to-video rubric</h2>
+          <p>A six-dimension Yes/No rubric applied to first-generation outputs from three text-to-video models, during
+            a nine-month generative-AI research contract at a Singapore government agency. The three models are
+            widely used commercial products, shown here as Model A, B and C.</p>
+          <dl class="case-summary">
+            <div>
+              <dt>Question</dt>
+              <dd>Do text-to-video generators produce video that looks generic or needs major fixes?</dd>
+            </div>
+            <div>
+              <dt>Method</dt>
+              <dd>Three models, three difficult-scenario prompts, each clip scored independently on six dimensions.
+              </dd>
+            </div>
+            <div>
+              <dt>Finding</dt>
+              <dd>Scores of 7, 15 and 11 out of 18. Motion and originality separated the models; two dimensions did
+                not.</dd>
+            </div>
+            <div>
+              <dt>Limits</dt>
+              <dd>Nine clips, one rater, one generation per prompt.</dd>
+            </div>
+          </dl>
+          <div class="eval-table-wrap">
+            <table class="eval-table">
+              <caption>Rubric and summed scores · Yes = 1 · three prompts per model</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Dimension</th>
+                  <th scope="col">Question the rater answers</th>
+                  <th scope="col" class="num">Model A</th>
+                  <th scope="col" class="num">Model B</th>
+                  <th scope="col" class="num">Model C</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Visual realism and quality</th>
+                  <td>Does the video appear photorealistic with natural lighting and textures?</td>
+                  <td class="num">3</td>
+                  <td class="num">3</td>
+                  <td class="num">3</td>
+                </tr>
+                <tr>
+                  <th scope="row">Motion coherence</th>
+                  <td>Does movement appear natural and follow realistic physics?</td>
+                  <td class="num">0</td>
+                  <td class="num">2</td>
+                  <td class="num">1</td>
+                </tr>
+                <tr>
+                  <th scope="row">Temporal consistency</th>
+                  <td>Does the video maintain smooth continuity without flickering or warping?</td>
+                  <td class="num">3</td>
+                  <td class="num">3</td>
+                  <td class="num">3</td>
+                </tr>
+                <tr>
+                  <th scope="row">Creative originality</th>
+                  <td>Does the video show creative interpretation rather than generic, template-like output?</td>
+                  <td class="num">0</td>
+                  <td class="num">3</td>
+                  <td class="num">1</td>
+                </tr>
+                <tr>
+                  <th scope="row">Prompt adherence</th>
+                  <td>Does the video accurately represent the requested prompt without major hallucinations?</td>
+                  <td class="num">1</td>
+                  <td class="num">2</td>
+                  <td class="num">3</td>
+                </tr>
+                <tr>
+                  <th scope="row">Shot success</th>
+                  <td>Is this video immediately usable without requiring regeneration?</td>
+                  <td class="num">0</td>
+                  <td class="num">2</td>
+                  <td class="num">0</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row">Total</th>
+                  <td>Out of 18</td>
+                  <td class="num">7</td>
+                  <td class="num">15</td>
+                  <td class="num">11</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div class="tool-row" aria-label="Models evaluated">
+            <span class="chip">Three text-to-video models</span><span class="chip">Models anonymised</span><span class="chip">Absolute scoring</span><span class="chip">First-generation outputs
+              only</span>
+          </div>
+        </div>
+        <aside class="case-status case-status--head">
+          <span class="status">Completed 2025 · Sole rater</span>
+          <p>The evaluation writeup was presented to the CEO. The rubric has known weaknesses, listed
+            in the evidence below with the changes I would make.
+          </p>
+        </aside>
+      </header>
+
+      <details class="case-evidence">
+        <summary>
+          <span>View detailed evidence</span>
+          <span class="micro" aria-hidden="true">Test design · Observations · Limits</span>
+        </summary>
+        <div class="evidence-grid">
+          <aside class="case-status case-status--inline">
+            <span class="status">Completed 2025 · Sole rater</span>
+            <p>The evaluation writeup was presented to the CEO. The rubric has known weaknesses, listed
+              below with the changes I would make.
+            </p>
+          </aside>
+          <article class="youniverse-story">
+            <section class="story-section" aria-labelledby="t2v-design">
+              <h3 class="micro" id="t2v-design">Test design</h3>
+              <div class="story-copy">
+                <h3 class="story-lede">Control the inputs so the score describes the model, not the operator.</h3>
+                <ul class="finding-list">
+                  <li><strong>Text prompts only.</strong> No image references and no revision with other tools.</li>
+                  <li><strong>First-generation outputs only.</strong> The first clip returned is the one scored, which
+                    rules out cherry-picking.</li>
+                  <li><strong>Prompts from a real production brief.</strong> All three came from a short film I had
+                    made with text-to-video, and each stresses something different: a tracking camera move with a
+                    practical light source, a high-speed fall towards the lens, and a sprint with a stated lens and
+                    aperture.</li>
+                  <li><strong>Absolute scoring.</strong> Each clip is scored on its own against six Yes/No questions,
+                    with a written observation for every dimension.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="story-section" aria-labelledby="t2v-observations">
+              <h3 class="micro" id="t2v-observations">Observations</h3>
+              <div class="story-copy">
+                <h3 class="story-lede">Prompt-following failures and model-quality failures were written up
+                  separately.</h3>
+                <div class="world-compare" aria-label="Prompt fault compared with model fault">
+                  <div><span class="micro">Prompt fault</span><span>&ldquo;Prompt did not clearly state that the
+                      tablet was a stone tablet in the ground.&rdquo; Models B and C inferred the context; Model A
+                      did not.</span>
+                  </div>
+                  <div><span class="micro">Model fault</span><span>&ldquo;None simulated the effect of falling through
+                      the air.&rdquo; The prompt was clear; no model produced the physics.</span></div>
+                </div>
+                <ul class="finding-list">
+                  <li><strong>Motion:</strong> Model A extended the boy's hand unnaturally at the end of the shot;
+                    Models A and C showed a lack of human body physics in the sprint.</li>
+                  <li><strong>Performance against the prompt:</strong> Model B was the only one to add motion
+                    streaks to the fall, but the boy looked happy where the prompt asked for a scream.</li>
+                  <li><strong>Camera and blocking:</strong> Model A defaulted to a static wide shot, Model C added
+                    handheld tracking, and Model B choreographed camera and actor movement together.</li>
+                  <li><strong>Lens adherence:</strong> Model A rendered the shallow depth of field of the requested
+                    f/2.8 lens better than the others.</li>
+                  <li><strong>Homogeneity as a signal:</strong> Models A and C returned similar-looking shots for the same
+                    prompt, which I read as a tendency towards generic output.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="story-section" aria-labelledby="t2v-limits">
+              <h3 class="micro" id="t2v-limits">Limits and revisions</h3>
+              <div class="story-copy">
+                <h3 class="story-lede">What this rubric got wrong, and what I would change.</h3>
+                <ul class="finding-list">
+                  <li><strong>Two dimensions did not discriminate.</strong> Visual realism and temporal consistency
+                    passed nine of nine. A graded scale would separate outputs that a Yes/No question cannot.</li>
+                  <li><strong>Originality drifted into comparison.</strong> The instruction said to score each clip
+                    independently, but I judged originality partly against the other clips. It belongs in a
+                    side-by-side round.</li>
+                  <li><strong>A prompt fault was still scored against the model.</strong> The rubric needs a rule for
+                    failures attributed to the prompt.</li>
+                  <li><strong>Small sample, one rater.</strong> Nine clips and one generation per prompt. Next: repeat
+                    generations, a second rater and an agreement check.</li>
+                  <li><strong>Double-barrelled and judgement questions.</strong> Several questions ask two things at
+                    once (&ldquo;natural and follow realistic physics&rdquo;), and originality and shot success are
+                    holistic judgements, not something a rater can point at. Each should be split or defined by
+                    observable criteria.</li>
+                  <li><strong>One summed total.</strong> Technical and creative dimensions should be reported as
+                    separate totals.</li>
+                  <li><strong>A missing dimension.</strong> Every prompt repeated the same wardrobe, so attribute
+                    consistency across clips could have been scored and was not.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="story-next" aria-labelledby="t2v-baseline-title">
+              <div class="story-next-head">
+                <span class="micro">Earlier study / November 2024</span>
+                <div>
+                  <h3 id="t2v-baseline-title" class="story-lede">A common baseline for comparing models that were
+                    tested on different prompts.</h3>
+                  <p class="story-next-detail">Two public sets of generated clips, an academic benchmark of more
+                    than 700 prompts covering several models and the published samples for Meta Movie Gen, used
+                    different prompts. I matched prompts across the two sets with text embeddings and clustering, identified 30
+                    with similar attributes, graded their similarity high, medium or low, and compared the five
+                    closest side by side across eight models and model versions, including two models at two versions
+                    each.</p>
+                  <p class="story-next-detail">To keep the comparison fair I compared only the first four seconds of
+                    the longer clips. I reported the remaining confound, that the prompts were similar but not
+                    identical and every word changes the outcome, and proposed regenerating the clips on identical
+                    prompts as the next step. I curated and matched these clips; I did not generate them.</p>
+                </div>
+              </div>
+            </section>
+          </article>
+        </div>
+      </details>
+    </section>
+
+    <section class="page case-study tight-end" id="jj-eval">
+      <header class="case-head">
+        <span class="case-no">02 / Eval design<span class="case-date">Nov 2026 · in progress</span></span>
+        <div class="case-title">
+          <h2>Failure taxonomy &amp; golden set</h2>
+          <p>An evaluation system for my short-form AI video series: an audit of every generation record, a failure
+            taxonomy, rubric lines written as single observable questions, and a golden set to calibrate automated
+            judges against my own verdicts.</p>
+          <dl class="case-summary">
+            <div>
+              <dt>Question</dt>
+              <dd>Why do generated frames and takes fail review, and which checks can be handed to a machine?</dd>
+            </div>
+            <div>
+              <dt>Method</dt>
+              <dd>Audited 824 generation records, classified every recorded failure, and compared LLM judges with my
+                blind ratings.</dd>
+            </div>
+            <div>
+              <dt>Finding</dt>
+              <dd>Five failure classes. On a small sample, LLM judges called 90&ndash;95% of comedy scripts funny; I
+                called 56%. So judges are asked only about observable facts.</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd>Design complete; golden set v0 built; in progress (November 2026).</dd>
+            </div>
+          </dl>
+          <div class="eval-table-wrap">
+            <table class="eval-table">
+              <caption>Failure taxonomy · from rejected, superseded and failed image and video records</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Class</th>
+                  <th scope="col">Examples from the records</th>
+                  <th scope="col">Who can check it</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">A · Tool failure</th>
+                  <td>Too many reference images in one request; a prompt lost before sending; a parallel run copying
+                    the wrong file as its output.</td>
+                  <td>Code, before the call</td>
+                </tr>
+                <tr>
+                  <th scope="row">B · Contract fault</th>
+                  <td>Two routers where the brief specifies one; three glass bays against four; a straw in a cup that
+                    must be sealed.</td>
+                  <td>A model, from the image and the brief</td>
+                </tr>
+                <tr>
+                  <th scope="row">C · Performance fault</th>
+                  <td>The character looks at the camera when the script says the treadmill belt; sleepy where the
+                    script says dizzy; a wave where a point was asked.</td>
+                  <td>A model, with care</td>
+                </tr>
+                <tr>
+                  <th scope="row">D · Identity, wardrobe, scale</th>
+                  <td>Wardrobe lost between image and video; the character too large against an adult; the character
+                    on the wrong side of frame.</td>
+                  <td>A model plus measurement</td>
+                </tr>
+                <tr>
+                  <th scope="row">E · Taste</th>
+                  <td>&ldquo;Face too polished&rdquo;; &ldquo;too similar to the previous episode&rdquo;.</td>
+                  <td>The human reviewer</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tool-row" aria-label="Evaluation components">
+            <span class="chip">Failure taxonomy</span><span class="chip">Rubric lines</span><span class="chip">Golden
+              set</span><span class="chip">LLM judges vs human ratings</span><span class="chip">Python</span>
+          </div>
+        </div>
+        <aside class="case-status case-status--head">
+          <span class="status">In progress · Status at 15 November 2026</span>
+          <p>I set the acceptance standard and designed the checks. An AI coding assistant ran the record audit and
+            drafted labels from my recorded verdicts under my direction. No judge is described as calibrated until I
+            have confirmed the label sheet.
+          </p>
+        </aside>
+      </header>
+
+      <details class="case-evidence">
+        <summary>
+          <span>View detailed evidence</span>
+          <span class="micro" aria-hidden="true">Judge study · Rubric excerpt · Golden set</span>
+        </summary>
+        <div class="evidence-grid">
+          <aside class="case-status case-status--inline">
+            <span class="status">In progress · Status at 15 November 2026</span>
+            <p>I set the acceptance standard and designed the checks. An AI coding assistant ran the record audit and
+              drafted labels from my recorded verdicts under my direction. No judge is described as calibrated until I
+              have confirmed the label sheet.
+            </p>
+          </aside>
+          <article class="youniverse-story">
+            <section class="story-section" aria-labelledby="jj-eval-baseline">
+              <h3 class="micro" id="jj-eval-baseline">Baseline</h3>
+              <div class="story-copy">
+                <h3 class="story-lede">The records described what was generated in detail. They did not say what I
+                  decided.</h3>
+                <ul class="finding-list">
+                  <li>Of 479 image generation records, 72% carried no verdict, so a first-pass acceptance rate could
+                    not be computed. The status field alone held 39 different values.</li>
+                  <li>Where it could be counted, on one episode, about half of keyframes were accepted in their first
+                    version. That is one episode, counted from file versions.</li>
+                  <li>The first change is therefore to the record, not the model: six allowed status values and a
+                    recorded verdict, defect class and reason for every output.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="story-section" aria-labelledby="jj-eval-judges">
+              <h3 class="micro" id="jj-eval-judges">Human vs LLM judges</h3>
+              <div class="story-copy">
+                <h3 class="story-lede">Can a model judge stand in for my rating? Tested on short comedy scripts for the
+                  series, with a rating tool I built that hides the judges' scores until my own rating is saved.</h3>
+                <div class="eval-table-wrap">
+                  <table class="eval-table">
+                    <caption>Judge agreement with my blind ratings · four-point scale · items each judge scored before seeing
+                      mine</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Judge</th>
+                        <th scope="col" class="num">Items compared</th>
+                        <th scope="col" class="num">Exact score match</th>
+                        <th scope="col">Same side of funny / not funny</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">ChatGPT</th>
+                        <td class="num">23</td>
+                        <td class="num">6 (26%)</td>
+                        <td>83% in the first batch, then 33% and 38%</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Gemini</th>
+                        <td class="num">23</td>
+                        <td class="num">7 (30%)</td>
+                        <td>83% in the first batch, then 44% and 38%</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Grok</th>
+                        <td class="num">9</td>
+                        <td class="num">1 (11%)</td>
+                        <td>Not reported; many calls dropped</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ul class="finding-list">
+                  <li>The judges called 90 to 95% of scripts funny. I called 56% funny.</li>
+                  <li>Ranking a whole batch did better than scoring items one at a time: one judge's ranking
+                    correlated with mine at &rho; = 0.55 and placed 7 of my 10 picks in its top 10, against 5.6 expected
+                    by chance.</li>
+                </ul>
+                <p class="test-finding"><strong>Caveat: </strong>this is a small sample of 23 scripts at most per
+                  judge, and the ranking result comes from a single batch of 18. I treat the conclusion as a working
+                  rule, not a finding: ask a judge about what a person can point to in the output, and do not ask it
+                  whether the output is good.</p>
+              </div>
+            </section>
+
+            <section class="story-section" aria-labelledby="jj-eval-rubric">
+              <h3 class="micro" id="jj-eval-rubric">Rubric excerpt</h3>
+              <div class="story-copy">
+                <h3 class="story-lede">One observable judgement per line. The decision is made in code, not by the
+                  judge.</h3>
+                <div class="eval-table-wrap">
+                  <table class="eval-table">
+                    <caption>Keyframe card · six of the 28 lines · inputs: the frame, the character sheet, the shot
+                      line</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Line</th>
+                        <th scope="col">Question</th>
+                        <th scope="col">Answer type</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Weight</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">K2</th>
+                        <td>Is the character wearing the same bottoms and footwear as in the character sheet?</td>
+                        <td>Yes / No</td>
+                        <td>D</td>
+                        <td>Hard</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">K6</th>
+                        <td>Where is the character in the frame? Code then derives side of frame and scale against
+                          the adult.</td>
+                        <td>Bounding box</td>
+                        <td>D</td>
+                        <td>Hard</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">K8</th>
+                        <td>Is the character looking into the camera?</td>
+                        <td>Yes / No</td>
+                        <td>C</td>
+                        <td>Soft</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">K9</th>
+                        <td>Which of these expressions does the character's face show? Options come from the
+                          expression sheet.</td>
+                        <td>Choice</td>
+                        <td>C</td>
+                        <td>Soft</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">K10</th>
+                        <td>Is the character in the frame the same character as in the character sheet?</td>
+                        <td>Yes / No</td>
+                        <td>D</td>
+                        <td>Hard</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">K11</th>
+                        <td>One question per object in the brief, for example: is a sealed cup with no straw visible?
+                        </td>
+                        <td>Yes / No</td>
+                        <td>B</td>
+                        <td>Hard</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="eval-table-wrap">
+                  <table class="eval-table">
+                    <caption>Decision table · applied in code</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Code checks</th>
+                        <th scope="col">Hard lines</th>
+                        <th scope="col">Soft lines</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Fail</td>
+                        <td>&mdash;</td>
+                        <td>&mdash;</td>
+                        <td>Do not send the request. Fix it first.</td>
+                      </tr>
+                      <tr>
+                        <td>Pass</td>
+                        <td>Any confident fail</td>
+                        <td>&mdash;</td>
+                        <td>Regenerate with the fail reasons added. Two attempts at most.</td>
+                      </tr>
+                      <tr>
+                        <td>Pass</td>
+                        <td>Any uncertain answer</td>
+                        <td>&mdash;</td>
+                        <td>Escalate to a second, stronger judge.</td>
+                      </tr>
+                      <tr>
+                        <td>Pass</td>
+                        <td>All pass</td>
+                        <td>Any fail</td>
+                        <td>Show to the human reviewer with the flag beside the image.</td>
+                      </tr>
+                      <tr>
+                        <td>Pass</td>
+                        <td>All pass</td>
+                        <td>All pass</td>
+                        <td>Show to the human reviewer, clean.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ul class="finding-list">
+                  <li><strong>A check never accepts.</strong> Acceptance stays with the human reviewer.</li>
+                  <li><strong>Video takes are sorted and flagged, never regenerated automatically.</strong> A false
+                    fail on an image costs one free regeneration; on video it costs a paid take.</li>
+                  <li><strong>An API error is an error.</strong> It is never read as a pass or a fail.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="story-section" aria-labelledby="jj-eval-golden">
+              <h3 class="micro" id="jj-eval-golden">Golden set &amp; calibration</h3>
+              <div class="story-copy">
+                <h3 class="story-lede">Candidate golden set v0: 163 items and 379 draft labels across 28 rubric lines.
+                  Built; not yet confirmed.</h3>
+                <ul class="finding-list">
+                  <li><strong>Contents:</strong> 89 keyframes, 20 video takes and 54 reference, grid and location
+                    images, each frozen by file hash with the references and prompt that produced it.</li>
+                  <li><strong>Labels:</strong> 103 fail, 32 pass, 3 not applicable or disputed, and 241 no-fault
+                    labels implied where I accepted the output. 51 labels come from verdicts I stated at review; 87 come from the AI
+                    assistant's inspection records; the other 241 are the implied ones. None of the 379 has yet been confirmed by me on the review sheet.</li>
+                  <li><strong>Calibration rule:</strong> a rubric line goes live only if the judge agrees with my
+                    labels on at least 80% of items with false fails at 10% or less. False fails and false passes are reported
+                    separately for each line, because most labels are passes and raw agreement alone would flatter a
+                    judge that passes everything. Lines that miss are tuned or left with the human reviewer.</li>
+                  <li><strong>Shadow period:</strong> for the first two live episodes the checks run without acting.
+                    Their verdicts are stored and compared with mine afterwards.</li>
+                  <li><strong>Regression use:</strong> the set is rerun whenever a model version or a rubric line
+                    changes. This has not yet been done.</li>
+                </ul>
+                <p class="test-finding"><strong>Not built, on purpose: </strong>a funniness judge, because the evidence
+                  is against it; and a single quality score per episode, because six stages at 75% each multiply to
+                  18% and hide which stage failed. Each stage is measured on its own.</p>
+              </div>
+            </section>
+          </article>
+        </div>
+      </details>
+    </section>
+
+    <section class="page case-study tight-end" id="youniverse">
+      <header class="case-head">
+        <span class="case-no">03 / Continuity evaluation<span class="case-date">Jul 2026</span></span>
+        <div class="case-title">
+          <h2>Youniverse</h2>
+          <p>Which reference methods keep three characters, their world and its props consistent across a sequence of
+            generated shots, and which failures belong to the inputs, not the model? Tested on an AI-assisted
+            microdrama pipeline that turns one portrait into a short fictional story.</p>
+          <dl class="case-summary">
+            <div>
+              <dt>Question</dt>
+              <dd>Do reference methods hold continuity across a multi-character generated sequence?</dd>
+            </div>
+            <div>
+              <dt>Method</dt>
+              <dd>Three reference methods tested on one video model, with a pass or fail recorded for each.</dd>
+            </div>
+            <div>
+              <dt>Finding</dt>
+              <dd>References improved single shots; sequence continuity still failed.</dd>
+            </div>
+            <div>
+              <dt>Decision</dt>
+              <dd>Retain the story pipeline; redesign storyboards before automating production.</dd>
+            </div>
+          </dl>
+          <div class="case-gallery" data-gallery aria-label="Youniverse stills" aria-roledescription="slideshow">
+            <img class="is-active" src="images/youniverse-1.jpg" alt="Youniverse still 1">
+            <img loading="lazy" src="images/youniverse-2.jpg" alt="Youniverse still 2">
+            <img loading="lazy" src="images/youniverse-3.jpg" alt="Youniverse still 3">
+            <img loading="lazy" src="images/youniverse-4.jpg" alt="Youniverse still 4">
+            <img loading="lazy" src="images/youniverse-5.jpg" alt="Youniverse still 5">
+            <button class="gallery-nav" type="button" data-dir="prev" aria-label="Previous image">&#9664;</button>
+            <button class="gallery-nav" type="button" data-dir="next" aria-label="Next image">&#9654;</button>
+            <div class="gallery-dots" role="group" aria-label="Choose image"></div>
+          </div>
+          <div class="tool-row" aria-label="Youniverse tools">
+            <span class="chip">Custom Python</span><span class="chip">Wan 2.7 Image Pro</span><span class="chip">Happy
+              Horse 1.1</span><span class="chip">Qwen 3.7 Max</span><span class="chip">Qwen Plus
+              Character</span><span class="chip">FFmpeg</span><span class="chip">Seedance 2.5</span><span
+              class="chip">Minimax H3</span>
+          </div>
+        </div>
+        <aside class="case-status case-status--head">
+          <span class="status">Sprint 1 and manual model tests complete · Sprint 2 designed</span>
+          <p>The story pipeline is retained. Sprint 2 will test whether stronger storyboards and reference-to-video
+            (R2V) models can support automated production or produce enough usable coverage to minimise manual editing.
+          </p>
+        </aside>
+      </header>
+
+    </section>
+
+    <section class="page case-study tight-end" id="deadtell">
+      <header class="case-head">
+        <span class="case-no">04 / Performance evaluation<span class="case-date">May 2026</span></span>
+        <div class="case-title">
+          <h2>DeadTell TV</h2>
+          <p>A side-by-side evaluation of three video models on sustained acting performance, run on a
+            behavioural-analysis YouTube channel that dramatises everyday psychological manipulation through a
+            surveillance-camera aesthetic.</p>
+          <dl class="case-summary">
+            <div>
+              <dt>Question</dt>
+              <dd>Which model sustains believable performance and identity across a finished video?</dd>
+            </div>
+            <div>
+              <dt>Method</dt>
+              <dd>Seedance 2.0, Veo 3.1 and Kling 3.0 compared side by side against a written usability definition.</dd>
+            </div>
+            <div>
+              <dt>Finding</dt>
+              <dd>Kling 3.0 gave the most believable takes; 4.3 generations per usable shot; US$12–18 per finished video.</dd>
+            </div>
+            <div>
+              <dt>Decision</dt>
+              <dd>Keep the workflow; pause recurring production until generation is more reliable.</dd>
+            </div>
+          </dl>
+          <figure class="case-video">
+            <div class="video-frame">
+              <iframe loading="lazy" title="DeadTell TV &mdash; AI video"
+                src="https://play.gumlet.io/embed/6a40b91079d93c513c7755b6" referrerpolicy="origin"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;"
+                allowfullscreen></iframe>
+            </div>
+          </figure>
+          <div class="tool-row" aria-label="DeadTell TV tools">
+            <span class="chip">Perplexity MCP</span><span class="chip">VidIQ MCP</span><span class="chip">Claude
+              skills</span><span class="chip">Nano Banana Pro</span><span class="chip">Kling 3.0</span><span
+              class="chip">CapCut</span>
+          </div>
+        </div>
+        <aside class="case-status case-status--head">
+          <span class="status">Test bed · Published R&amp;D channel · Test cycle complete</span>
+          <p>An agentic research workflow discovers topics, scores them against keyword demand
+            and proposes concepts for human approval. Approved concepts are then developed into scripts, shot prompts
+            and performance prompts, with human review throughout production.
+          </p>
+        </aside>
+      </header>
+
+    </section>
+
+    <section class="page case-study tight-end" id="jj">
+      <header class="case-head">
+        <span class="case-no">05 / Character-consistency evaluation<span class="case-date">Dec 2025</span></span>
+        <div class="case-title">
+          <h2>JJ Befuddlez</h2>
+          <p>A two-model comparison on whether one synthetic talking character stays recognisable across vlogs and
+            short-form video. The failure audit and golden set built on this series are <a href="#jj-eval">study
+              02</a>.</p>
+          <dl class="case-summary">
+            <div>
+              <dt>Question</dt>
+              <dd>Can one synthetic character stay recognisable across shots and formats?</dd>
+            </div>
+            <div>
+              <dt>Method</dt>
+              <dd>Grok Imagine and Sora 2 compared using fixed character references.</dd>
+            </div>
+            <div>
+              <dt>Finding</dt>
+              <dd>Six generations per usable sequence; about US$6 per finished video.</dd>
+            </div>
+            <div>
+              <dt>Decision</dt>
+              <dd>Retain fixed references, human selection and manual finishing.</dd>
+            </div>
+          </dl>
+          <figure class="case-video">
+            <div class="video-frame">
+              <iframe loading="lazy" title="JJ Befuddlez &mdash; AI video"
+                src="https://play.gumlet.io/embed/6a40b95c8a92d68f43b0a92e" referrerpolicy="origin"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;"
+                allowfullscreen></iframe>
+            </div>
+          </figure>
+          <div class="tool-row" aria-label="JJ Befuddlez tools">
+            <span class="chip">Custom AI assistant</span><span class="chip">Claude</span><span
+              class="chip">Suno</span><span class="chip">Grok Imagine</span><span class="chip">Sora 2</span><span
+              class="chip">ElevenLabs</span><span class="chip">CapCut</span>
+          </div>
+        </div>
+        <aside class="case-status case-status--head">
+          <span class="status">Test bed · Published R&amp;D channel · Test cycle complete</span>
+          <p>A custom assistant generates prompts across script, image, voice, music and video. Human selection and
+            creative direction remain part of every production stage.
+          </p>
+        </aside>
+      </header>
+
+    </section>
+
+    <section class="page case-study tight-end" id="terra">
+      <header class="case-head">
+        <span class="case-no">06 / Authenticity evaluation<span class="case-date">Mar 2026</span></span>
+        <div class="case-title">
+          <h2>Terra Atavica</h2>
+          <p>An image-to-video evaluation on archive artwork: does animation preserve what the source image shows? Run on
+            a semi-autonomous production workflow for hour-long ambient historical-music videos.</p>
+          <dl class="case-summary">
+            <div>
+              <dt>Question</dt>
+              <dd>Can image-to-video animate archive images without altering what they show?</dd>
+            </div>
+            <div>
+              <dt>Method</dt>
+              <dd>Kling 2.5 outputs judged against the source image on a written usability definition.</dd>
+            </div>
+            <div>
+              <dt>Finding</dt>
+              <dd>More than 50% usable first-pass; failures in subject identity, object behaviour and skin tone.</dd>
+            </div>
+            <div>
+              <dt>Decision</dt>
+              <dd>Automate research and assembly; keep authenticity approval human.</dd>
+            </div>
+          </dl>
+          <figure class="case-video">
+            <div class="video-frame">
+              <iframe loading="lazy" title="Terra Atavica &mdash; AI video"
+                src="https://play.gumlet.io/embed/6a40b9778a92d68f43b0ab9f" referrerpolicy="origin"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;"
+                allowfullscreen></iframe>
+            </div>
+          </figure>
+          <div class="tool-row" aria-label="Terra Atavica tools">
+            <span class="chip">Custom Python</span><span class="chip">Suno API</span><span class="chip">Gemini Pro /
+              Flash</span><span class="chip">GPT Image 2</span><span class="chip">Kling 2.5</span><span
+              class="chip">DaVinci Resolve</span>
+          </div>
+        </div>
+        <aside class="case-status case-status--head">
+          <span class="status">Test bed · Published R&amp;D channel · Test cycle complete</span>
+          <p>An agentic pipeline searches and screens rights-cleared archive material, preserves source information,
+            generates and arranges AI music across five movements, and assembles the visual sequence. Human selection
+            and creative direction remain at the points where historical accuracy, composition and narrative flow must
+            be judged.
+          </p>
+        </aside>
+      </header>
+
+    </section>
+
+    <section class="standards" aria-labelledby="standards-title">
+      <div class="page">
+        <div class="section-intro">
+          <p class="label">What the evaluations established</p>
+          <h2 id="standards-title">A useful quality signal names the failure, says who caused it, and counts what it
+            cost&mdash;impressive outputs are not evidence.</h2>
+        </div>
+        <div class="standards-grid">
+          <article class="standard">
+            <h3>Ask what a rater can point to.</h3>
+            <p>Model judges missed my taste but can answer observable questions. The rubric lines and the
+              text-to-video rubric are both written as questions with a visible answer.</p>
+          </article>
+          <article class="standard">
+            <h3>Separate the prompt from the model.</h3>
+            <p>The rubric study and Youniverse both recorded which failures came from the prompt, reference or
+              storyboard and which survived a correct input.</p>
+          </article>
+          <article class="standard">
+            <h3>Count the intervention.</h3>
+            <p>DeadTell, JJ and Terra measured generations per usable shot, first-pass usability and cost, and kept
+              representation and accuracy checks with a human.</p>
+          </article>
+        </div>
+        <p class="standards-close">Define the dimension. Score the output. State the limit.</p>
+      </div>
+    </section>
+
+    <section class="page practice" id="practice">
+      <div class="broadcast-note" id="broadcast">
+        <h2>Production craft</h2>
+        <p>Before generative media, 15+ years of deciding whether a shot worked&mdash;from edit bench to showrunner,
+          final broadcast QC against delivery specifications, and remote VFX direction by written review. I co-founded
+          and led a production studio for ten years. Work for CNA
+          and regional broadcasters includes the Gold World Medal-winning <em>Refugee Chef</em>.
+          <small>Selected roles across the work: executive producer, showrunner, writer, producer, director, post
+            director, editor and sound designer.</small>
+        </p>
+      </div>
+
+      <p class="swipe-cue" aria-hidden="true">Swipe to explore &rarr;</p>
+      <div class="practice-grid broadcast-grid" aria-label="Selected broadcast projects">
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.channelnewsasia.com/watch/refugee-chef" target="_blank"
+            rel="noopener" aria-label="Watch Refugee Chef on CNA (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-refugee-chef.jpg"
+                alt="Refugee Chef — CNA documentary series artwork"></span>
+          </a>
+          <span class="micro">Documentary · CNA 2018</span>
+          <h3>Refugee Chef</h3>
+          <p>Refugee culinary entrepreneurs rebuild lives through food. Gold and two Silver World Medals, New York
+            Festivals.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.youtube.com/watch?v=t6VBoIizFRY" target="_blank"
+            rel="noopener" aria-label="Watch Astropreneurs on YouTube (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-astropreneurs.jpg"
+                alt="Astropreneurs — CNA space-technology documentary video still"></span>
+          </a>
+          <span class="micro">Technology documentary · CNA 2019</span>
+          <h3>Astropreneurs</h3>
+          <p>Six Singapore-based founders building for a new space economy. Ten minutes of graphics directed remotely
+            through one written review a day. Shortlisted, AIBD World TV Awards.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://play.gumlet.io/embed/6a4281a13583eb17263f53bd" target="_blank"
+            rel="noopener" aria-label="Watch Hip Korea — Seoul Vibes (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-hip-korea-rain.png"
+                alt="Hip Korea — Seoul Vibes, Discovery Channel programme artwork"></span>
+          </a>
+          <span class="micro">Documentary feature · Discovery Channel, 2007</span>
+          <h3>Hip Korea — Seoul Vibes</h3>
+          <p>A kinetic feature on Seoul, K-pop and the industry around Rain. Post-directed seven editors across
+            Singapore and Korea. Best Direction, Asian Television Awards.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.channelnewsasia.com/watch/web3-revolution" target="_blank"
+            rel="noopener" aria-label="Watch Web3 Revolution on CNA (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-web3-revolution.jpg"
+                alt="Web3 Revolution — CNA documentary series artwork"></span>
+          </a>
+          <span class="micro">Business documentary · CNA 2023</span>
+          <h3>Web3 Revolution</h3>
+          <p>Four Asian markets, beyond the hype: real uses of blockchain, digital ownership and the emerging web.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.youtube.com/watch?v=38tpWlgXw-g" target="_blank"
+            rel="noopener" aria-label="Watch Field Guide to Innovation on YouTube (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-field-guide.jpg"
+                alt="Field Guide to Innovation — documentary video still"></span>
+          </a>
+          <span class="micro">Design documentary · CNA 2017</span>
+          <h3>Field Guide to Innovation</h3>
+          <p>Human-centred design applied to social problems across Asia. Bronze World Medal, New York Festivals.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.youtube.com/watch?v=T3t_I2SBhrk" target="_blank"
+            rel="noopener" aria-label="Watch Those Darn Questions on YouTube (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-those-darn-questions.jpg"
+                alt="Those Darn Questions — children's info-entertainment video still"></span>
+          </a>
+          <span class="micro">Children's info-entertainment · Ch8 / Astro</span>
+          <h3>Those Darn Questions</h3>
+          <p>Six bite-sized segments per episode make science, culture and digital literacy land for young audiences.
+            Finalist, Children/Youth, New York Festivals.</p>
+        </article>
+      </div>
+
+      <div class="broadcast-note" id="recognition">
+        <h2>Recognition</h2>
+        <p>Seven international award wins among 20+ awards and nominations, 2005&ndash;2019.
+          <small>Selected recognition for direction, documentary craft, profiles and community storytelling.</small>
+        </p>
+      </div>
+      <div class="comparison-grid" aria-label="Selected recognition">
+        <article class="comparison">
+          <div class="probe-line">
+            <h3>Refugee Chef</h3><span class="verdict pass">2019</span>
+          </div>
+          <p>Gold World Medal, Documentary: Heroes, plus Silver World Medals for Direction and Biography/Profiles · New
+            York Festivals World's Best TV &amp; Films.</p>
+        </article>
+        <article class="comparison">
+          <div class="probe-line">
+            <h3>Field Guide to Innovation</h3><span class="verdict pass">2018</span>
+          </div>
+          <p>Bronze World Medal, Community Portraits · New York Festivals World's Best TV &amp; Films.</p>
+        </article>
+        <article class="comparison">
+          <div class="probe-line">
+            <h3>Direction &amp; programme craft</h3><span class="verdict pass">2007–2010</span>
+          </div>
+          <p>Best Lifestyle Programme, Asian Television Awards, 2010 · Prix de la Scam, Cinéma du Réel, Paris, 2008 ·
+            Best Direction, Asian Television Awards, 2007.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page contact" id="contact">
+      <div class="contact-grid">
+        <h2>Make the judgement reproducible.</h2>
+        <div class="contact-copy">
+          <p>Evaluation of AI-generated video, written up as structured feedback.</p>
+          <div class="actions">
+            <a class="action primary" href="mailto:hello.inezang@gmail.com">Email Inez</a>
+            <a class="action" href="https://www.linkedin.com/in/inez-ang">LinkedIn</a>
+            <a class="action" href="resume-video-evaluation.html">Résumé</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page footer-line">
+    <span>Inez Ang · AI Video Evaluation · Storytelling, Editing and Visual Quality</span>
+    <span>Singapore · Evaluation work across generative and broadcast media</span>
+  </footer>
+
+  <dialog id="lightbox" aria-label="Project image viewer">
+    <button class="dialog-close" type="button" aria-label="Close image viewer">&times;</button>
+    <img id="lightbox-image" alt="">
+    <p class="dialog-caption" id="lightbox-caption"></p>
+  </dialog>
+
+  <script>
+    document.querySelectorAll('[data-video-src]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var frame = document.createElement('iframe');
+        frame.title = button.getAttribute('aria-label').replace('Load ', '');
+        frame.allow = 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen';
+        frame.setAttribute('allowfullscreen', '');
+        frame.tabIndex = 0;
+        frame.addEventListener('load', function () { frame.focus(); }, { once: true });
+        frame.src = button.dataset.videoSrc;
+        button.parentElement.replaceChildren(frame);
+      });
+    });
+
+    (function () {
+      var dialog = document.getElementById('lightbox');
+      var image = document.getElementById('lightbox-image');
+      var caption = document.getElementById('lightbox-caption');
+      var close = dialog.querySelector('.dialog-close');
+
+      document.querySelectorAll('[data-lightbox-src]').forEach(function (button) {
+        button.addEventListener('click', function (event) {
+          event.preventDefault();
+          image.src = button.dataset.lightboxSrc;
+          image.alt = button.dataset.lightboxAlt;
+          caption.textContent = button.dataset.lightboxAlt;
+          dialog.showModal();
+        });
+      });
+
+      close.addEventListener('click', function () { dialog.close(); });
+      dialog.addEventListener('click', function (event) {
+        if (event.target === dialog) dialog.close();
+      });
+      dialog.addEventListener('close', function () {
+        image.removeAttribute('src');
+        image.alt = '';
+      });
+    })();
+
+    var motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    document.querySelectorAll('[data-gallery]').forEach(function (gallery) {
+      var slides = gallery.querySelectorAll(':scope > img');
+      var dotWrap = gallery.querySelector('.gallery-dots');
+      if (slides.length < 2) return;
+
+      var index = 0;
+      var timer = null;
+      var dots = [];
+      var taken = false;
+
+      slides.forEach(function (slide, position) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'gallery-dot';
+        dot.setAttribute('aria-label', 'Image ' + (position + 1) + ' of ' + slides.length);
+        dot.setAttribute('aria-current', position === 0 ? 'true' : 'false');
+        dot.addEventListener('click', function () { show(position); take(); });
+        dotWrap.appendChild(dot);
+        dots.push(dot);
+      });
+
+      function show(next) {
+        slides[index].classList.remove('is-active');
+        dots[index].setAttribute('aria-current', 'false');
+        index = (next + slides.length) % slides.length;
+        slides[index].classList.add('is-active');
+        dots[index].setAttribute('aria-current', 'true');
+      }
+
+      function start() {
+        if (motionPreference.matches || timer || taken) return;
+        timer = setInterval(function () { show(index + 1); }, 2500);
+      }
+
+      function stop() {
+        clearInterval(timer);
+        timer = null;
+      }
+
+      // Once the visitor picks a frame, autoplay stays off for the rest of the visit.
+      function take() {
+        taken = true;
+        stop();
+      }
+
+      gallery.querySelectorAll('.gallery-nav').forEach(function (button) {
+        button.addEventListener('click', function () {
+          show(index + (button.dataset.dir === 'next' ? 1 : -1));
+          take();
+        });
+      });
+
+      function handleMotionPreference(event) {
+        if (event.matches) stop();
+        else start();
+      }
+
+      motionPreference.addEventListener('change', handleMotionPreference);
+
+      gallery.addEventListener('mouseenter', stop);
+      gallery.addEventListener('mouseleave', start);
+      gallery.addEventListener('focusin', stop);
+
+      start();
+    });
+  </script>
+</body>
+
+</html>

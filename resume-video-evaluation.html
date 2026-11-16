@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Résumé of Inez Ang — Creative Evaluation Specialist for generative video and image quality. Evaluation rubrics, golden sets, side-by-side model comparison and 15+ years of video production craft.">
+  <title>Inez Ang — Résumé · AI Video Evaluation Specialist</title>
+  <style>
+    :root {
+      --paper: #f4f6f8;
+      --paper-raised: #ffffff;
+      --ink: #080a0d;
+      --ink-soft: #3f454f;
+      --ink-faint: #68707c;
+      --rule: #aeb5c0;
+      --signal: #0d3adafa;
+      --display: "Avenir Next Condensed", "Helvetica Neue Condensed", "Nimbus Sans Narrow", sans-serif;
+      --body: "Avenir Next", "Helvetica Neue", "Nimbus Sans", sans-serif;
+      --mono: "SFMono-Regular", "Cascadia Mono", "IBM Plex Mono", monospace;
+      --page: 900px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--signal);
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--signal);
+      outline-offset: 4px;
+    }
+
+    ::selection {
+      color: #fff;
+      background: var(--signal);
+    }
+
+    .page {
+      width: min(calc(100% - 48px), var(--page));
+      margin: 0 auto;
+    }
+
+    .site-nav {
+      border-bottom: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--ink);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand::before {
+      content: "";
+      width: 11px;
+      height: 11px;
+      margin-right: 12px;
+      display: inline-block;
+      background: var(--signal);
+    }
+
+    .back {
+      color: var(--ink);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 25px 16px 23px;
+      border-left: 1px solid var(--ink);
+      border-right: 1px solid var(--ink);
+      transition: color .16s ease, background .16s ease;
+    }
+
+    .back:hover {
+      color: #fff;
+      background: var(--signal);
+    }
+
+    .resume-head {
+      padding: clamp(48px, 8vw, 88px) 0 34px;
+      border-bottom: 8px solid var(--ink);
+    }
+
+    .resume-head h1 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(48px, 9vw, 104px);
+      font-weight: 850;
+      letter-spacing: -.06em;
+      line-height: .84;
+      text-transform: uppercase;
+    }
+
+    .resume-head .role {
+      margin: 20px 0 0;
+      font-size: clamp(18px, 2vw, 23px);
+      font-weight: 650;
+      letter-spacing: -.02em;
+    }
+
+    .resume-head .meta {
+      margin: 14px 0 0;
+      color: var(--ink-soft);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .resume-head .meta a {
+      text-decoration: none;
+    }
+
+    .resume-head .meta a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 42px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .sec-grid {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 30px;
+      align-items: start;
+    }
+
+    .sec-label {
+      margin: 5px 0 0;
+      color: var(--signal);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .sec-body {
+      max-width: 720px;
+    }
+
+    .sec-body>p {
+      margin: 0;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li {
+      padding-left: 5px;
+      color: var(--ink-soft);
+      line-height: 1.58;
+    }
+
+    li+li {
+      margin-top: 10px;
+    }
+
+    .job+.job {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .job h3 {
+      margin: 0 0 4px;
+      font-family: var(--display);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .job .where {
+      margin: 0 0 14px;
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .footer-line {
+      padding: 22px 0 48px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 720px) {
+      .sec-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
+    h2.sec-label {
+      font-weight: 750;
+      line-height: 1.5;
+    }
+
+    @media print {
+
+      @page {
+        size: A4;
+        margin: 12mm 14mm;
+      }
+
+      .resume-head {
+        padding: 0 0 10px;
+        border-bottom-width: 3px;
+      }
+
+      .resume-head h1 {
+        font-size: 30pt;
+      }
+
+      .resume-head .role {
+        margin-top: 8px;
+        font-size: 12pt;
+      }
+
+      .resume-head .meta {
+        margin-top: 6px;
+        font-size: 8pt;
+      }
+
+      .sec-grid {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .sec-body {
+        max-width: none;
+      }
+
+      li,
+      .sec-body>p {
+        line-height: 1.34;
+      }
+
+      li+li {
+        margin-top: 2px;
+      }
+
+      .job+.job {
+        margin-top: 8px;
+        padding-top: 8px;
+      }
+
+      .job h3 {
+        font-size: 12.5pt;
+      }
+
+      .job .where {
+        margin-bottom: 4px;
+        font-size: 7.5pt;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* Parsers read the raw text stream: no squeezed letters, no forced capitals. */
+      .resume-head h1,
+      .resume-head .role,
+      .resume-head .meta,
+      .job h3,
+      .job .where,
+      h2.sec-label {
+        letter-spacing: 0;
+        text-transform: none;
+      }
+
+      .resume-head h1,
+      .job h3 {
+        word-spacing: .3em;
+      }
+
+      .site-nav,
+      .footer-line {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+        font-size: 8.8pt;
+      }
+
+      .page {
+        width: 100%;
+      }
+
+      section {
+        padding: 7px 0;
+      }
+
+      .job {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="site-nav">
+    <div class="page nav-inner">
+      <a class="brand" href="video-evaluation.html">Inez Ang</a>
+      <a class="back" href="video-evaluation.html">&larr; Back to portfolio</a>
+    </div>
+  </nav>
+
+  <header class="page resume-head">
+    <h1>Inez Ang</h1>
+    <p class="role">AI Video Evaluation Specialist · Video Production, Editing and Creative Direction</p>
+    <p class="meta">Singapore, Singapore · <a href="mailto:hello.inezang@gmail.com">hello.inezang@gmail.com</a> ·
+      <a href="https://www.linkedin.com/in/inez-ang">linkedin.com/in/inez-ang</a> ·
+      <a href="https://inezang.github.io/evals-portfolio/video-evaluation.html">inezang.github.io/evals-portfolio/video-evaluation.html</a>
+    </p>
+  </header>
+
+  <main class="page">
+    <section>
+      <div class="sec-grid">
+        <h2 class="sec-label">Summary</h2>
+        <div class="sec-body">
+          <p>Reviews and evaluates AI-generated video for quality, creativity and effectiveness, with 15+ years of hands-on video production, editing and creative direction for broadcast television. Identifies issues in storytelling, scene transitions, visual consistency, editing, pacing and audio-visual sync, and gives structured feedback with suggestions for improvement. Hands-on with generative AI video tools since 2023, including side-by-side evaluations of Sora, Veo, Kling and Seedance output, a six-dimension rubric for text-to-video quality, and a golden set built for her own AI video series.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-grid">
+        <h2 class="sec-label">Key skills</h2>
+        <div class="sec-body">
+          <ul>
+            <li><strong>Video production craft:</strong> Shooting · editing · post-production · creative direction · showrunning · storytelling · pacing · scene transitions · visual composition · visual consistency · VFX review · editorial standards · broadcast technical QC</li>
+            <li><strong>Content evaluation:</strong> Structured feedback · critical evaluation of creative output · evaluation rubrics · dimension definitions · rating scales · rater and annotator guidelines · quality guidelines · side-by-side evaluation · absolute scoring · prompt adherence checks · prompt sets · golden sets · failure-mode taxonomy · evaluation writeups · quantitative quality metrics · validating automated scores (LLM judges) against human ground truth</li>
+            <li><strong>Generative media:</strong> Text-to-video · image-to-video · video-to-video (upscaling, clip extension) · text-to-image · prompt engineering · context engineering · short-form video and emerging video formats · character and identity consistency · temporal consistency · motion coherence · lip-sync and audio-visual sync · Sora, Veo/Omni, Kling, Seedance, Wan, Minimax</li>
+            <li><strong>Technical skills:</strong> Python · text embeddings and vector search (OpenAI embeddings, Pinecone) · K-Means clustering · data analysis of generation records · AI-assisted development (Claude Code, Codex) · decision engineering (Jev; early practice) · agent orchestration · self-built eval tooling (blind rating, label review) in place of commercial annotation platforms · content strategy · DaVinci Resolve · responsible AI · bias mitigation · cross-functional collaboration</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-grid">
+        <h2 class="sec-label">Experience</h2>
+        <div class="sec-body">
+          <div class="job">
+            <h3>Co-founder, Creative &amp; Technology Lead</h3>
+            <p class="where">People Factor Studio · Singapore · 2023&ndash;present</p>
+            <ul>
+              <li>Leads generative media evaluation and R&amp;D. Designed an evaluation system for an AI short-form video production workflow from an AI-assisted audit of 824 generation records: a five-class failure taxonomy, 28 rubric lines and a decision table that sends countable checks to code, observable checks to model judges and taste to the human reviewer (design completed Nov 2026; automated checks specified, in progress).</li>
+              <li>Built a 163-item golden set of keyframes, video takes and reference images, with 379 draft labels (51 from her stated verdicts, the rest AI-drafted or implied by acceptance), structured so it can be re-run across model versions to flag regressions; label confirmation, judge calibration and the first re-run are pending (Nov 2026).</li>
+              <li>Ran a blind human-versus-LLM-judge study on short comedy scripts, using a self-built rating tool that hides judge scores until the human rating is saved (71 human ratings): three LLM judges matched her exact score on 11&ndash;30% of items and rated 90&ndash;95% funny against her 56%. Small sample; used to restrict automated judges to observable, single-fact questions.</li>
+              <li>Compared video generation models on her own productions against written usability definitions (Kling, Veo and Seedance in one test; Sora and Grok Imagine in another), using quantitative measures to inform quality decisions: 4.3 generations per usable shot in the first, six per usable sequence in the second, plus first-pass usability and cost per finished video.</li>
+              <li>Separated input failures from model-quality failures in a multi-character continuity study: reference sheets improved single shots, identity still drifted across the sequence, and actor-position errors traced to the storyboard, not the model.</li>
+              <li>Identified demographic default bias in image and video model output and added prompt-level mitigations for casting diversity and historically accurate skin tone, keeping a human accuracy review in place.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h3>GenAI Research &amp; Strategy (contract)</h3>
+            <p class="where">Infocomm Media Development Authority (IMDA) · Singapore · Nov 2024&ndash;Jul 2025</p>
+            <ul>
+              <li>Designed a six-dimension Yes/No evaluation rubric for text-to-video output (visual realism, motion coherence, temporal consistency, creative originality, prompt adherence, shot success) and scored first-generation outputs from three widely used commercial text-to-video models on three difficult-scenario prompts, with written per-dimension observations that separated prompt faults from model faults. Sole rater; inter-rater reliability not yet measured.</li>
+              <li>Compared published Meta Movie Gen samples side by side with seven other text-to-video models and model versions on matched prompts (Nov 2024): built embedding-based prompt matching across two public prompt sets, normalised clip length for fairness and named the remaining prompt-mismatch confound. Clips were curated from public sets, not generated.</li>
+              <li>Worked independently and navigated ambiguity in a zero-to-one setting, with the department starting from a near-zero GenAI baseline: reviewed 50+ generative AI tools across text, image, audio and video and reported failure modes and practical limits in biweekly briefings to department staff and the Director and two presentations to the Assistant CEO; colleagues presented the text-to-video evaluation writeup to the CEO. Wrote a getting-started guide to text-to-video tools for staff.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h3>Adjunct Trainer, Generative AI Video</h3>
+            <p class="where">Hustle Academy; Singapore Manufacturing Federation; Nanyang Polytechnic · Singapore · 2026&ndash;present</p>
+            <ul>
+              <li>Wrote stage-gated yes/no acceptance checklists for AI video production and gives structured feedback on learner output, documenting judgment logic as a reusable framework with known model failure modes expressed as observable checks; 100+ adult learners apply them to accept or reject their own work.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h3>Co-founder, Creative Director and Showrunner</h3>
+            <p class="where">People Factor Studio · Singapore · 2013&ndash;2023</p>
+            <ul>
+              <li>Co-founded the studio and led it for 10 years, building and managing creative and technical teams across countries.</li>
+              <li>Ran documentary and factual series end to end for CNA and regional broadcasters across research, writing, producing, directing, shooting and editing.</li>
+              <li>Held final technical QC on masters against broadcaster delivery specifications for local and international delivery.</li>
+              <li>Aligned a remote VFX team in Macedonia to one standard through one written review a day (numbered per-shot notes, timecodes, marked-up reference frames, pass/fix status), delivering 10 minutes of space and technology graphics in four months.</li>
+              <li>Recognition includes a Gold World Medal and two Silver World Medals (2019) and a Bronze World Medal (2018) at the New York Festivals World's Best TV &amp; Films.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h3>Chief Creative Officer</h3>
+            <p class="where">Digital Philanthropy · Singapore · May 2023&ndash;Sep 2023</p>
+            <ul>
+              <li>Gave creative and UX feedback to product and app developers that changed the design and features of the Social Seeds mobile app.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h3>Founder, Head of Post Production</h3>
+            <p class="where">The Farm at 58 · Singapore · 2006&ndash;2009</p>
+            <ul>
+              <li>Led five editors in Singapore and two in Korea to deliver a 45-minute documentary in half the usual time through edit reviews and written notes, retaining post-direction and technical QC.</li>
+              <li>Set up the post-production facility and grew its client base from zero to companies producing for major international broadcasters.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h3>Editor</h3>
+            <p class="where">The Moving Visuals Company and freelance · Singapore · 2001&ndash;2007</p>
+            <ul>
+              <li>Edited and finished more than 100 hours of television programming; freelance documentary work broadcast on Discovery, Disney and AXN and screened at international festivals.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-grid">
+        <h2 class="sec-label">Education and certifications</h2>
+        <div class="sec-body">
+          <ul>
+            <li><strong>AI Evals for Engineers &amp; PMs (certificate)</strong> · Maven, 2025</li>
+            <li><strong>Master of Interaction Design &amp; Electronic Art</strong> · University of Sydney, 2011 · Dean's List, top 3%</li>
+            <li><strong>Bachelor of Arts (B.A.), Media Arts</strong> · Deakin University, 2000</li>
+            <li><strong>Diploma, Mass Communication</strong> · Ngee Ann Polytechnic, 1998</li>
+            <li><strong>WSQ Advanced Certificate in Learning and Performance (ACLP 2.0)</strong> · 2026</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="page footer-line">
+    <span>Inez Ang · AI Video Evaluation Specialist</span>
+    <span><a href="video-evaluation.html">Back to portfolio</a></span>
+  </div>
+</body>
+
+</html>
