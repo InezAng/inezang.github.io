@@ -2960,6 +2960,31 @@
         border-bottom: 0;
       }
     }
+
+    /* Four standards: two by two, overriding the source's three-column grid and last-card span. */
+    .standards-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .standards-grid .standard:nth-child(n+3) {
+      border-top: 1px solid rgba(255, 255, 255, .45);
+    }
+
+    @media (max-width: 980px) {
+      .standards-grid .standard:last-child {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .standards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .standards-grid .standard:nth-child(n+2) {
+        border-top: 1px solid rgba(255, 255, 255, .45);
+      }
+    }
   </style>
 </head>
 
@@ -3702,7 +3727,8 @@
           <span class="status">Test bed · Published R&amp;D channel · Test cycle complete</span>
           <p>An agentic research workflow discovers topics, scores them against keyword demand
             and proposes concepts for human approval. Approved concepts are then developed into scripts, shot prompts
-            and performance prompts, with human review throughout production.
+            and performance prompts, with human review throughout production. A demographic randomiser runs before scripting and reference
+            generation, because the image model cast synthetic people from narrow racial defaults.
           </p>
         </aside>
       </header>
@@ -3773,7 +3799,7 @@
             </div>
             <div>
               <dt>Method</dt>
-              <dd>Kling 2.5 outputs judged against the source image on a written usability definition.</dd>
+              <dd>Kling 2.0 and Grok Imagine outputs judged against the source image on a written usability definition.</dd>
             </div>
             <div>
               <dt>Finding</dt>
@@ -3794,13 +3820,15 @@
           </figure>
           <div class="tool-row" aria-label="Terra Atavica tools">
             <span class="chip">Custom Python</span><span class="chip">Suno API</span><span class="chip">Gemini Pro /
-              Flash</span><span class="chip">GPT Image 2</span><span class="chip">Kling 2.5</span><span
+              Flash</span><span class="chip">GPT Image 2</span><span class="chip">Kling 2.0</span><span class="chip">Grok Imagine</span><span
               class="chip">DaVinci Resolve</span>
           </div>
         </div>
         <aside class="case-status case-status--head">
           <span class="status">Test bed · Published R&amp;D channel · Test cycle complete</span>
-          <p>An agentic pipeline searches and screens rights-cleared archive material, preserves source information,
+          <p>An agentic pipeline searches rights-cleared archive material, tags each image with a vision model for
+            NSFW and out-of-context content before generation, passes candidates to a custom screener for human
+            selection, preserves source information,
             generates and arranges AI music across five movements, and assembles the visual sequence. Human selection
             and creative direction remain at the points where historical accuracy, composition and narrative flow must
             be judged.
@@ -3832,6 +3860,13 @@
             <h3>Count the intervention.</h3>
             <p>DeadTell, JJ and Terra measured generations per usable shot, first-pass usability and cost, and kept
               representation and accuracy checks with a human.</p>
+          </article>
+          <article class="standard">
+            <h3>Treat bias as a model failure.</h3>
+            <p>DeadTell's image model cast synthetic people from narrow racial defaults; Terra's colourisation
+              whitewashed people in historical artwork. Both were logged as model failures, mitigated in the
+              prompt&mdash;a demographic randomiser, era-aware skin-tone instructions&mdash;and kept under human
+              accuracy review.</p>
           </article>
         </div>
         <p class="standards-close">Define the dimension. Score the output. State the limit.</p>
