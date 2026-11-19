@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
   <meta name="description"
-    content="AI video evaluation by Inez Ang: structured feedback on storytelling, scene transitions, visual consistency, editing, pacing and audio-visual sync in AI-generated video, backed by 15+ years of video production, editing and creative direction.">
-  <title>Inez Ang — AI Video Evaluation · Storytelling, Editing and Visual Quality</title>
+    content="Video portfolio of Inez Ang, creative director, showrunner and editor: documentary, factual and children\'s television for CNA, Mediacorp, Astro Malaysia and Discovery Channel, and original generative AI video series for TikTok, Instagram and YouTube.">
+  <title>Inez Ang — Creative Director &amp; Showrunner · Documentary, Broadcast and AI Video</title>
   <style>
     :root {
       --paper: #f2eee5;
@@ -2985,6 +2985,91 @@
         border-top: 1px solid rgba(255, 255, 255, .45);
       }
     }
+
+    /* Video portfolio additions: vertical shorts, credits table, awards by career stage. */
+    .shorts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 720px;
+      margin: 22px 0 0;
+    }
+
+    .shorts-grid figure {
+      margin: 0;
+    }
+
+    .shorts-grid video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      background: var(--ink);
+      border: 1px solid var(--ink);
+    }
+
+    .shorts-grid figcaption {
+      margin-top: 6px;
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .credits-wrap {
+      max-width: none;
+      margin-top: 36px;
+    }
+
+    .credits-wrap .credits-group th {
+      padding-top: 16px;
+      color: var(--signal-dark);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .awards-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .award-list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .award-list li+li {
+      margin-top: 5px;
+    }
+
+    .studies-link {
+      margin-top: 22px;
+    }
+
+    @media (max-width: 720px) {
+      .shorts-grid {
+        grid-template-columns: repeat(3, 62%);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+
+      .shorts-grid figure {
+        scroll-snap-align: start;
+      }
+
+      .awards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .credits-wrap .eval-table {
+        min-width: 680px;
+      }
+    }
   </style>
 </head>
 
@@ -2993,10 +3078,11 @@
     <div class="page nav-inner">
       <a class="brand" href="#top">Inez Ang</a>
       <div class="nav-links">
-        <a href="#quality-loop">Method</a>
-        <a class="mobile-primary" href="#selected-work">Evaluation studies</a>
-        <a href="#broadcast">Production craft</a>
-        <a class="mobile-primary" href="#contact">Contact</a>
+        <a class="mobile-primary" href="#broadcast">Broadcast</a>
+        <a class="mobile-primary" href="#ai-video">AI video</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#awards">Awards</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </nav>
@@ -3004,656 +3090,375 @@
   <main id="top">
     <header class="page hero">
       <div>
-        <p class="eyebrow">AI Video Evaluation · Storytelling, Editing and Visual Quality</p>
-        <h1 aria-label="Watch the clip. Name the failure. Write it down.">
-          <span>Watch the clip</span>
-          <span>Name the failure</span>
-          <span>Write it down</span>
+        <p class="eyebrow">Creative Director &amp; Showrunner · Documentary, Broadcast, Social and AI Video</p>
+        <h1 aria-label="Find the story. Shape the cut. Judge every frame.">
+          <span>Find the story</span>
+          <span>Shape the cut</span>
+          <span>Judge every frame</span>
         </h1>
       </div>
       <div class="hero-side">
-        <p class="lead">I review AI-generated video with 15+ years of editing, directing and showrunning behind the
-          judgement, and write up what fails&mdash;storytelling, transitions, visual consistency, pacing,
-          audio-visual sync&mdash;as structured feedback.</p>
-        <p class="note">Selected evaluation work · Singapore · 2024&ndash;2026</p>
+        <p class="lead">I've made documentary, factual and children's television for CNA, Mediacorp, Astro Malaysia
+          and Discovery Channel, from concept and script through shoot, edit, sound and final QC. Now I make
+          short-form and long-form video with generative AI, and judge it the way I judged a broadcast
+          cut: story, pacing, composition, continuity and sync.</p>
+        <p class="note">Selected work · Singapore · 2001&ndash;2026</p>
         <div class="actions">
-          <a class="action primary" href="#selected-work">View the evaluations</a>
+          <a class="action primary" href="#broadcast">Watch the work</a>
           <a class="action" href="resume-video-evaluation.html">Résumé</a>
         </div>
       </div>
     </header>
 
-    <section class="page quality-loop" id="quality-loop">
-      <div class="section-intro">
-        <p class="label">The evaluation loop</p>
-        <h2>A quality standard is useful only when another rater&mdash;or a machine&mdash;can apply it</h2>
-      </div>
-      <div class="loop-grid">
-        <article class="loop-step">
-          <span class="micro">01 / Rubric</span>
-          <h3>Define</h3>
-          <p>Write each dimension as a question a rater can answer by pointing at the output. Set the rating scale and
-            the rules for what counts.</p>
-        </article>
-        <article class="loop-step">
-          <span class="micro">02 / Eval round</span>
-          <h3>Run</h3>
-          <p>Score side by side or absolutely, on controlled prompts and first-generation outputs. Check prompt
-            adherence separately from quality.</p>
-        </article>
-        <article class="loop-step">
-          <span class="micro">03 / Signal</span>
-          <h3>Report</h3>
-          <p>Name the failure mode, say whether the prompt or the model caused it, and state the limits of the test.
-          </p>
-        </article>
-        <article class="loop-step">
-          <span class="micro">04 / Ground truth</span>
-          <h3>Calibrate</h3>
-          <p>Keep a golden set. Compare automated judges with human ratings before trusting either at volume.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="warrant" id="production-warrant">
+    <section class="warrant" id="track-record">
       <div class="page warrant-grid">
         <div class="warrant-copy">
-          <span class="label">Production warrant</span>
-          <h2>The judgement predates the tools</h2>
+          <span class="label">Track record</span>
+          <h2>Broadcast judgement, now applied to generative video</h2>
         </div>
-        <div class="metric"><strong>15+</strong><span>years across edit, direction, producing and showrunning</span>
+        <div class="metric"><strong>10</strong><span>series and specials created and run for CNA, Mediacorp and Astro
+            Malaysia</span></div>
+        <div class="metric"><strong>7</strong><span>award wins among 20+ awards and nominations, 2005&ndash;2019</span>
         </div>
         <div class="metric"><strong>100+</strong><span>hours of television edited and finished</span></div>
-        <div class="metric"><strong>824</strong><span>generation records audited for failure modes</span></div>
-        <div class="metric"><strong>163</strong><span>items in a candidate golden set, built November 2026</span></div>
+        <div class="metric"><strong>3</strong><span>AI video series published on TikTok, Instagram and YouTube</span>
+        </div>
       </div>
     </section>
 
-    <section class="page work-index" id="selected-work">
+    <section class="page practice" id="broadcast">
+      <div class="broadcast-note">
+        <h2>Documentary and broadcast</h2>
+        <p>For ten years I ran my own studio, People Factor Studio, making documentary, business and children's
+          series end to end: concept, pitch, script, shoot, edit, sound, technical QC and delivery. Before that I
+          edited and post-directed for Discovery Channel and Mediacorp.
+          <small>Roles across the work: creative director, showrunner, executive producer, producer, writer,
+            director, camera, post director, editor and sound designer.</small>
+        </p>
+      </div>
+
+      <p class="swipe-cue" aria-hidden="true">Swipe to explore &rarr;</p>
+      <div class="practice-grid broadcast-grid" aria-label="Selected broadcast productions">
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.channelnewsasia.com/watch/refugee-chef" target="_blank"
+            rel="noopener" aria-label="Watch Refugee Chef on CNA (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-refugee-chef.jpg"
+                alt="Refugee Chef — CNA documentary series artwork"></span>
+          </a>
+          <span class="micro">Documentary · CNA 2018</span>
+          <h3>Refugee Chef</h3>
+          <p>Refugee culinary entrepreneurs rebuild lives through food. Gold and two Silver World Medals, New York
+            Festivals.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.youtube.com/watch?v=38tpWlgXw-g" target="_blank"
+            rel="noopener" aria-label="Watch Field Guide to Innovation on YouTube (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-field-guide.jpg"
+                alt="Field Guide to Innovation — CNA documentary series still"></span>
+          </a>
+          <span class="micro">Design documentary · CNA 2017</span>
+          <h3>Field Guide to Innovation</h3>
+          <p>Human-centred design applied to social problems across Asia. Bronze World Medal, New York Festivals.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.youtube.com/watch?v=t6VBoIizFRY" target="_blank"
+            rel="noopener" aria-label="Watch Astropreneurs on YouTube (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-astropreneurs.jpg"
+                alt="Astropreneurs — CNA space-technology documentary video still"></span>
+          </a>
+          <span class="micro">Technology documentary · CNA 2019</span>
+          <h3>Astropreneurs</h3>
+          <p>Six Singapore-based founders building for a new space economy. Sole camera; ten minutes of graphics
+            directed remotely through one written review a day. Shortlisted, AIBD World TV Awards.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.channelnewsasia.com/watch/web3-revolution" target="_blank"
+            rel="noopener" aria-label="Watch Web3 Revolution on CNA (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-web3-revolution.jpg"
+                alt="Web3 Revolution — CNA business documentary series artwork"></span>
+          </a>
+          <span class="micro">Business documentary · CNA 2023</span>
+          <h3>Web3 Revolution</h3>
+          <p>Four Asian markets, beyond the hype: real uses of blockchain, digital ownership and the emerging web.
+            Lead camera on the Singapore episode.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.channelnewsasia.com/watch/lunch-masters-finance"
+            target="_blank" rel="noopener" aria-label="Watch Lunch with Masters of Finance on CNA (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-lunch-masters-finance.jpg"
+                alt="Lunch with Masters of Finance — CNA interview series artwork"></span>
+          </a>
+          <span class="micro">Business interview series · CNA 2022</span>
+          <h3>Lunch with Masters of Finance</h3>
+          <p>Asia's leading investors and fund managers over lunch, with a companion podcast on ESG and impact
+            investing.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.youtube.com/watch?v=T3t_I2SBhrk" target="_blank"
+            rel="noopener" aria-label="Watch Those Darn Questions on YouTube (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-those-darn-questions.jpg"
+                alt="Those Darn Questions — children's info-entertainment series still"></span>
+          </a>
+          <span class="micro">Children's info-entertainment · Ch8 / Astro</span>
+          <h3>Those Darn Questions</h3>
+          <p>Six bite-sized segments per episode make science, culture and digital literacy land for young audiences.
+            Finalist, Children/Youth, New York Festivals.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://www.youtube.com/watch?v=o9h1zKp9-Rc" target="_blank"
+            rel="noopener" aria-label="Watch Bot Hunters on YouTube (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-bot-hunters.jpg"
+                alt="Bot Hunters — Mediacorp okto drama-game series still"></span>
+          </a>
+          <span class="micro">Drama-game hybrid · Mediacorp okto 2014</span>
+          <h3>Bot Hunters</h3>
+          <p>Kids form a volunteer force against a giant plush villain. 50,000+ weekly social media impressions during
+            transmission; featured in the Prix Jeunesse catalogue.</p>
+        </article>
+        <article class="practice-card broadcast-card">
+          <a class="practice-card-image" href="https://play.gumlet.io/embed/6a4281a13583eb17263f53bd" target="_blank"
+            rel="noopener" aria-label="Watch Hip Korea — Seoul Vibes (opens in a new tab)">
+            <span class="thumb"><img loading="lazy" src="images/broadcast-hip-korea-rain.png"
+                alt="Hip Korea — Seoul Vibes, Discovery Channel programme artwork"></span>
+          </a>
+          <span class="micro">Documentary · Discovery Channel 2007</span>
+          <h3>Hip Korea — Seoul Vibes</h3>
+          <p>A kinetic hour on Seoul, K-pop and the industry around Rain. Post-directed seven editors across Singapore
+            and Korea. Best Direction, Asian Television Awards.</p>
+        </article>
+      </div>
+
+      <div class="eval-table-wrap credits-wrap">
+        <table class="eval-table">
+          <caption>Full credits · series, specials and selected earlier work</caption>
+          <thead>
+            <tr>
+              <th scope="col">Production</th>
+              <th scope="col">Broadcaster · year</th>
+              <th scope="col">Format</th>
+              <th scope="col">Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="credits-group">
+              <th scope="rowgroup" colspan="4">People Factor Studio · 2013&ndash;2023</th>
+            </tr>
+            <tr><th scope="row">Web3 Revolution</th><td>CNA · 2023</td><td>4 × 60 min</td><td>Creative director, producer; lead camera (Singapore episode)</td></tr>
+            <tr><th scope="row">Lunch with Masters of Finance</th><td>CNA · 2022</td><td>6 × 30 min + podcast</td><td>Creative director, producer</td></tr>
+            <tr><th scope="row">The Millennial Investor</th><td>CNA · 2019</td><td>5 × 60 min</td><td>Creative director, producer; sole camera (Indonesia episode)</td></tr>
+            <tr><th scope="row">Astropreneurs</th><td>CNA · 2019</td><td>1 × 60 min</td><td>Creative director, producer; sole camera</td></tr>
+            <tr><th scope="row">Refugee Chef</th><td>CNA · 2018; Discovery Channel · 2020</td><td>6 × 30 min</td><td>Creative director, producer</td></tr>
+            <tr><th scope="row">Field Guide to Innovation</th><td>CNA · 2017</td><td>6 × 30 min</td><td>Creative director, producer</td></tr>
+            <tr><th scope="row">Apes Love Hypercraft</th><td>Mediacorp Ch8, Astro Malaysia · 2017</td><td>13 × 30 min</td><td>Creative director, producer</td></tr>
+            <tr><th scope="row">Those Darn Questions</th><td>Mediacorp Ch8 · 2016; Astro Malaysia · 2017</td><td>13 × 30 min</td><td>Creative director, producer</td></tr>
+            <tr><th scope="row">Bot Hunters</th><td>Mediacorp okto · 2014</td><td>12 × 30 min</td><td>Creative director, producer</td></tr>
+            <tr><th scope="row">We Are Awesome</th><td>Mediacorp okto · 2014</td><td>8 × 30 min</td><td>Creative director, producer</td></tr>
+            <tr class="credits-group">
+              <th scope="rowgroup" colspan="4">Earlier work · 2001&ndash;2009</th>
+            </tr>
+            <tr><th scope="row">Passage to Malaysia</th><td>Discovery Channel</td><td>Documentary</td><td>Editor (The Farm at 58)</td></tr>
+            <tr><th scope="row">Hip Korea — Seoul Vibes</th><td>Discovery Channel · 2007</td><td>1 × 60 min</td><td>Post director (The Farm at 58)</td></tr>
+            <tr><th scope="row">Frequency of the City</th><td>Mediacorp Arts Central</td><td>Music series, 3 seasons</td><td>Co-founder, head of post-production (The Kinetic Collective)</td></tr>
+            <tr><th scope="row">Lonely Planet's Six Degrees</th><td>Discovery Channel</td><td>Travel series</td><td>Editor, sound designer (freelance)</td></tr>
+            <tr><th scope="row">True Asian Horror</th><td>Discovery Channel</td><td>Infotainment</td><td>Editor, sound designer (freelance)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="page work-index" id="ai-video">
       <div class="section-intro">
-        <p class="label">Selected evaluation work</p>
+        <p class="label">Generative AI video · 2023&ndash;now</p>
         <div class="work-intro-copy">
-          <h2>Six evaluation studies of generative video and image output</h2>
-          <p>Each one states a question, a method, a finding and its limits. Two are evaluation design: a rubric
-            applied across three text-to-video models, and a failure taxonomy with a golden set. Four are
-            evaluations run on my own generative video projects.</p>
-          <p>The judgement underneath is a rater's, applied clip by clip: storytelling, scene transitions, visual
-            consistency, editing, pacing and audio-visual sync, written up as structured feedback.</p>
-          <p>I set the standard, designed each evaluation and made every judgement. I was the only rater throughout,
-            and I say where AI tools did the analysis.</p>
+          <h2>Original series I write, prompt, generate and edit</h2>
+          <p>Three published channels and one R&amp;D drama, each made with a different level of automation. I keep
+            the editorial calls&mdash;story, casting, shot choice, the cut&mdash;and write down what each model gets
+            wrong.</p>
         </div>
       </div>
-      <nav class="case-nav case-nav--six" aria-label="Evaluation studies">
-        <a href="#t2v-rubric"><span class="micro">01 / Rubric study</span><strong>Text-to-video rubric</strong></a>
-        <a href="#jj-eval"><span class="micro">02 / Eval design · in progress</span><strong>Failure taxonomy &amp;
-            golden set</strong></a>
-        <a href="#youniverse"><span class="micro">03 / Continuity evaluation</span><strong>Youniverse</strong></a>
-        <a href="#deadtell"><span class="micro">04 / Performance evaluation</span><strong>DeadTell TV</strong></a>
-        <a href="#jj"><span class="micro">05 / Character-consistency evaluation</span><strong>JJ
-            Befuddlez</strong></a>
-        <a href="#terra"><span class="micro">06 / Authenticity evaluation</span><strong>Terra Atavica</strong></a>
-      </nav>
     </section>
 
-    <section class="page case-study tight-end" id="t2v-rubric">
+    <section class="page case-study tight-end" id="jj">
       <header class="case-head">
-        <span class="case-no">01 / Rubric study<span class="case-date">2024&ndash;2025</span></span>
+        <span class="case-no">Short-form · TikTok and Instagram<span class="case-date">2025&ndash;now</span></span>
         <div class="case-title">
-          <h2>Text-to-video rubric</h2>
-          <p>A six-dimension Yes/No rubric applied to first-generation outputs from three text-to-video models, during
-            a nine-month generative-AI research contract at a Singapore government agency. The three models are
-            widely used commercial products, shown here as Model A, B and C.</p>
+          <h2>JJ Befuddlez</h2>
+          <p>A synthetic pop-influencer: a plush poodle who lives among humans and befuddles their culture with
+            sincere dog logic. Current episodes are vertical comedy shorts.</p>
           <dl class="case-summary">
             <div>
-              <dt>Question</dt>
-              <dd>Do text-to-video generators produce video that looks generic or needs major fixes?</dd>
+              <dt>Format</dt>
+              <dd>15&ndash;25-second vertical shorts in four beats, with the punchline spoken after the music stops.</dd>
             </div>
             <div>
-              <dt>Method</dt>
-              <dd>Three models, three difficult-scenario prompts, each clip scored independently on six dimensions.
-              </dd>
+              <dt>My role</dt>
+              <dd>Writer, director, prompter and editor, with the final call on every keyframe and take.</dd>
             </div>
             <div>
-              <dt>Finding</dt>
-              <dd>Scores of 7, 15 and 11 out of 18. Motion and originality separated the models; two dimensions did
-                not.</dd>
+              <dt>Craft</dt>
+              <dd>Character sheets and fixed references hold one character across shots; lip-sync and non-lip-sync
+                shots go to different models.</dd>
             </div>
             <div>
-              <dt>Limits</dt>
-              <dd>Nine clips, one rater, one generation per prompt.</dd>
+              <dt>Learned</dt>
+              <dd>Round 1 compared Grok Imagine and Sora 2 for one talking character: six generations per usable
+                sequence.</dd>
             </div>
           </dl>
-          <div class="eval-table-wrap">
-            <table class="eval-table">
-              <caption>Rubric and summed scores · Yes = 1 · three prompts per model</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Dimension</th>
-                  <th scope="col">Question the rater answers</th>
-                  <th scope="col" class="num">Model A</th>
-                  <th scope="col" class="num">Model B</th>
-                  <th scope="col" class="num">Model C</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Visual realism and quality</th>
-                  <td>Does the video appear photorealistic with natural lighting and textures?</td>
-                  <td class="num">3</td>
-                  <td class="num">3</td>
-                  <td class="num">3</td>
-                </tr>
-                <tr>
-                  <th scope="row">Motion coherence</th>
-                  <td>Does movement appear natural and follow realistic physics?</td>
-                  <td class="num">0</td>
-                  <td class="num">2</td>
-                  <td class="num">1</td>
-                </tr>
-                <tr>
-                  <th scope="row">Temporal consistency</th>
-                  <td>Does the video maintain smooth continuity without flickering or warping?</td>
-                  <td class="num">3</td>
-                  <td class="num">3</td>
-                  <td class="num">3</td>
-                </tr>
-                <tr>
-                  <th scope="row">Creative originality</th>
-                  <td>Does the video show creative interpretation rather than generic, template-like output?</td>
-                  <td class="num">0</td>
-                  <td class="num">3</td>
-                  <td class="num">1</td>
-                </tr>
-                <tr>
-                  <th scope="row">Prompt adherence</th>
-                  <td>Does the video accurately represent the requested prompt without major hallucinations?</td>
-                  <td class="num">1</td>
-                  <td class="num">2</td>
-                  <td class="num">3</td>
-                </tr>
-                <tr>
-                  <th scope="row">Shot success</th>
-                  <td>Is this video immediately usable without requiring regeneration?</td>
-                  <td class="num">0</td>
-                  <td class="num">2</td>
-                  <td class="num">0</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th scope="row">Total</th>
-                  <td>Out of 18</td>
-                  <td class="num">7</td>
-                  <td class="num">15</td>
-                  <td class="num">11</td>
-                </tr>
-              </tfoot>
-            </table>
+          <div class="shorts-grid" aria-label="JJ Befuddlez episodes">
+            <figure>
+              <video controls playsinline preload="none" poster="images/jj2-v04-zoomies-poster.jpg"
+                src="media/jj2-v04-zoomies.mp4" aria-label="JJ Befuddlez — Zoomies"></video>
+              <figcaption>Zoomies</figcaption>
+            </figure>
+            <figure>
+              <video controls playsinline preload="none" poster="images/jj2-v05-checklist-poster.jpg"
+                src="media/jj2-v05-checklist.mp4" aria-label="JJ Befuddlez — Checklist"></video>
+              <figcaption>Checklist</figcaption>
+            </figure>
+            <figure>
+              <video controls playsinline preload="none" poster="images/jj2-v06-sky-water-poster.jpg"
+                src="media/jj2-v06-sky-water.mp4" aria-label="JJ Befuddlez — Sky water"></video>
+              <figcaption>Sky water</figcaption>
+            </figure>
           </div>
-          <div class="tool-row" aria-label="Models evaluated">
-            <span class="chip">Three text-to-video models</span><span class="chip">Models anonymised</span><span class="chip">Absolute scoring</span><span class="chip">First-generation outputs
-              only</span>
+          <div class="tool-row" aria-label="JJ Befuddlez tools">
+            <span class="chip">Claude</span><span class="chip">GPT Image</span><span class="chip">Wan 3.0</span><span
+              class="chip">MiniMax H3</span><span class="chip">Suno</span><span class="chip">ElevenLabs</span><span
+              class="chip">CapCut</span>
           </div>
         </div>
         <aside class="case-status case-status--head">
-          <span class="status">Completed 2025 · Sole rater</span>
-          <p>The evaluation writeup was presented to the CEO. The rubric has known weaknesses, listed
-            in the evidence below with the changes I would make.
-          </p>
+          <span class="status">Publishing · Round 2 since October 2026</span>
+          <p>Round 1 (December 2025) tested music-video and vlog formats. Round 2 moved to observational comedy
+            shorts, with AI agents running each production stage and my review between every stage.</p>
         </aside>
       </header>
-
-      <details class="case-evidence">
-        <summary>
-          <span>View detailed evidence</span>
-          <span class="micro" aria-hidden="true">Test design · Observations · Limits</span>
-        </summary>
-        <div class="evidence-grid">
-          <aside class="case-status case-status--inline">
-            <span class="status">Completed 2025 · Sole rater</span>
-            <p>The evaluation writeup was presented to the CEO. The rubric has known weaknesses, listed
-              below with the changes I would make.
-            </p>
-          </aside>
-          <article class="youniverse-story">
-            <section class="story-section" aria-labelledby="t2v-design">
-              <h3 class="micro" id="t2v-design">Test design</h3>
-              <div class="story-copy">
-                <h3 class="story-lede">Control the inputs so the score describes the model, not the operator</h3>
-                <ul class="finding-list">
-                  <li><strong>Text prompts only.</strong> No image references and no revision with other tools.</li>
-                  <li><strong>First-generation outputs only.</strong> The first clip returned is the one scored, which
-                    rules out cherry-picking.</li>
-                  <li><strong>Prompts from a real production brief.</strong> All three came from a short film I had
-                    made with text-to-video, and each stresses something different: a tracking camera move with a
-                    practical light source, a high-speed fall towards the lens, and a sprint with a stated lens and
-                    aperture.</li>
-                  <li><strong>Absolute scoring.</strong> Each clip is scored on its own against six Yes/No questions,
-                    with a written observation for every dimension.</li>
-                </ul>
-              </div>
-            </section>
-
-            <section class="story-section" aria-labelledby="t2v-observations">
-              <h3 class="micro" id="t2v-observations">Observations</h3>
-              <div class="story-copy">
-                <h3 class="story-lede">Prompt-following failures and model-quality failures were written up
-                  separately</h3>
-                <div class="world-compare" aria-label="Prompt fault compared with model fault">
-                  <div><span class="micro">Prompt fault</span><span>&ldquo;Prompt did not clearly state that the
-                      tablet was a stone tablet in the ground.&rdquo; Models B and C inferred the context; Model A
-                      did not.</span>
-                  </div>
-                  <div><span class="micro">Model fault</span><span>&ldquo;None simulated the effect of falling through
-                      the air.&rdquo; The prompt was clear; no model produced the physics.</span></div>
-                </div>
-                <ul class="finding-list">
-                  <li><strong>Motion:</strong> Model A extended the boy's hand unnaturally at the end of the shot;
-                    Models A and C showed a lack of human body physics in the sprint.</li>
-                  <li><strong>Performance against the prompt:</strong> Model B was the only one to add motion
-                    streaks to the fall, but the boy looked happy where the prompt asked for a scream.</li>
-                  <li><strong>Camera and blocking:</strong> Model A defaulted to a static wide shot, Model C added
-                    handheld tracking, and Model B choreographed camera and actor movement together.</li>
-                  <li><strong>Lens adherence:</strong> Model A rendered the shallow depth of field of the requested
-                    f/2.8 lens better than the others.</li>
-                  <li><strong>Homogeneity as a signal:</strong> Models A and C returned similar-looking shots for the same
-                    prompt, which I read as a tendency towards generic output.</li>
-                </ul>
-              </div>
-            </section>
-
-            <section class="story-section" aria-labelledby="t2v-limits">
-              <h3 class="micro" id="t2v-limits">Limits and revisions</h3>
-              <div class="story-copy">
-                <h3 class="story-lede">What this rubric got wrong, and what I would change</h3>
-                <ul class="finding-list">
-                  <li><strong>Two dimensions did not discriminate.</strong> Visual realism and temporal consistency
-                    passed nine of nine. A graded scale would separate outputs that a Yes/No question cannot.</li>
-                  <li><strong>Originality drifted into comparison.</strong> The instruction said to score each clip
-                    independently, but I judged originality partly against the other clips. It belongs in a
-                    side-by-side round.</li>
-                  <li><strong>A prompt fault was still scored against the model.</strong> The rubric needs a rule for
-                    failures attributed to the prompt.</li>
-                  <li><strong>Small sample, one rater.</strong> Nine clips and one generation per prompt. Next: repeat
-                    generations, a second rater and an agreement check.</li>
-                  <li><strong>Double-barrelled and judgement questions.</strong> Several questions ask two things at
-                    once (&ldquo;natural and follow realistic physics&rdquo;), and originality and shot success are
-                    holistic judgements, not something a rater can point at. Each should be split or defined by
-                    observable criteria.</li>
-                  <li><strong>One summed total.</strong> Technical and creative dimensions should be reported as
-                    separate totals.</li>
-                  <li><strong>A missing dimension.</strong> Every prompt repeated the same wardrobe, so attribute
-                    consistency across clips could have been scored and was not.</li>
-                </ul>
-              </div>
-            </section>
-
-            <section class="story-next" aria-labelledby="t2v-baseline-title">
-              <div class="story-next-head">
-                <span class="micro">Earlier study / November 2024</span>
-                <div>
-                  <h3 id="t2v-baseline-title" class="story-lede">A common baseline for comparing models that were
-                    tested on different prompts</h3>
-                  <p class="story-next-detail">Two public sets of generated clips, an academic benchmark of more
-                    than 700 prompts covering several models and the published samples for Meta Movie Gen, used
-                    different prompts. I matched prompts across the two sets with text embeddings and clustering, identified 30
-                    with similar attributes, graded their similarity high, medium or low, and compared the five
-                    closest side by side across eight models and model versions, including two models at two versions
-                    each.</p>
-                  <p class="story-next-detail">To keep the comparison fair I compared only the first four seconds of
-                    the longer clips. I reported the remaining confound, that the prompts were similar but not
-                    identical and every word changes the outcome, and proposed regenerating the clips on identical
-                    prompts as the next step. I curated and matched these clips; I did not generate them.</p>
-                </div>
-              </div>
-            </section>
-          </article>
-        </div>
-      </details>
     </section>
 
-    <section class="page case-study tight-end" id="jj-eval">
+    <section class="page case-study tight-end" id="deadtell">
       <header class="case-head">
-        <span class="case-no">02 / Eval design<span class="case-date">Nov 2026 · in progress</span></span>
+        <span class="case-no">Long-form and Shorts · YouTube<span class="case-date">2026</span></span>
         <div class="case-title">
-          <h2>Failure taxonomy &amp; golden set</h2>
-          <p>An evaluation system for my short-form AI video series: an audit of every generation record, a failure
-            taxonomy, rubric lines written as single observable questions, and a golden set to calibrate automated
-            judges against my own verdicts.</p>
+          <h2>DeadTell TV</h2>
+          <p>A behavioural-analysis channel that dramatises everyday psychological manipulation through a
+            surveillance-camera aesthetic, then breaks down the moment the mask slips.</p>
           <dl class="case-summary">
             <div>
-              <dt>Question</dt>
-              <dd>Why do generated frames and takes fail review, and which checks can be handed to a machine?</dd>
+              <dt>Format</dt>
+              <dd>8&ndash;9-minute episodes in three acts with two ad breaks, cut down into 30&ndash;40-second
+                Shorts.</dd>
             </div>
             <div>
-              <dt>Method</dt>
-              <dd>Audited 824 generation records, classified every recorded failure, and compared LLM judges with my
-                blind ratings.</dd>
+              <dt>My role</dt>
+              <dd>Showrunner: topic research, script, performance prompts, generation and edit.</dd>
             </div>
             <div>
-              <dt>Finding</dt>
-              <dd>Five failure classes. On a small sample, LLM judges called 90&ndash;95% of comedy scripts funny; I
-                called 56%. So judges are asked only about observable facts.</dd>
+              <dt>Craft</dt>
+              <dd>Sustained acting performance from synthetic people, with a randomised casting profile so the
+                image model does not fall back on narrow racial defaults.</dd>
             </div>
             <div>
-              <dt>Status</dt>
-              <dd>Design complete; golden set v0 built; in progress (November 2026).</dd>
+              <dt>Learned</dt>
+              <dd>Kling 3.0 gave the most believable acting against Seedance 2.0 and Veo 3.1: 4.3 generations per
+                usable shot, US$12&ndash;18 per finished video.</dd>
             </div>
           </dl>
-          <div class="eval-table-wrap">
-            <table class="eval-table">
-              <caption>Failure taxonomy · from rejected, superseded and failed image and video records</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Class</th>
-                  <th scope="col">Examples from the records</th>
-                  <th scope="col">Who can check it</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">A · Tool failure</th>
-                  <td>Too many reference images in one request; a prompt lost before sending; a parallel run copying
-                    the wrong file as its output.</td>
-                  <td>Code, before the call</td>
-                </tr>
-                <tr>
-                  <th scope="row">B · Contract fault</th>
-                  <td>Two routers where the brief specifies one; three glass bays against four; a straw in a cup that
-                    must be sealed.</td>
-                  <td>A model, from the image and the brief</td>
-                </tr>
-                <tr>
-                  <th scope="row">C · Performance fault</th>
-                  <td>The character looks at the camera when the script says the treadmill belt; sleepy where the
-                    script says dizzy; a wave where a point was asked.</td>
-                  <td>A model, with care</td>
-                </tr>
-                <tr>
-                  <th scope="row">D · Identity, wardrobe, scale</th>
-                  <td>Wardrobe lost between image and video; the character too large against an adult; the character
-                    on the wrong side of frame.</td>
-                  <td>A model plus measurement</td>
-                </tr>
-                <tr>
-                  <th scope="row">E · Taste</th>
-                  <td>&ldquo;Face too polished&rdquo;; &ldquo;too similar to the previous episode&rdquo;.</td>
-                  <td>The human reviewer</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="tool-row" aria-label="Evaluation components">
-            <span class="chip">Failure taxonomy</span><span class="chip">Rubric lines</span><span class="chip">Golden
-              set</span><span class="chip">LLM judges vs human ratings</span><span class="chip">Python</span>
+          <figure class="case-video">
+            <div class="video-frame">
+              <iframe loading="lazy" title="DeadTell TV &mdash; AI video"
+                src="https://play.gumlet.io/embed/6a40b91079d93c513c7755b6" referrerpolicy="origin"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;"
+                allowfullscreen></iframe>
+            </div>
+          </figure>
+          <div class="tool-row" aria-label="DeadTell TV tools">
+            <span class="chip">Perplexity</span><span class="chip">Claude</span><span class="chip">Nano Banana
+              Pro</span><span class="chip">Kling 3.0</span><span class="chip">ElevenLabs</span><span
+              class="chip">CapCut</span>
           </div>
         </div>
         <aside class="case-status case-status--head">
-          <span class="status">In progress · Status at 15 November 2026</span>
-          <p>I set the acceptance standard and designed the checks. An AI coding assistant ran the record audit and
-            drafted labels from my recorded verdicts under my direction. No judge is described as calibrated until I
-            have confirmed the label sheet.
-          </p>
+          <span class="status">Published channel · Recurring production paused</span>
+          <p>The workflow works; generation is not yet reliable enough to run every week at this length.</p>
         </aside>
       </header>
+    </section>
 
-      <details class="case-evidence">
-        <summary>
-          <span>View detailed evidence</span>
-          <span class="micro" aria-hidden="true">Judge study · Rubric excerpt · Golden set</span>
-        </summary>
-        <div class="evidence-grid">
-          <aside class="case-status case-status--inline">
-            <span class="status">In progress · Status at 15 November 2026</span>
-            <p>I set the acceptance standard and designed the checks. An AI coding assistant ran the record audit and
-              drafted labels from my recorded verdicts under my direction. No judge is described as calibrated until I
-              have confirmed the label sheet.
-            </p>
-          </aside>
-          <article class="youniverse-story">
-            <section class="story-section" aria-labelledby="jj-eval-baseline">
-              <h3 class="micro" id="jj-eval-baseline">Baseline</h3>
-              <div class="story-copy">
-                <h3 class="story-lede">The records described what was generated in detail. They did not say what I
-                  decided</h3>
-                <ul class="finding-list">
-                  <li>Of 479 image generation records, 72% carried no verdict, so a first-pass acceptance rate could
-                    not be computed. The status field alone held 39 different values.</li>
-                  <li>Where it could be counted, on one episode, about half of keyframes were accepted in their first
-                    version. That is one episode, counted from file versions.</li>
-                  <li>The first change is therefore to the record, not the model: six allowed status values and a
-                    recorded verdict, defect class and reason for every output.</li>
-                </ul>
-              </div>
-            </section>
-
-            <section class="story-section" aria-labelledby="jj-eval-judges">
-              <h3 class="micro" id="jj-eval-judges">Human vs LLM judges</h3>
-              <div class="story-copy">
-                <h3 class="story-lede">Can a model judge stand in for my rating? Tested on short comedy scripts for the
-                  series, with a rating tool I built that hides the judges' scores until my own rating is saved</h3>
-                <div class="eval-table-wrap">
-                  <table class="eval-table">
-                    <caption>Judge agreement with my blind ratings · four-point scale · items each judge scored before seeing
-                      mine</caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">Judge</th>
-                        <th scope="col" class="num">Items compared</th>
-                        <th scope="col" class="num">Exact score match</th>
-                        <th scope="col">Same side of funny / not funny</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">ChatGPT</th>
-                        <td class="num">23</td>
-                        <td class="num">6 (26%)</td>
-                        <td>83% in the first batch, then 33% and 38%</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Gemini</th>
-                        <td class="num">23</td>
-                        <td class="num">7 (30%)</td>
-                        <td>83% in the first batch, then 44% and 38%</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Grok</th>
-                        <td class="num">9</td>
-                        <td class="num">1 (11%)</td>
-                        <td>Not reported; many calls dropped</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <ul class="finding-list">
-                  <li>The judges called 90 to 95% of scripts funny. I called 56% funny.</li>
-                  <li>Ranking a whole batch did better than scoring items one at a time: one judge's ranking
-                    correlated with mine at &rho; = 0.55 and placed 7 of my 10 picks in its top 10, against 5.6 expected
-                    by chance.</li>
-                </ul>
-                <p class="test-finding"><strong>Caveat: </strong>this is a small sample of 23 scripts at most per
-                  judge, and the ranking result comes from a single batch of 18. I treat the conclusion as a working
-                  rule, not a finding: ask a judge about what a person can point to in the output, and do not ask it
-                  whether the output is good.</p>
-              </div>
-            </section>
-
-            <section class="story-section" aria-labelledby="jj-eval-rubric">
-              <h3 class="micro" id="jj-eval-rubric">Rubric excerpt</h3>
-              <div class="story-copy">
-                <h3 class="story-lede">One observable judgement per line. The decision is made in code, not by the
-                  judge</h3>
-                <div class="eval-table-wrap">
-                  <table class="eval-table">
-                    <caption>Keyframe card · six of the 28 lines · inputs: the frame, the character sheet, the shot
-                      line</caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">Line</th>
-                        <th scope="col">Question</th>
-                        <th scope="col">Answer type</th>
-                        <th scope="col">Class</th>
-                        <th scope="col">Weight</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">K2</th>
-                        <td>Is the character wearing the same bottoms and footwear as in the character sheet?</td>
-                        <td>Yes / No</td>
-                        <td>D</td>
-                        <td>Hard</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">K6</th>
-                        <td>Where is the character in the frame? Code then derives side of frame and scale against
-                          the adult.</td>
-                        <td>Bounding box</td>
-                        <td>D</td>
-                        <td>Hard</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">K8</th>
-                        <td>Is the character looking into the camera?</td>
-                        <td>Yes / No</td>
-                        <td>C</td>
-                        <td>Soft</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">K9</th>
-                        <td>Which of these expressions does the character's face show? Options come from the
-                          expression sheet.</td>
-                        <td>Choice</td>
-                        <td>C</td>
-                        <td>Soft</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">K10</th>
-                        <td>Is the character in the frame the same character as in the character sheet?</td>
-                        <td>Yes / No</td>
-                        <td>D</td>
-                        <td>Hard</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">K11</th>
-                        <td>One question per object in the brief, for example: is a sealed cup with no straw visible?
-                        </td>
-                        <td>Yes / No</td>
-                        <td>B</td>
-                        <td>Hard</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="eval-table-wrap">
-                  <table class="eval-table">
-                    <caption>Decision table · applied in code</caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">Code checks</th>
-                        <th scope="col">Hard lines</th>
-                        <th scope="col">Soft lines</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Fail</td>
-                        <td>&mdash;</td>
-                        <td>&mdash;</td>
-                        <td>Do not send the request. Fix it first.</td>
-                      </tr>
-                      <tr>
-                        <td>Pass</td>
-                        <td>Any confident fail</td>
-                        <td>&mdash;</td>
-                        <td>Regenerate with the fail reasons added. Two attempts at most.</td>
-                      </tr>
-                      <tr>
-                        <td>Pass</td>
-                        <td>Any uncertain answer</td>
-                        <td>&mdash;</td>
-                        <td>Escalate to a second, stronger judge.</td>
-                      </tr>
-                      <tr>
-                        <td>Pass</td>
-                        <td>All pass</td>
-                        <td>Any fail</td>
-                        <td>Show to the human reviewer with the flag beside the image.</td>
-                      </tr>
-                      <tr>
-                        <td>Pass</td>
-                        <td>All pass</td>
-                        <td>All pass</td>
-                        <td>Show to the human reviewer, clean.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <ul class="finding-list">
-                  <li><strong>A check never accepts.</strong> Acceptance stays with the human reviewer.</li>
-                  <li><strong>Video takes are sorted and flagged, never regenerated automatically.</strong> A false
-                    fail on an image costs one free regeneration; on video it costs a paid take.</li>
-                  <li><strong>An API error is an error.</strong> It is never read as a pass or a fail.</li>
-                </ul>
-              </div>
-            </section>
-
-            <section class="story-section" aria-labelledby="jj-eval-golden">
-              <h3 class="micro" id="jj-eval-golden">Golden set &amp; calibration</h3>
-              <div class="story-copy">
-                <h3 class="story-lede">Candidate golden set v0: 163 items and 379 draft labels across 28 rubric lines.
-                  Built; not yet confirmed</h3>
-                <ul class="finding-list">
-                  <li><strong>Contents:</strong> 89 keyframes, 20 video takes and 54 reference, grid and location
-                    images, each frozen by file hash with the references and prompt that produced it.</li>
-                  <li><strong>Labels:</strong> 103 fail, 32 pass, 3 not applicable or disputed, and 241 no-fault
-                    labels implied where I accepted the output. 51 labels come from verdicts I stated at review; 87 come from the AI
-                    assistant's inspection records; the other 241 are the implied ones. None of the 379 has yet been confirmed by me on the review sheet.</li>
-                  <li><strong>Calibration rule:</strong> a rubric line goes live only if the judge agrees with my
-                    labels on at least 80% of items with false fails at 10% or less. False fails and false passes are reported
-                    separately for each line, because most labels are passes and raw agreement alone would flatter a
-                    judge that passes everything. Lines that miss are tuned or left with the human reviewer.</li>
-                  <li><strong>Shadow period:</strong> for the first two live episodes the checks run without acting.
-                    Their verdicts are stored and compared with mine afterwards.</li>
-                  <li><strong>Regression use:</strong> the set is rerun whenever a model version or a rubric line
-                    changes. This has not yet been done.</li>
-                </ul>
-                <p class="test-finding"><strong>Not built, on purpose: </strong>a funniness judge, because the evidence
-                  is against it; and a single quality score per episode, because six stages at 75% each multiply to
-                  18% and hide which stage failed. Each stage is measured on its own.</p>
-              </div>
-            </section>
-          </article>
+    <section class="page case-study tight-end" id="terra">
+      <header class="case-head">
+        <span class="case-no">Long-form ambient · YouTube<span class="case-date">2025&ndash;now</span></span>
+        <div class="case-title">
+          <h2>Terra Atavica</h2>
+          <p>Public-domain historical artwork, colourised and paired with original AI-composed music: rooms you can
+            sit in from worlds that no longer exist.</p>
+          <dl class="case-summary">
+            <div>
+              <dt>Format</dt>
+              <dd>2&ndash;3-hour ambient videos for study, focus and sleep, in five musical movements.</dd>
+            </div>
+            <div>
+              <dt>My role</dt>
+              <dd>Creative director: theme, image selection, music direction and the final timeline in DaVinci
+                Resolve.</dd>
+            </div>
+            <div>
+              <dt>Craft</dt>
+              <dd>Every image is screened for content and historical context before generation; era-accurate
+                skin-tone instructions stop colourisation whitewashing people.</dd>
+            </div>
+            <div>
+              <dt>Learned</dt>
+              <dd>More than half of archive animations were usable first pass, but some altered subject identity,
+                object behaviour or skin tone. Authenticity approval stays human.</dd>
+            </div>
+          </dl>
+          <figure class="case-video">
+            <div class="video-frame">
+              <iframe loading="lazy" title="Terra Atavica &mdash; AI video"
+                src="https://play.gumlet.io/embed/6a40b9778a92d68f43b0ab9f" referrerpolicy="origin"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;"
+                allowfullscreen></iframe>
+            </div>
+          </figure>
+          <div class="tool-row" aria-label="Terra Atavica tools">
+            <span class="chip">Gemini</span><span class="chip">GPT Image 2</span><span class="chip">Kling
+              2.0</span><span class="chip">Grok Imagine</span><span class="chip">Suno</span><span class="chip">DaVinci
+              Resolve</span>
+          </div>
         </div>
-      </details>
+        <aside class="case-status case-status--head">
+          <span class="status">Published channel · Active R&amp;D</span>
+          <p>Research and assembly are automated. Image selection, composition and historical accuracy are judged by
+            me.</p>
+        </aside>
+      </header>
     </section>
 
     <section class="page case-study tight-end" id="youniverse">
       <header class="case-head">
-        <span class="case-no">03 / Continuity evaluation<span class="case-date">Jul 2026</span></span>
+        <span class="case-no">AI micro-drama · R&amp;D<span class="case-date">Jul 2026</span></span>
         <div class="case-title">
           <h2>Youniverse</h2>
-          <p>Which reference methods keep three characters, their world and its props consistent across a sequence of
-            generated shots, and which failures belong to the inputs, not the model? Tested on an AI-assisted
-            microdrama pipeline that turns one portrait into a short fictional story.</p>
+          <p>One self-portrait in; a short drama about a life the person didn't live out. Three characters, one world
+            and its props have to stay consistent across a sequence of generated shots.</p>
           <dl class="case-summary">
             <div>
-              <dt>Question</dt>
-              <dd>Do reference methods hold continuity across a multi-character generated sequence?</dd>
+              <dt>Format</dt>
+              <dd>Short fictional micro-drama built from a single portrait.</dd>
             </div>
             <div>
-              <dt>Method</dt>
-              <dd>Three reference methods tested on one video model, with a pass or fail recorded for each.</dd>
+              <dt>My role</dt>
+              <dd>Story system, reference sheets, storyboard and continuity review.</dd>
             </div>
             <div>
-              <dt>Finding</dt>
-              <dd>References improved single shots; sequence continuity still failed.</dd>
+              <dt>Craft</dt>
+              <dd>Three reference methods tested on one video model for multi-character continuity.</dd>
             </div>
             <div>
-              <dt>Decision</dt>
-              <dd>Retain the story pipeline; redesign storyboards before automating production.</dd>
+              <dt>Learned</dt>
+              <dd>References improved single shots, but identity still drifted across the sequence, and actor-position
+                errors came from the storyboard, not the model. I held the final videos back.</dd>
             </div>
           </dl>
           <div class="case-gallery" data-gallery aria-label="Youniverse stills" aria-roledescription="slideshow">
@@ -3667,327 +3472,129 @@
             <div class="gallery-dots" role="group" aria-label="Choose image"></div>
           </div>
           <div class="tool-row" aria-label="Youniverse tools">
-            <span class="chip">Custom Python</span><span class="chip">Wan 2.7 Image Pro</span><span class="chip">Happy
-              Horse 1.1</span><span class="chip">Qwen 3.7 Max</span><span class="chip">Qwen Plus
-              Character</span><span class="chip">FFmpeg</span><span class="chip">Seedance 2.5</span><span
-              class="chip">Minimax H3</span>
+            <span class="chip">Wan 2.7 Image Pro</span><span class="chip">Qwen</span><span class="chip">Seedance
+              2.5</span><span class="chip">MiniMax H3</span><span class="chip">FFmpeg</span>
           </div>
         </div>
         <aside class="case-status case-status--head">
-          <span class="status">Sprint 1 and manual model tests complete · Sprint 2 designed</span>
-          <p>The story pipeline is retained. Sprint 2 will test whether stronger storyboards and reference-to-video
-            (R2V) models can support automated production or produce enough usable coverage to minimise manual editing.
-          </p>
+          <span class="status">Sprint 1 complete · Sprint 2 designed</span>
+          <p>The story pipeline is kept. Sprint 2 tests stronger storyboards and reference-to-video models before any
+            automated production.</p>
         </aside>
       </header>
-
     </section>
 
-    <section class="page case-study tight-end" id="deadtell">
-      <header class="case-head">
-        <span class="case-no">04 / Performance evaluation<span class="case-date">May 2026</span></span>
-        <div class="case-title">
-          <h2>DeadTell TV</h2>
-          <p>A side-by-side evaluation of three video models on sustained acting performance, run on a
-            behavioural-analysis YouTube channel that dramatises everyday psychological manipulation through a
-            surveillance-camera aesthetic.</p>
-          <dl class="case-summary">
-            <div>
-              <dt>Question</dt>
-              <dd>Which model sustains believable performance and identity across a finished video?</dd>
-            </div>
-            <div>
-              <dt>Method</dt>
-              <dd>Seedance 2.0, Veo 3.1 and Kling 3.0 compared side by side against a written usability definition.</dd>
-            </div>
-            <div>
-              <dt>Finding</dt>
-              <dd>Kling 3.0 gave the most believable takes; 4.3 generations per usable shot; US$12–18 per finished video.</dd>
-            </div>
-            <div>
-              <dt>Decision</dt>
-              <dd>Keep the workflow; pause recurring production until generation is more reliable.</dd>
-            </div>
-          </dl>
-          <figure class="case-video">
-            <div class="video-frame">
-              <iframe loading="lazy" title="DeadTell TV &mdash; AI video"
-                src="https://play.gumlet.io/embed/6a40b91079d93c513c7755b6" referrerpolicy="origin"
-                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;"
-                allowfullscreen></iframe>
-            </div>
-          </figure>
-          <div class="tool-row" aria-label="DeadTell TV tools">
-            <span class="chip">Perplexity MCP</span><span class="chip">VidIQ MCP</span><span class="chip">Claude
-              skills</span><span class="chip">Nano Banana Pro</span><span class="chip">Kling 3.0</span><span
-              class="chip">CapCut</span>
-          </div>
-        </div>
-        <aside class="case-status case-status--head">
-          <span class="status">Test bed · Published R&amp;D channel · Test cycle complete</span>
-          <p>An agentic research workflow discovers topics, scores them against keyword demand
-            and proposes concepts for human approval. Approved concepts are then developed into scripts, shot prompts
-            and performance prompts, with human review throughout production. A demographic randomiser runs before scripting and reference
-            generation, because the image model cast synthetic people from narrow racial defaults.
-          </p>
-        </aside>
-      </header>
-
-    </section>
-
-    <section class="page case-study tight-end" id="jj">
-      <header class="case-head">
-        <span class="case-no">05 / Character-consistency evaluation<span class="case-date">Dec 2025</span></span>
-        <div class="case-title">
-          <h2>JJ Befuddlez</h2>
-          <p>A two-model comparison on whether one synthetic talking character stays recognisable across vlogs and
-            short-form video. The failure audit and golden set built on this series are <a href="#jj-eval">study
-              02</a>.</p>
-          <dl class="case-summary">
-            <div>
-              <dt>Question</dt>
-              <dd>Can one synthetic character stay recognisable across shots and formats?</dd>
-            </div>
-            <div>
-              <dt>Method</dt>
-              <dd>Grok Imagine and Sora 2 compared using fixed character references.</dd>
-            </div>
-            <div>
-              <dt>Finding</dt>
-              <dd>Six generations per usable sequence; about US$6 per finished video.</dd>
-            </div>
-            <div>
-              <dt>Decision</dt>
-              <dd>Retain fixed references, human selection and manual finishing.</dd>
-            </div>
-          </dl>
-          <figure class="case-video">
-            <div class="video-frame">
-              <iframe loading="lazy" title="JJ Befuddlez &mdash; AI video"
-                src="https://play.gumlet.io/embed/6a40b95c8a92d68f43b0a92e" referrerpolicy="origin"
-                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;"
-                allowfullscreen></iframe>
-            </div>
-          </figure>
-          <div class="tool-row" aria-label="JJ Befuddlez tools">
-            <span class="chip">Custom AI assistant</span><span class="chip">Claude</span><span
-              class="chip">Suno</span><span class="chip">Grok Imagine</span><span class="chip">Sora 2</span><span
-              class="chip">ElevenLabs</span><span class="chip">CapCut</span>
-          </div>
-        </div>
-        <aside class="case-status case-status--head">
-          <span class="status">Test bed · Published R&amp;D channel · Test cycle complete</span>
-          <p>A custom assistant generates prompts across script, image, voice, music and video. Human selection and
-            creative direction remain part of every production stage.
-          </p>
-        </aside>
-      </header>
-
-    </section>
-
-    <section class="page case-study tight-end" id="terra">
-      <header class="case-head">
-        <span class="case-no">06 / Authenticity evaluation<span class="case-date">Mar 2026</span></span>
-        <div class="case-title">
-          <h2>Terra Atavica</h2>
-          <p>An image-to-video evaluation on archive artwork: does animation preserve what the source image shows? Run on
-            a semi-autonomous production workflow for hour-long ambient historical-music videos.</p>
-          <dl class="case-summary">
-            <div>
-              <dt>Question</dt>
-              <dd>Can image-to-video animate archive images without altering what they show?</dd>
-            </div>
-            <div>
-              <dt>Method</dt>
-              <dd>Kling 2.0 and Grok Imagine outputs judged against the source image on a written usability definition.</dd>
-            </div>
-            <div>
-              <dt>Finding</dt>
-              <dd>More than 50% usable first-pass; failures in subject identity, object behaviour and skin tone.</dd>
-            </div>
-            <div>
-              <dt>Decision</dt>
-              <dd>Automate research and assembly; keep authenticity approval human.</dd>
-            </div>
-          </dl>
-          <figure class="case-video">
-            <div class="video-frame">
-              <iframe loading="lazy" title="Terra Atavica &mdash; AI video"
-                src="https://play.gumlet.io/embed/6a40b9778a92d68f43b0ab9f" referrerpolicy="origin"
-                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;"
-                allowfullscreen></iframe>
-            </div>
-          </figure>
-          <div class="tool-row" aria-label="Terra Atavica tools">
-            <span class="chip">Custom Python</span><span class="chip">Suno API</span><span class="chip">Gemini Pro /
-              Flash</span><span class="chip">GPT Image 2</span><span class="chip">Kling 2.0</span><span class="chip">Grok Imagine</span><span
-              class="chip">DaVinci Resolve</span>
-          </div>
-        </div>
-        <aside class="case-status case-status--head">
-          <span class="status">Test bed · Published R&amp;D channel · Test cycle complete</span>
-          <p>An agentic pipeline searches rights-cleared archive material, tags each image with a vision model for
-            NSFW and out-of-context content before generation, passes candidates to a custom screener for human
-            selection, preserves source information,
-            generates and arranges AI music across five movements, and assembles the visual sequence. Human selection
-            and creative direction remain at the points where historical accuracy, composition and narrative flow must
-            be judged.
-          </p>
-        </aside>
-      </header>
-
-    </section>
-
-    <section class="standards" aria-labelledby="standards-title">
-      <div class="page">
-        <div class="section-intro">
-          <p class="label">What the evaluations established</p>
-          <h2 id="standards-title">A useful quality signal names the failure, says who caused it, and counts what it
-            cost&mdash;impressive outputs are not evidence</h2>
-        </div>
-        <div class="standards-grid">
-          <article class="standard">
-            <h3>Ask what a rater can point to</h3>
-            <p>Model judges missed my taste but can answer observable questions. The rubric lines and the
-              text-to-video rubric are both written as questions with a visible answer.</p>
-          </article>
-          <article class="standard">
-            <h3>Separate the prompt from the model</h3>
-            <p>The rubric study and Youniverse both recorded which failures came from the prompt, reference or
-              storyboard and which survived a correct input.</p>
-          </article>
-          <article class="standard">
-            <h3>Count the intervention</h3>
-            <p>DeadTell, JJ and Terra measured generations per usable shot, first-pass usability and cost, and kept
-              representation and accuracy checks with a human.</p>
-          </article>
-          <article class="standard">
-            <h3>Treat bias as a model failure</h3>
-            <p>DeadTell's image model cast synthetic people from narrow racial defaults; Terra's colourisation
-              whitewashed people in historical artwork. Both were logged as model failures, mitigated in the
-              prompt&mdash;a demographic randomiser, era-aware skin-tone instructions&mdash;and kept under human
-              accuracy review.</p>
-          </article>
-        </div>
-        <p class="standards-close">Define the dimension. Score the output. State the limit.</p>
-      </div>
-    </section>
-
-    <section class="page practice" id="practice">
-      <div class="broadcast-note" id="broadcast">
-        <h2>Production craft</h2>
-        <p>Before generative media, 15+ years of deciding whether a shot worked&mdash;from edit bench to showrunner,
-          final broadcast QC against delivery specifications, and remote VFX direction by written review. I co-founded
-          and led a production studio for ten years. Work for CNA
-          and regional broadcasters includes the Gold World Medal-winning <em>Refugee Chef</em>.
-          <small>Selected roles across the work: executive producer, showrunner, writer, producer, director, post
-            director, editor and sound designer.</small>
+    <section class="page practice" id="evaluation">
+      <div class="broadcast-note">
+        <h2>Evaluation</h2>
+        <p>The notes I gave on broadcast cuts, written as rubrics and labels that another rater, or a model, can
+          apply.
+          <small>The full studies, with method, findings and limits, are on a separate page.</small>
         </p>
       </div>
-
-      <p class="swipe-cue" aria-hidden="true">Swipe to explore &rarr;</p>
-      <div class="practice-grid broadcast-grid" aria-label="Selected broadcast projects">
-        <article class="practice-card broadcast-card">
-          <a class="practice-card-image" href="https://www.channelnewsasia.com/watch/refugee-chef" target="_blank"
-            rel="noopener" aria-label="Watch Refugee Chef on CNA (opens in a new tab)">
-            <span class="thumb"><img loading="lazy" src="images/broadcast-refugee-chef.jpg"
-                alt="Refugee Chef — CNA documentary series artwork"></span>
-          </a>
-          <span class="micro">Documentary · CNA 2018</span>
-          <h3>Refugee Chef</h3>
-          <p>Refugee culinary entrepreneurs rebuild lives through food. Gold and two Silver World Medals, New York
-            Festivals.</p>
+      <div class="comparison-grid" aria-label="Evaluation work">
+        <article class="comparison">
+          <div class="probe-line">
+            <h3>Text-to-video rubric</h3><span class="verdict pass">2024&ndash;25</span>
+          </div>
+          <p>Six Yes/No dimensions (visual realism, motion coherence, temporal consistency, creative originality,
+            prompt adherence, shot success) applied to three commercial text-to-video models at a Singapore government
+            agency. Scores of 7, 15 and 11 out of 18, with prompt faults written up apart from model faults.</p>
         </article>
-        <article class="practice-card broadcast-card">
-          <a class="practice-card-image" href="https://www.youtube.com/watch?v=t6VBoIizFRY" target="_blank"
-            rel="noopener" aria-label="Watch Astropreneurs on YouTube (opens in a new tab)">
-            <span class="thumb"><img loading="lazy" src="images/broadcast-astropreneurs.jpg"
-                alt="Astropreneurs — CNA space-technology documentary video still"></span>
-          </a>
-          <span class="micro">Technology documentary · CNA 2019</span>
-          <h3>Astropreneurs</h3>
-          <p>Six Singapore-based founders building for a new space economy. Ten minutes of graphics directed remotely
-            through one written review a day. Shortlisted, AIBD World TV Awards.</p>
+        <article class="comparison">
+          <div class="probe-line">
+            <h3>Side-by-side model tests</h3><span class="verdict pass">2025&ndash;26</span>
+          </div>
+          <p>Run on my own productions against a written definition of a usable shot: Kling, Seedance and Veo for
+            acting; Grok Imagine and Sora for a consistent character; Kling and Grok Imagine for fidelity to archive
+            artwork.</p>
         </article>
-        <article class="practice-card broadcast-card">
-          <a class="practice-card-image" href="https://play.gumlet.io/embed/6a4281a13583eb17263f53bd" target="_blank"
-            rel="noopener" aria-label="Watch Hip Korea — Seoul Vibes (opens in a new tab)">
-            <span class="thumb"><img loading="lazy" src="images/broadcast-hip-korea-rain.png"
-                alt="Hip Korea — Seoul Vibes, Discovery Channel programme artwork"></span>
-          </a>
-          <span class="micro">Documentary feature · Discovery Channel, 2007</span>
-          <h3>Hip Korea — Seoul Vibes</h3>
-          <p>A kinetic feature on Seoul, K-pop and the industry around Rain. Post-directed seven editors across
-            Singapore and Korea. Best Direction, Asian Television Awards.</p>
-        </article>
-        <article class="practice-card broadcast-card">
-          <a class="practice-card-image" href="https://www.channelnewsasia.com/watch/web3-revolution" target="_blank"
-            rel="noopener" aria-label="Watch Web3 Revolution on CNA (opens in a new tab)">
-            <span class="thumb"><img loading="lazy" src="images/broadcast-web3-revolution.jpg"
-                alt="Web3 Revolution — CNA documentary series artwork"></span>
-          </a>
-          <span class="micro">Business documentary · CNA 2023</span>
-          <h3>Web3 Revolution</h3>
-          <p>Four Asian markets, beyond the hype: real uses of blockchain, digital ownership and the emerging web.</p>
-        </article>
-        <article class="practice-card broadcast-card">
-          <a class="practice-card-image" href="https://www.youtube.com/watch?v=38tpWlgXw-g" target="_blank"
-            rel="noopener" aria-label="Watch Field Guide to Innovation on YouTube (opens in a new tab)">
-            <span class="thumb"><img loading="lazy" src="images/broadcast-field-guide.jpg"
-                alt="Field Guide to Innovation — documentary video still"></span>
-          </a>
-          <span class="micro">Design documentary · CNA 2017</span>
-          <h3>Field Guide to Innovation</h3>
-          <p>Human-centred design applied to social problems across Asia. Bronze World Medal, New York Festivals.</p>
-        </article>
-        <article class="practice-card broadcast-card">
-          <a class="practice-card-image" href="https://www.youtube.com/watch?v=T3t_I2SBhrk" target="_blank"
-            rel="noopener" aria-label="Watch Those Darn Questions on YouTube (opens in a new tab)">
-            <span class="thumb"><img loading="lazy" src="images/broadcast-those-darn-questions.jpg"
-                alt="Those Darn Questions — children's info-entertainment video still"></span>
-          </a>
-          <span class="micro">Children's info-entertainment · Ch8 / Astro</span>
-          <h3>Those Darn Questions</h3>
-          <p>Six bite-sized segments per episode make science, culture and digital literacy land for young audiences.
-            Finalist, Children/Youth, New York Festivals.</p>
+        <article class="comparison">
+          <div class="probe-line">
+            <h3>Failure labels &amp; golden set</h3><span class="verdict open">In progress</span>
+          </div>
+          <p>Five failure classes (tool, brief, performance, identity and continuity, taste) and a 163-item golden
+            set of keyframes and takes, to check new model versions against my verdicts. Built November 2026; labels
+            not yet confirmed.</p>
         </article>
       </div>
-
-      <div class="broadcast-note" id="recognition">
-        <h2>Recognition</h2>
-        <p>Seven international award wins among 20+ awards and nominations, 2005&ndash;2019.
-          <small>Selected recognition for direction, documentary craft, profiles and community storytelling.</small>
-        </p>
+      <div class="actions studies-link">
+        <a class="action" href="video-evaluation-studies.html">Read the evaluation studies &rarr;</a>
       </div>
-      <div class="comparison-grid" aria-label="Selected recognition">
+    </section>
+
+    <section class="page practice" id="awards">
+      <div class="broadcast-note">
+        <h2>Awards and nominations</h2>
+        <p>Seven wins among 20+ awards and nominations, 2005&ndash;2019, listed by the stage of my career they came
+          from.</p>
+      </div>
+      <div class="comparison-grid awards-grid" aria-label="Awards and nominations by career stage">
         <article class="comparison">
           <div class="probe-line">
-            <h3>Refugee Chef</h3><span class="verdict pass">2019</span>
+            <h3>People Factor Studio</h3><span class="verdict pass">2013&ndash;2023</span>
           </div>
-          <p>Gold World Medal, Documentary: Heroes, plus Silver World Medals for Direction and Biography/Profiles · New
-            York Festivals World's Best TV &amp; Films.</p>
+          <ul class="award-list">
+            <li><strong>Gold World Medal</strong>, Documentary: Heroes, and <strong>Silver World Medals</strong> for
+              Direction and Biography/Profiles · New York Festivals 2019 · <em>Refugee Chef</em></li>
+            <li><strong>Bronze World Medal</strong>, Community Portraits · New York Festivals 2018 · <em>Field Guide to
+                Innovation</em></li>
+            <li>Shortlisted, Best TV Documentary on Technology and Humanity · AIBD World TV Awards 2019 ·
+              <em>Astropreneurs</em></li>
+            <li>Finalist, Children/Youth · New York Festivals 2018 · <em>Those Darn Questions</em></li>
+            <li>Finalist, Children/Youth · New York Festivals 2016 · <em>We Are Awesome</em></li>
+            <li>Nominated, Best Children's Programme · Asian Television Awards 2015 · <em>We Are Awesome</em></li>
+            <li>Nominated, Best Society Culture Documentary · Asia Rainbow TV Awards 2014</li>
+            <li>Featured, Prix Jeunesse 2015/2016 catalogue "Quality in Children's TV Worldwide" · <em>Bot
+                Hunters</em></li>
+          </ul>
         </article>
         <article class="comparison">
           <div class="probe-line">
-            <h3>Field Guide to Innovation</h3><span class="verdict pass">2018</span>
+            <h3>The Farm at 58</h3><span class="verdict pass">2006&ndash;2009</span>
           </div>
-          <p>Bronze World Medal, Community Portraits · New York Festivals World's Best TV &amp; Films.</p>
+          <ul class="award-list">
+            <li><strong>Winner</strong>, Best Lifestyle Programme · Asian Television Awards 2010 · <em>Passage to
+                Malaysia</em></li>
+            <li><strong>Winner</strong>, Prix de la Scam · Cinéma du Réel, Paris, 2008</li>
+            <li>Asian Vision Award (Merit) · Taiwan International Documentary Festival 2008</li>
+            <li><strong>Winner</strong>, Best Direction · Asian Television Awards 2007 · <em>Hip Korea — Seoul
+                Vibes</em></li>
+            <li>Nominated, Best Direction · Asian Television Awards 2009 · <em>Hip Korea: Rain</em></li>
+            <li>Nominated, Best Documentary · Asian Television Awards 2007 · <em>Born Again Buddhist</em></li>
+          </ul>
         </article>
         <article class="comparison">
           <div class="probe-line">
-            <h3>Direction &amp; programme craft</h3><span class="verdict pass">2007–2010</span>
+            <h3>The Kinetic Collective</h3><span class="verdict pass">2005&ndash;2009</span>
           </div>
-          <p>Best Lifestyle Programme, Asian Television Awards, 2010 · Prix de la Scam, Cinéma du Réel, Paris, 2008 ·
-            Best Direction, Asian Television Awards, 2007.</p>
+          <ul class="award-list">
+            <li>Runner-up, Best Music Programme · Asian Television Awards 2007 · <em>Frequency of the City</em></li>
+            <li>Highly commended, Best Music Programme · Asian Television Awards 2009 · <em>Frequency of the
+                City</em></li>
+          </ul>
+        </article>
+        <article class="comparison">
+          <div class="probe-line">
+            <h3>Editor and freelance</h3><span class="verdict pass">2001&ndash;2007</span>
+          </div>
+          <ul class="award-list">
+            <li>Runner-up, Best Entertainment Programme · Asian Television Awards 2005 · <em>Lonely Planet's Six
+                Degrees</em></li>
+            <li>Nominated, Best Editing · Asian Television Awards 2005 · <em>Lonely Planet's Six Degrees</em></li>
+            <li>Highly commended, Best Editing · Asian Television Awards 2007 · <em>Lonely Planet's Six Degrees</em>
+            </li>
+            <li>Nominated, Best Infotainment Programme · Asian Television Awards 2007 · <em>True Asian Horror</em></li>
+          </ul>
         </article>
       </div>
     </section>
 
     <section class="page contact" id="contact">
       <div class="contact-grid">
-        <h2>Make the judgement reproducible</h2>
+        <h2>Story first, at any length</h2>
         <div class="contact-copy">
-          <p>Evaluation of AI-generated video, written up as structured feedback.</p>
+          <p>Creative direction, editing and evaluation for documentary, social and generative AI video.</p>
           <div class="actions">
             <a class="action primary" href="mailto:hello.inezang@gmail.com">Email Inez</a>
             <a class="action" href="https://www.linkedin.com/in/inez-ang">LinkedIn</a>
@@ -3999,8 +3606,8 @@
   </main>
 
   <footer class="page footer-line">
-    <span>Inez Ang · AI Video Evaluation · Storytelling, Editing and Visual Quality</span>
-    <span>Singapore · Evaluation work across generative and broadcast media</span>
+    <span>Inez Ang · Creative Director &amp; Showrunner · Documentary, Broadcast, Social and AI Video</span>
+    <span>Singapore · Broadcast and generative video, 2001&ndash;2026</span>
   </footer>
 
   <dialog id="lightbox" aria-label="Project image viewer">
