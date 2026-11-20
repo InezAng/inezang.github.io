@@ -2865,9 +2865,14 @@
       }
     }
   
-    /* Evaluation tables (rubric, scores, taxonomy) — the only additions for the Meta re-cut. */
+    /* Let case-study grid children shrink; wide tables scroll inside their wrapper. */
+    .case-head > * {
+      min-width: 0;
+    }
+
+    /* Evaluation tables (rubric, scores, taxonomy). */
     .eval-table-wrap {
-      max-width: 860px;
+      max-width: min(100%, 860px);
       margin: 20px 0 18px;
       overflow-x: auto;
       border: 1px solid var(--ink);
@@ -3212,7 +3217,7 @@
 
     .process-strip ol {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(var(--strip-count, 4), minmax(0, 1fr));
       gap: 12px;
       margin: 0;
       padding: 0;
@@ -3309,7 +3314,7 @@
       }
 
       .process-strip ol {
-        grid-template-columns: repeat(4, 70%);
+        grid-template-columns: repeat(var(--strip-count, 4), 70%);
         overflow-x: auto;
         scroll-snap-type: x mandatory;
       }
@@ -3347,10 +3352,8 @@
       </div>
       <div class="hero-side">
         <p class="lead">I've made documentary, factual and children's television for CNA, Mediacorp, Astro Malaysia
-          and Discovery Channel, from concept and script through shoot, edit, sound and final QC. Since late 2025
-          I've been testing whether one person can run a media company on generative video, publishing pilot
-          series and judging every shot the way I judged a broadcast cut: story, pacing, composition,
-          continuity and sync.</p>
+          and Discovery Channel, from concept and script through shoot, edit, sound and final QC. I bring that
+          editorial judgement to generative video: story, pacing, composition, continuity and sync.</p>
         <p class="note">Selected work · Singapore · 2001&ndash;2026</p>
         <div class="actions">
           <a class="action primary" href="#broadcast">Watch the work</a>
@@ -3377,9 +3380,9 @@
     <section class="page practice" id="broadcast">
       <div class="broadcast-note">
         <h2>Documentary and broadcast</h2>
-        <p>For ten years I ran my own studio, People Factor Studio, making documentary, business and children's
-          series end to end: concept, pitch, script, shoot, edit, sound, technical QC and delivery. Before that I
-          edited and post-directed for Discovery Channel and Mediacorp.
+        <p>I ran People Factor Studio from 2013 to 2023, creating documentary, business and children's series.
+          The credits below cover that studio's work and my earlier editing and post-direction for Discovery
+          Channel and Mediacorp.
           <small>Roles across the work: creative director, showrunner, executive producer, producer, writer,
             director, camera, post director, editor and sound designer.</small>
         </p>
@@ -3529,9 +3532,8 @@
     <section class="page practice ai-overview" id="ai-video">
       <div class="broadcast-note">
         <h2>AI Video</h2>
-        <p>I've made generative AI video hands-on since 2023, and I judge it as an editor would: story, pacing,
-          shot composition, continuity and audio-visual sync. Since late 2025 I've been testing whether one person
-          can run a media company on generative video. Each pilot series is measured against a time-per-video
+        <p>I've worked hands-on with generative AI video since 2023. Since late 2025 I've been testing whether one
+          person can run a media company on generative video. Each pilot series is measured against a time-per-video
           target and a quality bar, and paused or dropped when it misses them. Around the pilots I run short tests
           of single models and workflows, and take commissions. Across all of it I keep the editorial
           calls&mdash;story, casting, shot choice, the cut&mdash;and write down what each model gets wrong.</p>
@@ -3645,14 +3647,14 @@
           </figcaption>
         </figure>
         <figure class="test-tile">
-          <button type="button" data-lightbox-video="media/grid/physics.mp4" data-lightbox-alt="Own R&amp;D · Silk, hair and water moving together through a fast spin, without the cloth clipping through the body · Text-to-video · Seedance 2.5">
+          <button type="button" data-lightbox-video="media/grid/physics.mp4" data-lightbox-alt="Own R&amp;D · A fast spin testing silk, hair, water and whether cloth clips through the body · Text-to-video · Seedance 2.5">
             <video muted loop playsinline preload="none" poster="images/grid/physics-poster.jpg"
               src="media/grid/physics-loop.mp4" aria-hidden="true"></video>
             <span class="format-chip">9:16</span>
           </button>
           <figcaption>
             <span class="test-purpose">Own R&amp;D</span>
-            <span class="test-what">Silk, hair and water moving together through a fast spin, without the cloth clipping through the body</span>
+            <span class="test-what">A fast spin testing silk, hair, water and whether cloth clips through the body</span>
             <span class="test-how">Text-to-video · Seedance 2.5</span>
           </figcaption>
         </figure>
@@ -3717,8 +3719,8 @@
             </div>
             <div>
               <dt>Learned</dt>
-              <dd>Round 1 compared Grok Imagine and Sora 2 for one talking character: six generations per usable
-                sequence.</dd>
+              <dd>Compared Grok Imagine and Sora 2 for one talking character in Round 1. Across that production
+                experiment, a usable multi-shot sequence took six generations on average.</dd>
             </div>
           </dl>
           <div class="shorts-grid" aria-label="JJ Befuddlez episodes">
@@ -3809,8 +3811,8 @@
             </div>
             <div>
               <dt>Learned</dt>
-              <dd>Kling 3.0 gave the most believable acting against Seedance 2.0 and Veo 3.1: 4.3 generations per
-                usable shot, US$12&ndash;18 per finished video.</dd>
+              <dd>Preferred Kling 3.0 for believable acting over Seedance 2.0 and Veo 3.1. In this production test,
+                shots averaged 4.3 generations; finished 1&ndash;2-minute samples cost US$12&ndash;18 each.</dd>
             </div>
           </dl>
           <figure class="case-video">
@@ -3870,7 +3872,7 @@
           <dl class="case-summary">
             <div>
               <dt>Format</dt>
-              <dd>2&ndash;3-hour ambient videos for study, focus and sleep, in five musical movements.</dd>
+              <dd>1&ndash;2-hour ambient videos for study, focus and sleep, in five musical movements.</dd>
             </div>
             <div>
               <dt>My role</dt>
@@ -3981,7 +3983,7 @@
           </div>
           <div class="process-strip" aria-label="Youniverse process">
             <p class="strip-intro"><strong>Process</strong> The lead against her reference sheet, scene by scene.</p>
-            <ol>
+            <ol style="--strip-count: 3">
               <li>
                 <button type="button" data-lightbox-src="images/strips/yu-1-sheet.jpg" data-lightbox-alt="Youniverse: Reference · Character sheet for the lead.">
                   <img loading="lazy" src="images/strips/yu-1-sheet.jpg" alt="Youniverse: Reference · Character sheet for the lead.">
@@ -3990,25 +3992,18 @@
                 <p>Character sheet for the lead.</p>
               </li>
               <li>
-                <button type="button" data-lightbox-src="images/strips/yu-2-scene-1.jpg" data-lightbox-alt="Youniverse: Scene 1 · Close to the sheet.">
-                  <img loading="lazy" src="images/strips/yu-2-scene-1.jpg" alt="Youniverse: Scene 1 · Close to the sheet.">
+                <button type="button" data-lightbox-src="images/strips/yu-4-scene-3.jpg" data-lightbox-alt="Youniverse: Scene 1 · The lead in close-up.">
+                  <img loading="lazy" src="images/strips/yu-4-scene-3.jpg" alt="Youniverse: Scene 1 · The lead in close-up.">
                 </button>
                 <span class="step-label">Scene 1</span>
-                <p>Close to the sheet.</p>
+                <p>The lead in close-up.</p>
               </li>
               <li>
-                <button type="button" data-lightbox-src="images/strips/yu-3-scene-2.jpg" data-lightbox-alt="Youniverse: Scene 2 · A supporting character takes the frame.">
-                  <img loading="lazy" src="images/strips/yu-3-scene-2.jpg" alt="Youniverse: Scene 2 · A supporting character takes the frame.">
+                <button type="button" data-lightbox-src="images/strips/yu-2-scene-1.jpg" data-lightbox-alt="Youniverse: Scene 2 · The lead with supporting characters.">
+                  <img loading="lazy" src="images/strips/yu-2-scene-1.jpg" alt="Youniverse: Scene 2 · The lead with supporting characters.">
                 </button>
                 <span class="step-label">Scene 2</span>
-                <p>A supporting character takes the frame.</p>
-              </li>
-              <li>
-                <button type="button" data-lightbox-src="images/strips/yu-4-scene-3.jpg" data-lightbox-alt="Youniverse: Identity and continuity · Her face and age drift from the sheet.">
-                  <img loading="lazy" src="images/strips/yu-4-scene-3.jpg" alt="Youniverse: Identity and continuity · Her face and age drift from the sheet.">
-                </button>
-                <span class="verdict fail">Identity and continuity</span>
-                <p>Her face and age drift from the sheet.</p>
+                <p>The lead with supporting characters.</p>
               </li>
             </ol>
           </div>
@@ -4028,8 +4023,7 @@
     <section class="page practice" id="evaluation">
       <div class="broadcast-note">
         <h2>Evaluation</h2>
-        <p>The notes I gave on broadcast cuts, written as rubrics and labels that another rater, or a model, can
-          apply.
+        <p>My editorial review made explicit through shot notes, model comparisons and evaluation criteria.
           <small>The full studies, with method, findings and limits, are on a separate page.</small>
         </p>
       </div>
@@ -4056,10 +4050,10 @@
           <div class="probe-line">
             <h3>Failure labels &amp; golden set</h3><span class="verdict open">In progress</span>
           </div>
-          <p>Five failure classes, each assigned to what can check it: tool (code, before the call), brief (a model
-            reading the brief), performance (a model, with care), identity and continuity (a model plus
-            measurement) and taste (me). A candidate golden set of 163 items (143 images and keyframes, 20 video takes), to check new model
-            versions against my verdicts. Built November 2026; labels not yet confirmed.</p>
+          <p>An audit of 824 generation records informed five failure classes and a proposed division of checks
+            between code, models and human review. A candidate golden set contains 163 items (143 images and
+            keyframes, 20 video takes) with 379 draft labels. Built November 2026; label confirmation, judge
+            calibration and regression runs are pending.</p>
         </article>
       </div>
       <div class="actions studies-link">

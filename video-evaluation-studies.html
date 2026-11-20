@@ -2865,9 +2865,14 @@
       }
     }
   
-    /* Evaluation tables (rubric, scores, taxonomy) — the only additions for the Meta re-cut. */
+    /* Let case-study grid children shrink; wide tables scroll inside their wrapper. */
+    .case-head > * {
+      min-width: 0;
+    }
+
+    /* Evaluation tables (rubric, scores, taxonomy). */
     .eval-table-wrap {
-      max-width: 860px;
+      max-width: min(100%, 860px);
       margin: 20px 0 18px;
       overflow-x: auto;
       border: 1px solid var(--ink);
@@ -3024,7 +3029,9 @@
     <section class="page quality-loop" id="quality-loop">
       <div class="section-intro">
         <p class="label">The evaluation loop</p>
-        <h2>A quality standard is useful only when another rater&mdash;or a machine&mdash;can apply it</h2>
+        <h2>From a written standard to a checked result</h2>
+        <p>The studies below cover completed tests and evaluation designs. Confirming reference labels and
+          calibrating automated judges are next steps.</p>
       </div>
       <div class="loop-grid">
         <article class="loop-step">
@@ -3048,7 +3055,7 @@
         <article class="loop-step">
           <span class="micro">04 / Ground truth</span>
           <h3>Calibrate</h3>
-          <p>Keep a golden set. Compare automated judges with human ratings before trusting either at volume.</p>
+          <p>Planned: confirm the candidate reference labels, then compare automated judges with human ratings.</p>
         </article>
       </div>
     </section>
@@ -3063,7 +3070,7 @@
         </div>
         <div class="metric"><strong>100+</strong><span>hours of television edited and finished</span></div>
         <div class="metric"><strong>824</strong><span>generation records audited for failure modes</span></div>
-        <div class="metric"><strong>163</strong><span>items in a candidate golden set, built November 2026</span></div>
+        <div class="metric"><strong>163</strong><span>items in a candidate golden set; labels awaiting confirmation</span></div>
       </div>
     </section>
 
@@ -3072,13 +3079,10 @@
         <p class="label">Selected evaluation work</p>
         <div class="work-intro-copy">
           <h2>Six evaluation studies of generative video and image output</h2>
-          <p>Each one states a question, a method, a finding and its limits. Two are evaluation design: a rubric
-            applied across three text-to-video models, and a failure taxonomy with a golden set. Four are
-            evaluations run on my own generative video projects.</p>
-          <p>The judgement underneath is a rater's, applied clip by clip: storytelling, scene transitions, visual
-            consistency, editing, pacing and audio-visual sync, written up as structured feedback.</p>
-          <p>I set the standard, designed each evaluation and made every judgement. I was the only rater throughout,
-            and I say where AI tools did the analysis.</p>
+          <p>One is a completed text-to-video rubric study; one is an evaluation design in progress. Four cover
+            tests on my own generative video projects. Each states its question, method, findings and limits.</p>
+          <p>I set the standard and was the sole human rater. AI tools assisted with record analysis and draft
+            labels, as noted in each study.</p>
         </div>
       </div>
       <nav class="case-nav case-nav--six" aria-label="Evaluation studies">
@@ -3315,9 +3319,9 @@
         <span class="case-no">02 / Eval design<span class="case-date">Nov 2026 · in progress</span></span>
         <div class="case-title">
           <h2>Failure taxonomy &amp; golden set</h2>
-          <p>An evaluation system for my short-form AI video series: an audit of every generation record, a failure
-            taxonomy, rubric lines written as single observable questions, and a golden set to calibrate automated
-            judges against my own verdicts.</p>
+          <p>An evaluation design for my short-form AI video series: a completed record audit and script-judge
+            comparison, a failure taxonomy, draft rubric lines and a candidate golden set. Reference-label
+            confirmation and video-judge calibration are pending.</p>
           <dl class="case-summary">
             <div>
               <dt>Question</dt>
@@ -3325,17 +3329,17 @@
             </div>
             <div>
               <dt>Method</dt>
-              <dd>Audited 824 generation records, classified every recorded failure, and compared LLM judges with my
-                blind ratings.</dd>
+              <dd>Directed an AI-assisted audit of 824 generation records and a draft failure taxonomy; separately
+                compared LLM judges with my blind ratings of short comedy scripts.</dd>
             </div>
             <div>
               <dt>Finding</dt>
-              <dd>Five failure classes. On a small sample, LLM judges called 90&ndash;95% of comedy scripts funny; I
-                called 56%. So judges are asked only about observable facts.</dd>
+              <dd>Five failure classes. In the small script study, LLM judges called 90&ndash;95% of scripts funny; I
+                called 56%. This informed a design that assigns observable checks to judges and keeps taste human.</dd>
             </div>
             <div>
               <dt>Status</dt>
-              <dd>Design complete; golden set v0 built; in progress (November 2026).</dd>
+              <dd>Audit and evaluation design complete; candidate set built; labels and calibration pending (November 2026).</dd>
             </div>
           </dl>
           <div class="eval-table-wrap">
@@ -3345,7 +3349,7 @@
                 <tr>
                   <th scope="col">Class</th>
                   <th scope="col">Examples from the records</th>
-                  <th scope="col">Who can check it</th>
+                  <th scope="col">Proposed checker, subject to validation</th>
                 </tr>
               </thead>
               <tbody>
@@ -3389,8 +3393,8 @@
         <aside class="case-status case-status--head">
           <span class="status">In progress · Status at 15 November 2026</span>
           <p>I set the acceptance standard and designed the checks. An AI coding assistant ran the record audit and
-            drafted labels from my recorded verdicts under my direction. No judge is described as calibrated until I
-            have confirmed the label sheet.
+            drafted labels from my recorded verdicts under my direction. Labels remain unconfirmed;
+            video-judge calibration has not yet been run.
           </p>
         </aside>
       </header>
@@ -3404,8 +3408,8 @@
           <aside class="case-status case-status--inline">
             <span class="status">In progress · Status at 15 November 2026</span>
             <p>I set the acceptance standard and designed the checks. An AI coding assistant ran the record audit and
-              drafted labels from my recorded verdicts under my direction. No judge is described as calibrated until I
-              have confirmed the label sheet.
+              drafted labels from my recorded verdicts under my direction. Labels remain unconfirmed;
+              video-judge calibration has not yet been run.
             </p>
           </aside>
           <article class="youniverse-story">
@@ -3419,8 +3423,8 @@
                     not be computed. The status field alone held 39 different values.</li>
                   <li>Where it could be counted, on one episode, about half of keyframes were accepted in their first
                     version. That is one episode, counted from file versions.</li>
-                  <li>The first change is therefore to the record, not the model: six allowed status values and a
-                    recorded verdict, defect class and reason for every output.</li>
+                  <li>Proposed record change: six allowed status values and a recorded verdict, defect class and
+                    reason for every output. This schema has not yet been implemented.</li>
                 </ul>
               </div>
             </section>
@@ -3480,12 +3484,10 @@
             <section class="story-section" aria-labelledby="jj-eval-rubric">
               <h3 class="micro" id="jj-eval-rubric">Rubric excerpt</h3>
               <div class="story-copy">
-                <h3 class="story-lede">One observable judgement per line. The decision is made in code, not by the
-                  judge</h3>
+                <h3 class="story-lede">Draft rubric and decision rules: observable checks, with acceptance kept human</h3>
                 <div class="eval-table-wrap">
                   <table class="eval-table">
-                    <caption>Keyframe card · six of the 28 lines · inputs: the frame, the character sheet, the shot
-                      line</caption>
+                    <caption>Draft keyframe card · six of the 28 lines · inputs: frame, character sheet and shot line</caption>
                     <thead>
                       <tr>
                         <th scope="col">Line</th>
@@ -3546,7 +3548,7 @@
                 </div>
                 <div class="eval-table-wrap">
                   <table class="eval-table">
-                    <caption>Decision table · applied in code</caption>
+                    <caption>Proposed decision table · calibration and live validation pending</caption>
                     <thead>
                       <tr>
                         <th scope="col">Code checks</th>
@@ -3590,10 +3592,10 @@
                   </table>
                 </div>
                 <ul class="finding-list">
-                  <li><strong>A check never accepts.</strong> Acceptance stays with the human reviewer.</li>
-                  <li><strong>Video takes are sorted and flagged, never regenerated automatically.</strong> A false
-                    fail on an image costs one free regeneration; on video it costs a paid take.</li>
-                  <li><strong>An API error is an error.</strong> It is never read as a pass or a fail.</li>
+                  <li><strong>Design rule:</strong> a check never accepts; acceptance stays with the human reviewer.</li>
+                  <li><strong>Proposed video handling:</strong> sort and flag takes for human review; do not regenerate
+                    automatically. A false fail on video would trigger another paid take.</li>
+                  <li><strong>Design rule:</strong> an API error must remain an error, rather than a pass or fail.</li>
                 </ul>
               </div>
             </section>
@@ -3609,18 +3611,18 @@
                   <li><strong>Labels:</strong> 103 fail, 32 pass, 3 not applicable or disputed, and 241 no-fault
                     labels implied where I accepted the output. 51 labels come from verdicts I stated at review; 87 come from the AI
                     assistant's inspection records; the other 241 are the implied ones. None of the 379 has yet been confirmed by me on the review sheet.</li>
-                  <li><strong>Calibration rule:</strong> a rubric line goes live only if the judge agrees with my
+                  <li><strong>Planned calibration rule:</strong> a rubric line would go live only if the judge agrees with my
                     labels on at least 80% of items with false fails at 10% or less. False fails and false passes are reported
                     separately for each line, because most labels are passes and raw agreement alone would flatter a
                     judge that passes everything. Lines that miss are tuned or left with the human reviewer.</li>
-                  <li><strong>Shadow period:</strong> for the first two live episodes the checks run without acting.
-                    Their verdicts are stored and compared with mine afterwards.</li>
-                  <li><strong>Regression use:</strong> the set is rerun whenever a model version or a rubric line
-                    changes. This has not yet been done.</li>
+                  <li><strong>Planned shadow period:</strong> for the first two live episodes, checks would run without
+                    acting. Their verdicts would be stored and compared with mine afterwards.</li>
+                  <li><strong>Planned regression use:</strong> rerun the set when a model version or rubric line changes.
+                    No regression run has yet been completed.</li>
                 </ul>
                 <p class="test-finding"><strong>Not built, on purpose: </strong>a funniness judge, because the evidence
-                  is against it; and a single quality score per episode, because six stages at 75% each multiply to
-                  18% and hide which stage failed. Each stage is measured on its own.</p>
+                  is against it; and a single quality score per episode, which would hide which stage failed. The design measures
+                  each stage separately.</p>
               </div>
             </section>
           </article>
@@ -3700,7 +3702,8 @@
             </div>
             <div>
               <dt>Finding</dt>
-              <dd>Kling 3.0 gave the most believable takes; 4.3 generations per usable shot; US$12–18 per finished video.</dd>
+              <dd>Preferred Kling 3.0 for believable acting. In this production test, shots averaged 4.3 generations;
+                finished 1&ndash;2-minute samples cost US$12&ndash;18 each.</dd>
             </div>
             <div>
               <dt>Decision</dt>
@@ -3752,7 +3755,8 @@
             </div>
             <div>
               <dt>Finding</dt>
-              <dd>Six generations per usable sequence; about US$6 per finished video.</dd>
+              <dd>Across this production experiment, a usable multi-shot sequence took six generations on average;
+                finished videos cost about US$6 each.</dd>
             </div>
             <div>
               <dt>Decision</dt>
@@ -3789,7 +3793,7 @@
         <div class="case-title">
           <h2>Terra Atavica</h2>
           <p>An image-to-video evaluation on archive artwork: does animation preserve what the source image shows? Run on
-            a semi-autonomous production workflow for hour-long ambient historical-music videos.</p>
+            a semi-autonomous production workflow for 1&ndash;2-hour ambient historical-music videos.</p>
           <dl class="case-summary">
             <div>
               <dt>Question</dt>
@@ -3801,7 +3805,7 @@
             </div>
             <div>
               <dt>Finding</dt>
-              <dd>More than 50% usable first-pass; failures in subject identity, object behaviour and skin tone.</dd>
+              <dd>About half usable on the first pass; failures in subject identity, object behaviour and skin tone.</dd>
             </div>
             <div>
               <dt>Decision</dt>
@@ -3839,15 +3843,14 @@
     <section class="standards" aria-labelledby="standards-title">
       <div class="page">
         <div class="section-intro">
-          <p class="label">What the evaluations established</p>
-          <h2 id="standards-title">A useful quality signal names the failure, says who caused it, and counts what it
-            cost&mdash;impressive outputs are not evidence</h2>
+          <p class="label">Findings and design decisions</p>
+          <h2 id="standards-title">Name the failure, identify its cause and count the intervention</h2>
         </div>
         <div class="standards-grid">
           <article class="standard">
             <h3>Ask what a rater can point to</h3>
-            <p>Model judges missed my taste but can answer observable questions. The rubric lines and the
-              text-to-video rubric are both written as questions with a visible answer.</p>
+            <p>The script study showed weak agreement on taste. The draft video rubric therefore asks observable
+              questions; judge reliability on those checks still needs validation.</p>
           </article>
           <article class="standard">
             <h3>Separate the prompt from the model</h3>
