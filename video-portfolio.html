@@ -3071,6 +3071,20 @@
       }
     }
 
+    /* AI Video: one overview note, then two smaller subsection heads (tests, pilot series). */
+    .ai-overview {
+      padding-bottom: 0;
+    }
+
+    .ai-sub {
+      padding-top: 56px;
+      padding-bottom: 8px;
+    }
+
+    .sub-intro h2 {
+      font-size: clamp(28px, 3.4vw, 46px);
+    }
+
     /* Tests grid: one 4:5 crop for every tile, format chip in the corner, caption on hover/focus/tap.
        Six columns on desktop so the gallery stays to two rows. */
     .test-grid {
@@ -3512,11 +3526,26 @@
       </div>
     </section>
 
-    <section class="page practice" id="tests">
+    <section class="page practice ai-overview" id="ai-video">
       <div class="broadcast-note">
-        <h2>Tests, prototypes and commissions</h2>
-        <p>Short pieces made to test a model, a workflow or a brief. Some were made for clients and are not my IP.
-          Hover or tap to see what each one tested.</p>
+        <h2>AI Video</h2>
+        <p>I've made generative AI video hands-on since 2023, and I judge it as an editor would: story, pacing,
+          shot composition, continuity and audio-visual sync. Since late 2025 I've been testing whether one person
+          can run a media company on generative video. Each pilot series is measured against a time-per-video
+          target and a quality bar, and paused or dropped when it misses them. Around the pilots I run short tests
+          of single models and workflows, and take commissions. Across all of it I keep the editorial
+          calls&mdash;story, casting, shot choice, the cut&mdash;and write down what each model gets wrong.</p>
+      </div>
+    </section>
+
+    <section class="page practice ai-sub" id="tests">
+      <div class="section-intro sub-intro">
+        <p class="label">AI video · Tests</p>
+        <div class="work-intro-copy">
+          <h2>Tests, prototypes and commissions</h2>
+          <p>Short pieces made to test a model, a workflow or a brief. Some were made for clients and are not my IP.
+            Hover or tap to see what each one tested.</p>
+        </div>
       </div>
       <div class="test-grid" aria-label="Tests, prototypes and commissions">
         <figure class="test-tile">
@@ -3654,16 +3683,13 @@
       </div>
     </section>
 
-    <section class="page work-index" id="ai-video">
-      <div class="section-intro">
-        <p class="label">Generative AI video · 2023&ndash;now</p>
+    <section class="page work-index" id="pilot-series">
+      <div class="section-intro sub-intro">
+        <p class="label">AI video · Pilot series</p>
         <div class="work-intro-copy">
           <h2>Pilot series I write, prompt, generate and edit</h2>
-          <p>Since late 2025 I've been testing whether one person can run a media company on generative video.
-            Three pilot channels are published: one still publishing, one paused, one in active R&amp;D. A fourth
-            project, a drama, is R&amp;D only. Each runs at a different level of automation. I keep
-            the editorial calls&mdash;story, casting, shot choice, the cut&mdash;and write down what each model gets
-            wrong.</p>
+          <p>Three pilot channels are published: one still publishing, one paused, one in active R&amp;D. A fourth
+            project, a drama, is R&amp;D only. Each runs at a different level of automation.</p>
         </div>
       </div>
     </section>
